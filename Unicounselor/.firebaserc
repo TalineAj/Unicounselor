@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "unicounselor-5e575": {
+      "hosting": {
+        "app": [
+          "unicounselor-5e575"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "unicounselor-5e575"
+  }
+}

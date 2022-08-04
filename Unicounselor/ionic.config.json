@@ -1,0 +1,7 @@
+{
+  "name": "Unicounselor",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
