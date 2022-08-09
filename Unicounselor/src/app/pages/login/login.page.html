@@ -1,20 +1,13 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>
-      Login
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
-
-
-<ion-content > 
-
+<ion-content> 
+<div class="logo">
+  <!--<a href='https://www.freepik.com/vectors/good-bye'>Good bye vector created by freepik - www.freepik.com</a>-->
+</div>
   <div>
        <ion-card>
-          <ion-card-header>
-           <ion-card-subtitle>Welcome back!</ion-card-subtitle>
-           <ion-card-title>Login</ion-card-title>
-         </ion-card-header>
+          <!-- <ion-card-header> -->
+           <!-- <ion-card-subtitle>Welcome back!</ion-card-subtitle> -->
+           <!-- <ion-card-title>Welcome!</ion-card-title> -->
+         <!-- </ion-card-header> -->
        
        <ion-card-content>
          <form #f="ngForm" (ngSubmit)="onSubmit(f)">
@@ -31,17 +24,11 @@
          <ion-button  type="submit" name="submit">Login</ion-button>
  
        </form>
- 
-       
-  
           
        </ion-card-content> 
  
      </ion-card> 
-     </div>   
-     <div>
-       <p>New here? <span (click)="redirect()">Create account</span></p>
+     </div >   
+       <p>Don't have an account? <span (click)="redirect()">Sign up</span></p>
  
- 
-     </div>   
- </ion-content>
+  </ion-content>
