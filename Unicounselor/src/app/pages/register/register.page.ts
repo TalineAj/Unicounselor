@@ -8,14 +8,19 @@ import {
   ToastController,
 } from '@ionic/angular';
 import { Auth } from '@angular/fire/auth';
+import { UserService, User } from 'src/app/apis/user.service';
+
+
 @Component({
   selector: 'app-register',
   templateUrl: './register.page.html',
   styleUrls: ['./register.page.scss'],
 })
 export class RegisterPage implements OnInit {
+userInfo: User;
 
   constructor(  private authService: AuthService,
+    private userService: UserService,
     private route: Router,
     private alertController: AlertController,
     private loadingController: LoadingController,
@@ -29,14 +34,18 @@ export class RegisterPage implements OnInit {
       //Making sure both fields are filled
       loading.dismiss();
 
-
       const user = await this.authService.register(form.value);
+
       await loading.dismiss();
       if(user){
         //Will be used later to redirect to appropriate home
                  //to be changed
+    this.userInfo = form.value;
+    this.userInfo.id = user.user.uid;
 
-            this.route.navigate(['/login']);
+
+    this.userService.addUser(this.userInfo);
+    this.route.navigate(['/login']);
       }
       else{
         const alert = await this.alertController.create({
