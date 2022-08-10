@@ -21,6 +21,34 @@ export class RegisterPage implements OnInit {
     private loadingController: LoadingController,
     private toastController: ToastController) { }
 
+    async onSubmit(form: NgForm) {
+      const loading = await this.loadingController.create({
+        message: `Signing up`,
+      });
+      await loading.present();
+      //Making sure both fields are filled
+      loading.dismiss();
+
+
+      const user = await this.authService.register(form.value);
+      await loading.dismiss();
+      if(user){
+        //Will be used later to redirect to appropriate home
+                 //to be changed
+
+            this.route.navigate(['/login']);
+      }
+      else{
+        const alert = await this.alertController.create({
+                message: 'Login unsuccessful',
+                buttons: ['Close'],
+              });
+              await alert.present();
+            }
+      }
+
+
+
   ngOnInit() {
   }
 
