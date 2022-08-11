@@ -1,13 +1,9 @@
-<ion-content> 
-  <div class="logo">
+<!-- <ion-content> 
+  <div class="logo"> -->
     <!--<a href='https://www.freepik.com/vectors/good-bye'>Good bye vector created by freepik - www.freepik.com</a>-->
-  </div>
+  <!-- </div>
     <div>
          <ion-card>
-            <!-- <ion-card-header> -->
-             <!-- <ion-card-subtitle>Welcome back!</ion-card-subtitle> -->
-             <!-- <ion-card-title>Welcome!</ion-card-title> -->
-           <!-- </ion-card-header> -->
          
          <ion-card-content>
            <form #f="ngForm" (ngSubmit)="onSubmit(f)">
@@ -35,4 +31,61 @@
        </div >   
          <p>Don't have an account? <span (click)="redirect()">Sign up</span></p>
    
+    </ion-content> -->
+
+    <ion-content>
+      <ion-card>
+        <ion-card-content>
+      <form #f="ngForm" (ngSubmit)="onSubmit(f)">
+        <ion-item>
+            <ion-label position ="floating">First name</ion-label>
+            <ion-input type="text" ngModel  
+            name="firstname" required="true"> </ion-input>   
+        </ion-item>
+    
+        <ion-item>
+        <ion-label position ="floating">Last name</ion-label>
+        <ion-input type="text" ngModel name="lastname" required="true"> </ion-input>     
+        </ion-item> 
+    
+        <ion-item>
+          <ion-label position ="stacked">Date of birth</ion-label>
+          <ion-input type="date" ngModel name="dateofbirth" required="true"> </ion-input>     
+          </ion-item> 
+    
+          <ion-item>
+            <ion-label position="floating">Gender</ion-label>
+            <ion-select class ="custom-options" interface="popover" [placeholder]="sdf" name="gender" [value]="gender" required="true" ngModel>
+              <ion-select-option value="Male">Male</ion-select-option>
+              <ion-select-option value="Female">Female</ion-select-option>
+              <ion-select-option value="Gender neutral">Gender neutral</ion-select-option>
+              <ion-select-option value="Non-binary">Non-binary</ion-select-option>
+              <ion-select-option value="Genderqueer">Genderqueer</ion-select-option>
+              <ion-select-option value="Other">Other</ion-select-option>
+            </ion-select>
+          </ion-item>
+    
+            <ion-item>
+              <ion-label position ="floating">Email</ion-label>
+              <ion-input type="email" ngModel name="email" required="true"> </ion-input>     
+            </ion-item>
+    
+              <ion-item>
+                <ion-label position ="floating">Password</ion-label>
+                <ion-input type="password" ngModel name="password" required="true"> </ion-input>     
+                </ion-item> 
+    
+        <ion-button  type="submit" name="submit">Register</ion-button>
+    
+      </form>
+    </ion-card-content> 
+    </ion-card>
+    
+    <div id="footer">
+      <p>Already a user? <span id="create" [routerLink]="['/login']" > Login </span></p>
+    
+    
+    </div>   
+    
     </ion-content>
+    

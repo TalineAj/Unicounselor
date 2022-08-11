@@ -5,30 +5,33 @@ ion-content {
 }
 ion-card,ion-item {
     --background: white ;
-    //change
-    --color: black;
-    height: 290px !important;
 
 }
 
 ion-card{
+
     box-shadow: none !important;
 
 }
-.logo{
-    background-image: url('../../../assets/images/6431139.jpg');
-    height: 30%;
-    margin-top: 15% !important;
-    // background-position: 50% 50%;
-    background-size: cover;
-  
+
+ion-input{
+    --color: black;
+// --background: black;
 }
+ion-select {
+    --background:black;
+    --placeholder-color: #971e49;
+    --placeholder-opacity: 1;
+    width: 100%;
+    justify-content: center;
+  }
 ion-item{
     margin-left: 0% !important;
     height: 5% !important;
 }
 ion-label{
-    --color: black !important;
+
+    --color: #4CBB17 !important;
     font-size: 95% !important;
 }
 ion-button{

@@ -41,7 +41,11 @@ userInfo: User;
         //Will be used later to redirect to appropriate home
                  //to be changed
     this.userInfo = form.value;
+    //to avoid storing password not working
+    // this.userInfo.name = form.value.name;
+    // this.userInfo.email = form.value.email;
     this.userInfo.id = user.user.uid;
+    this.userInfo.password = null; //temporary fix
 
 
     this.userService.addUser(this.userInfo);
