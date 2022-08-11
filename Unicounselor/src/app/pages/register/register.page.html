@@ -49,13 +49,13 @@
         </ion-item> 
     
         <ion-item>
-          <ion-label position ="stacked">Date of birth</ion-label>
-          <ion-input type="date" ngModel name="dateofbirth" required="true"> </ion-input>     
-          </ion-item> 
+          <ion-label position ="stacked" >Date of birth</ion-label>
+          <ion-input type="date" class="date" ngModel name="dateofbirth" required="true"> </ion-input>     
+        </ion-item> 
     
           <ion-item>
             <ion-label position="floating">Gender</ion-label>
-            <ion-select class ="custom-options" interface="popover" [placeholder]="sdf" name="gender" [value]="gender" required="true" ngModel>
+            <ion-select interface="popover" name="gender" [value]="gender" required="true" ngModel>
               <ion-select-option value="Male">Male</ion-select-option>
               <ion-select-option value="Female">Female</ion-select-option>
               <ion-select-option value="Gender neutral">Gender neutral</ion-select-option>
