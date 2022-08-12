@@ -1,0 +1,27 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>tips</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card *ngFor="let tip  of tips">
+    <ion-card-header>
+      <ion-card-title>{{tip.title}} <ion-icon name="leaf-outline"></ion-icon> 
+      </ion-card-title>
+  
+    </ion-card-header>
+  
+    <ion-card-content>
+      <span id="tip">{{tip.tip}}</span><br>
+      <span id="tip">{{tip.author}}</span>
+    </ion-card-content>
+  </ion-card> 
+
+  <div class="no-tips" *ngIf="notips===0">
+    <div class ="wrap">
+      <ion-icon name="leaf-outline" id="center"></ion-icon> 
+    <p>No tips were added yet!</p>
+  </div>
+  </div>
+</ion-content>

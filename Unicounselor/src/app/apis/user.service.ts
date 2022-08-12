@@ -14,7 +14,6 @@ password: any;
 export class UserService{
 
   constructor(private firestore: Firestore) { }
-  //Testing
 addUser(user: User){
   const userRef = collection(this.firestore,'Users');
   return addDoc(userRef,user);
