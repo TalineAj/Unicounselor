@@ -1,3 +1,4 @@
+/* eslint-disable no-trailing-spaces */
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/apis/auth.service';
 import {NgForm} from '@angular/forms';
@@ -29,20 +30,8 @@ userInfo: User;
 
 
 //regex to check password
-// eslint-disable-next-line prefer-arrow/prefer-arrow-functions
-check = function(password){
-  return !!password.match(/^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%* #+=\(\)\^?&])[A-Za-z\d$@$!%* #+=\(\)\^?&]{3,}$/);
-};
-
-// check = (password)=> !!password.match(/^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%* #+=\(\)\^?&])[A-Za-z\d$@$!%* #+=\(\)\^?&]{3,}$/);
-// ;
-
-
-
-
-
-
-
+check = (password)=> !!password.match(/^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%* #+=\(\)\^?&])[A-Za-z\d$@$!%* #+=\(\)\^?&]{3,}$/);
+;
 
 
     async onSubmit(form: NgForm) {
@@ -50,8 +39,40 @@ check = function(password){
         message: `Signing up`,
       });
       await loading.present();
-      loading.dismiss();
-
+  //Making sure fields are not empty
+if(form.value.password===''|| form.value.email==='' || form.value.gender==='' || form.value.date==='' ||
+form.value.lastname==='' || form.value.firstname==='')
+{const toast = await this.toastController.create({
+ message: 'Please fill all fields',
+ duration: 3000,
+});
+loading.dismiss();
+await toast.present();
+return;
+} 
+//Making sure the email format is valid
+if(!form.value.email.endsWith('@student.com')&&!form.value.email.endsWith('@uni.com')){
+  const toast = await this.toastController.create({
+    message: 'The email should end with @student.com or @uni.com',
+    duration: 4000,
+   });
+   loading.dismiss();
+   await toast.present();
+   return;
+}
+  // Checking if password has at least 3 characters at least 1 alphabet, 1 Number and 1 Special Character
+  if(form.value.password.length<5 || !this.check(form.value.password))
+  {const toast = await this.toastController.create({
+    // eslint-disable-next-line max-len
+    message: 'Password is too weak. Enter a password longer than five characters that contains at least one number, one character and one special character',
+    duration: 5000,
+  });
+  loading.dismiss();
+  await toast.present();
+  return;
+}    
+// loading.dismiss();
+else{
       const user = await this.authService.register(form.value);
 
       await loading.dismiss();
@@ -76,6 +97,7 @@ check = function(password){
               });
               await alert.present();
             }
+          }
       }
 
 

@@ -37,6 +37,7 @@ export class LoginPage implements OnInit {
       await toast.present();
       return;
       }
+      else{ //since we are returning we dont need the else but its added for extra security
 
       const user = await this.authService.login(form.value);
       await loading.dismiss();
@@ -57,6 +58,7 @@ export class LoginPage implements OnInit {
               });
               await alert.present();
             }
+          }
       }
   ngOnInit() {
   }
