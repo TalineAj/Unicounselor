@@ -26,12 +26,30 @@ userInfo: User;
     private loadingController: LoadingController,
     private toastController: ToastController) { }
 
+
+
+//regex to check password
+// eslint-disable-next-line prefer-arrow/prefer-arrow-functions
+check = function(password){
+  return !!password.match(/^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%* #+=\(\)\^?&])[A-Za-z\d$@$!%* #+=\(\)\^?&]{3,}$/);
+};
+
+// check = (password)=> !!password.match(/^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%* #+=\(\)\^?&])[A-Za-z\d$@$!%* #+=\(\)\^?&]{3,}$/);
+// ;
+
+
+
+
+
+
+
+
+
     async onSubmit(form: NgForm) {
       const loading = await this.loadingController.create({
         message: `Signing up`,
       });
       await loading.present();
-      //Making sure both fields are filled
       loading.dismiss();
 
       const user = await this.authService.register(form.value);
