@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {Tip, TipsService } from 'src/app/apis/tips.service';
+import { TipsService } from 'src/app/apis/tips.service';
 
 @Component({
   selector: 'app-tips',
