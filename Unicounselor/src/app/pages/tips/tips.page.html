@@ -4,21 +4,22 @@
 </ion-header>
 
 <ion-content>
-  <ion-card *ngFor="let tip  of tips">
+  <ion-grid>
+    <ion-row>
+      <ion-col *ngFor="let tip  of tips" size="6">
+  <ion-card>
     <ion-card-header>
-      <ion-card-title>{{tip.title}} <ion-icon name="leaf-outline"></ion-icon> 
+      <ion-card-title>{{tip.title}}
+        <!-- <ion-icon name="leaf-outline"></ion-icon>  -->
       </ion-card-title>
   
     </ion-card-header>
-  
     <ion-card-content>
       <span id="tip">{{tip.tip}}</span>
       <br>
-      <span id="author">{{tip.author}}</span>
+      <span id="author">~{{tip.author}}~</span>
     </ion-card-content>
   </ion-card>
-
-
  
 
   <div class="no-tips" *ngIf="notips===0">
@@ -27,9 +28,11 @@
     <p>No tips were added yet!</p>
   </div>
   </div>
+</ion-col>
+</ion-row>
+</ion-grid>
 
 </ion-content>
-
  
  
 
