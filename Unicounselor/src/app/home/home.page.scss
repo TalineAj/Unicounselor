@@ -1,27 +1,21 @@
-#container {
-  text-align: center;
+ion-content {
+  --ion-background-color: white;
 
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 50%;
-  transform: translateY(-50%);
 }
 
-#container strong {
-  font-size: 20px;
-  line-height: 26px;
+ion-toolbar{    
+--background: white;
+}
+ion-icon{
+  font-size:24px ;
+}
+ion-tab-bar {
+  border: 0;
+}
+#current{
+  color:#4CBB17;
 }
 
-#container p {
-  font-size: 16px;
-  line-height: 22px;
-
-  color: #8c8c8c;
-
-  margin: 0;
-}
-
-#container a {
-  text-decoration: none;
+ion-tab-bar{
+  --background:white;
 }
