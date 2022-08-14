@@ -18,7 +18,14 @@
   
     </ion-card-header>
     <ion-card-content>
-      <span id="tip">{{tip.tip}}</span>
+      <!-- <span id="tip">{{tip.tip}}</span> -->
+      <span id="tip">{{ (tip.tip.length>30)?tip.tip.slice(0,30)+"...":tip.tip}}
+     <div *ngIf="long===true"> 
+      <span id="more">more<span>
+
+      </div>
+      </span>
+
       <br>
       <span id="author">~{{tip.author}}~</span>
     </ion-card-content>
