@@ -1,6 +1,9 @@
 <ion-header class="ion-no-border">
   <ion-toolbar>
-  </ion-toolbar>
+    <div id = "profile">
+      <ion-icon name="person-outline" [routerLink]="['/profile']" size="large"> </ion-icon>
+    </div>
+      </ion-toolbar>
 </ion-header>
 
 <ion-content>
@@ -32,6 +35,27 @@
 </ion-row>
 </ion-grid>
 
+<ion-tabs>
+<ion-tab-bar slot="bottom" class="ion-no-border">
+  <ion-tab-button tab="home" routerLink="/home" >
+    <ion-icon name="home-outline"></ion-icon>
+  </ion-tab-button>
+
+  <ion-tab-button tab="appoinments" routerLink="/appointments">
+    <ion-icon name="calendar-clear-outline"></ion-icon> 
+  </ion-tab-button>
+
+
+  <ion-tab-button tab="tips"  routerLink="/tips">
+    <ion-icon name="bulb-outline" id="current"></ion-icon>
+  </ion-tab-button>
+
+  <ion-tab-button tab="tips"   routerLink="/profile">
+    <ion-icon name="person-outline"> </ion-icon>
+  </ion-tab-button>
+
+</ion-tab-bar> 
+</ion-tabs>
 </ion-content>
  
  
