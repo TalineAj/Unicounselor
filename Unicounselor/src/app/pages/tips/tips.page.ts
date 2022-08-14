@@ -15,26 +15,34 @@ export class TipsPage implements OnInit {
     private route: Router) {
 
   }
-
   ngOnInit() {
     this.tipsService.getTips().subscribe( res => {
       this.tips = res;
       this.notips = this.tips.length;
-      if(this.tips[3].tip.length >20)
-      {
-        this.long = true;
-      }else
-      {
-        this.long=false;
-      }
+console.log(this.tips);
   //subbsribe to wait for the result to be returned
 });
 
 
-
   }
+        check(tip: any){
+        // eslint-disable-next-line @typescript-eslint/prefer-for-of
+        // for(let i =0 ; i<this.tips.length;i++){
+          if(tip.length >30)
+          {
+            this.long = true;
+          }else
+          {
+            this.long=false;
+          }
+          console.log(this.long);
+        // }
+      }
   redirectToHome(){
     this.route.navigate(['/home']);
+  }
+  false(){
+    this.long=false;
   }
 
 
