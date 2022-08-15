@@ -15,6 +15,7 @@ export class HomePage {
 //     });
   }
   //testing
+
   redirect()
   {
     this.route.navigate(['/login']);
