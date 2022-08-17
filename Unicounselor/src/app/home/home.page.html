@@ -1,35 +1,37 @@
 <ion-header class="ion-no-border">
   <ion-toolbar>
-    <div id = "profile">
-      <ion-icon name="person-outline" [routerLink]="['/profile']" size="large"> </ion-icon>
-    </div>
+    {{today}}
+ <ion-label><b>Welcome X!</b></ion-label>
       </ion-toolbar>
 </ion-header>
 
 <ion-content>
-
-<ion-tabs>
-<ion-tab-bar slot="bottom" class="ion-no-border">
-  <ion-tab-button tab="home" routerLink="/home" >
-    <ion-icon name="home-outline"  id="current"></ion-icon>
-  </ion-tab-button>
-
-  <ion-tab-button tab="appoinments" routerLink="/appointments">
-    <ion-icon name="calendar-clear-outline"></ion-icon> 
-  </ion-tab-button>
-
-
-  <ion-tab-button tab="tips"  routerLink="/tips">
-    <ion-icon name="bulb-outline"></ion-icon>
-  </ion-tab-button>
-
-  <ion-tab-button tab="tips"   routerLink="/profile">
-    <ion-icon name="person-outline"> </ion-icon>
-  </ion-tab-button>
-
-</ion-tab-bar> 
-</ion-tabs>
+  <div class="content">
+    <div class="photo"></div>
+    <div class ="text">salskdfjsdf;alkj</div>
+</div>
 </ion-content>
  
- 
-
+ <ion-toolbar>
+<ion-tabs>
+  <ion-tab-bar slot="bottom" class="ion-no-border">
+    <ion-tab-button tab="home" routerLink="/home" >
+      <ion-icon name="home-outline"  id="current"></ion-icon>
+    </ion-tab-button>
+  
+    <ion-tab-button tab="appoinments" routerLink="/appointments">
+      <ion-icon name="calendar-clear-outline"></ion-icon> 
+    </ion-tab-button>
+  
+  
+    <ion-tab-button tab="tips"  routerLink="/tips">
+      <ion-icon name="bulb-outline"></ion-icon>
+    </ion-tab-button>
+  
+    <ion-tab-button tab="tips"   routerLink="/profile">
+      <ion-icon name="person-outline"> </ion-icon>
+    </ion-tab-button>
+  
+  </ion-tab-bar> 
+  </ion-tabs>
+</ion-toolbar>
