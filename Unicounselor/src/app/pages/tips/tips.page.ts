@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { TipsService } from 'src/app/apis/tips.service';
-import { AuthService } from 'src/app/apis/auth.service';
 
 @Component({
   selector: 'app-tips',
@@ -14,7 +13,7 @@ export class TipsPage implements OnInit {
   tips: any[];
   constructor(private tipsService: TipsService,
     private route: Router,
-    private authService: AuthService) {
+   ) {
 
   }
   ngOnInit() {
@@ -24,9 +23,7 @@ export class TipsPage implements OnInit {
 console.log(this.tips);
   //subbsribe to wait for the result to be returned
 });
-//PROBLEM returning undefiend as userid;
-// const user = this.authService.getCurrentUser();
-// console.log(user+' ');
+
 
   }
         check(tip: any){

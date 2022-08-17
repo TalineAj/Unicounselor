@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
+import { AuthService } from 'src/app/apis/auth.service';
 
 @Component({
   selector: 'app-profile',
@@ -8,9 +8,20 @@ import { Observable } from 'rxjs';
 })
 export class ProfilePage implements OnInit {
 
-  constructor() { }
+  constructor(private authService: AuthService) { }
 
   ngOnInit() {
+    console.log('heyi');
+//   const res = this.authService.getCurrentUser();
+// console.log(res);
+
+
+
+
+
+
+// this.authService.getCurrentUser();
   }
+
 
 }
