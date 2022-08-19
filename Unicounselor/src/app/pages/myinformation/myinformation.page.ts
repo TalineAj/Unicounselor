@@ -21,7 +21,6 @@ export class MyinformationPage implements OnInit {
 
   constructor(private authService: AuthService,
     private userService: UserService,
-    private alertController: AlertController,
     private loadingController: LoadingController,
     private toastController: ToastController) { }
   ngOnInit() {
@@ -53,7 +52,8 @@ check = (password)=> !!password.match(/^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%* #+=\(
   //Making sure fields are not empty
 if(form.value.gender==='' || form.value.date==='' ||
 form.value.lastname==='' || form.value.firstname==='')
-{const toast = await this.toastController.create({
+{
+  const toast = await this.toastController.create({
  message: 'Please fill all fields',
  duration: 3000,
 });
