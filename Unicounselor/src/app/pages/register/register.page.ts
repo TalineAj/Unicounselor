@@ -12,6 +12,8 @@ import { Auth } from '@angular/fire/auth';
 import { UserService, User } from 'src/app/apis/user.service';
 
 
+
+
 @Component({
   selector: 'app-register',
   templateUrl: './register.page.html',
@@ -83,11 +85,9 @@ else{
     //to avoid storing password not working
     // this.userInfo.name = form.value.name;
     // this.userInfo.email = form.value.email;
-    this.userInfo.id = user.user.uid;
     this.userInfo.password = null; //temporary fix
 
-
-    this.userService.addUser(this.userInfo);
+    this.userService.addUser(this.userInfo,user.user.uid);
     this.route.navigate(['/login']);
       }
       else{

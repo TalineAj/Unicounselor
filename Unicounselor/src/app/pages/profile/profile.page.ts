@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from 'src/app/apis/auth.service';
 
 @Component({
   selector: 'app-profile',
@@ -8,19 +7,9 @@ import { AuthService } from 'src/app/apis/auth.service';
 })
 export class ProfilePage implements OnInit {
 
-  constructor(private authService: AuthService) { }
+  constructor() { }
 
   ngOnInit() {
-    console.log('heyi');
-//   const res = this.authService.getCurrentUser();
-// console.log(res);
-
-
-
-
-
-
-// this.authService.getCurrentUser();
   }
 
 

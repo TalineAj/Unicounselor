@@ -37,38 +37,26 @@ async login({email,password}){
  return signOut(this.auth);
   }
 
-  async getCurrentUser(){
-
+  getCurrentUserId(){
   const auth = getAuth();
   const user = auth.currentUser;
   if (user) {
   //this returns the authenticated user (uid, email....)
-  //will now  get the user in the user's collection that matches this user
-const id = user.uid;
-console.log(id);
-  // const userRef = doc(this.firestore,`Users/fSpw2E5TvCPCSDxL29e0SBowYOw1`);
-    // return docData(userRef, {idField : 'id'});
+ const id = user.uid;
+  return id;
 
-const db = getFirestore();
 
-  const userRef = doc(db,'Users','fSpw2E5TvCPCSDxL29e0SBowYOw1');
-// try {
-    const docSnap = getDoc(userRef);
-        return (await docSnap).data();
-
-// } catch(error) {
-//     console.log(error)
-// ;}
   } else {
+console.log('no user signed');
     // No user is signed in.
   }
-
-
-
-  // const docRef = doc(db, "cities", "2l3bcSGs2vZBIc3RODwp");
 }
 
+//  getUserById(id){
+//   const userRef = doc(this.firestore,`Users/${id}`);
+//     return docData(userRef, {idField : 'id'});
 
+// }
 
 
 }

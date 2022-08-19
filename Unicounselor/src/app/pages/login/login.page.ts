@@ -48,7 +48,7 @@ export class LoginPage implements OnInit {
           this.route.navigate(['/login']);
           form.reset();
           }else{
-            this.route.navigate(['/home']);
+            this.route.navigate(['/myinformation']);
           }
       }
       else{

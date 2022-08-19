@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {addDoc, collectionData, Firestore, getDoc} from '@angular/fire/firestore';
+import {addDoc, collectionData, doc, docData, Firestore, getDoc} from '@angular/fire/firestore';
 import {collection} from '@firebase/firestore';
 export interface Tip{
   author: string;
@@ -20,5 +20,9 @@ export class TipsService {
   getTips(){
     const tipsRef =collection(this.firestore,'tips');
     return collectionData(tipsRef);
+  }
+  getTipById(id){
+    const tipsRef = doc(this.firestore,`tips/${id}`);
+    return docData(tipsRef, {idField : 'id'});
   }
 }
