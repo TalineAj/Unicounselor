@@ -1,1 +1,107 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <div id = "profile1">
+      <ion-icon name="person-outline" [routerLink]="['/profile']" size="large"> </ion-icon>
+    </div>
+      </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div id="div1">
+    <ion-icon name="person-outline" size="large" id="profile"> </ion-icon>
+  </div>
+
+  <div class="options">
+    <div>
+      <p style="margin: 9%">My information</p>
+      <ion-button
+        id="back"
+        color="white"
+        size="large"
+        [routerLink]="['/myinformation']"
+      >
+        <ion-icon name="chevron-forward-circle-outline" style="color:#4CBB17;
+        "></ion-icon>
+      </ion-button>
+    </div>
+  
+
+
+    <div >
+      <p style="margin: 9%">My appointments</p>
+      <ion-button
+        id="back"
+        color="white"
+        size="large"
+        [routerLink]="['/myappointments']"
+      >
+        <ion-icon name="chevron-forward-circle-outline" style="color:#4CBB17;
+        "></ion-icon>
+      </ion-button>
+    </div>
+    <div >
+      <p style="margin: 9%">Logout</p>
+      <ion-button
+        id="back"
+        color="white"
+        size="large"
+        (click)="logout()"
+      >
+        <ion-icon name="log-out-outline" style="color:#4CBB17;
+        "></ion-icon>
+      </ion-button>
+    </div>
+  </div>
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <ion-tabs>
+<ion-tab-bar slot="bottom" class="ion-no-border">
+  <ion-tab-button tab="home" routerLink="/home" >
+    <ion-icon name="home-outline"  ></ion-icon>
+  </ion-tab-button>
+
+  <ion-tab-button tab="appoinments" routerLink="/appointments">
+    <ion-icon name="calendar-clear-outline" ></ion-icon> 
+  </ion-tab-button>
+
+
+  <ion-tab-button tab="tips"  routerLink="/tips">
+    <ion-icon name="bulb-outline"></ion-icon>
+  </ion-tab-button>
+
+  <ion-tab-button tab="tips"   routerLink="/profile">
+    <ion-icon name="person-outline" id="current"> </ion-icon>
+  </ion-tab-button>
+
+</ion-tab-bar> 
+</ion-tabs>
+
+
+
+
+
+</ion-content>
+ 
+ 
+
 
