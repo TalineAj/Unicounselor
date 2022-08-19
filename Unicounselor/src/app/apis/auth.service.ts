@@ -52,11 +52,11 @@ console.log('no user signed');
   }
 }
 
-//  getUserById(id){
-//   const userRef = doc(this.firestore,`Users/${id}`);
-//     return docData(userRef, {idField : 'id'});
+ getUserById(id){
+  const userRef = doc(this.firestore,`Users/${id}`);
+    return docData(userRef, {idField : 'id'});
 
-// }
+}
 
 
 }

@@ -11,10 +11,10 @@ export class MyinformationPage implements OnInit {
 
   constructor(private authService: AuthService) { }
   ngOnInit() {
-//      this.id =  this.authService.getCurrentUserId();
-//     this.authService.getUserById(this.id).subscribe(res =>{
-// console.log(res);
-//     });
+     this.id =  this.authService.getCurrentUserId();
+    this.authService.getUserById(this.id).subscribe(res =>{
+console.log(res);
+    });
   }
 
 }
