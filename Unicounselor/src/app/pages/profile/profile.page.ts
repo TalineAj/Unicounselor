@@ -24,7 +24,7 @@ export class ProfilePage implements OnInit {
   this.authService.logout();
 
   this.route.navigate(['/login']);
-
+loading.dismiss();
  }
 
 }
