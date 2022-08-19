@@ -9,8 +9,8 @@
 
 <ion-content>
  
-  <ion-grid>
-    <ion-row>
+  <!-- <ion-grid> -->
+    <!-- <ion-row> -->
       <ion-col *ngFor="let tip  of tips" size="6">
   
         <ion-card>
@@ -22,23 +22,24 @@
     </ion-card-header>
 
     <ion-card-content>
-      <!-- <span id="tip">{{tip.tip}}</span> -->
-      <span id="tip">{{ (tip.tip.length>30)?(tip.tip.slice(0,30)+"..."):tip.tip}}
-    </span>
+      <span id="tip">{{tip.tip}}</span>
+      
+      <!-- <span id="tip">{{ (tip.tip.length>30)?(tip.tip.slice(0,30)+"..."):tip.tip}}
+    </span> -->
 
-    <ion-button (click)="check(tip.tip)"></ion-button>
+    <!-- <ion-button (click)="check(tip.tip)"></ion-button> -->
 
 <!--Problem: ngif lon==true is executing on all cards since its in the for loop
 however I want to show more only in the clicked card if long is true in it, if i remove it from for loop i cant acces the tips nor all the cards-->
-    
-        <div *ngIf="long===true">
+<!--Trying to get if its true on one card then create the div and the modal-->    
+        <!-- <div *ngIf="long===true">
       <ion-button  id="open-modal" expand="block">more</ion-button>
 
       <ion-modal #modal trigger="open-modal" [initialBreakpoint]="0.25" [breakpoints]="[0, 0.25, 0.5, 0.75]">
         <ng-template>
         </ng-template>
       </ion-modal>
-      </div>
+      </div> -->
 
       <br>
 
@@ -69,9 +70,9 @@ however I want to show more only in the clicked card if long is true in it, if i
   
 </ion-col>
 
-</ion-row>
+<!-- </ion-row> -->
 
-</ion-grid>
+<!-- </ion-grid> -->
 
 
 

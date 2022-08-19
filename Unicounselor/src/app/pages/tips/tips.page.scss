@@ -79,3 +79,20 @@ ion-modal {
     --background:  #4CBB17;
     --color: white;
   }
+  ::-webkit-scrollbar-track
+  {
+  border-radius: 10px!important;
+  background-color: #F5F5F5!important;
+  }
+  
+  ::-webkit-scrollbar
+  {
+  width: 10px!important;
+  background-color: #F5F5F5!important;
+  }
+  
+  ::-webkit-scrollbar-thumb
+  {
+  border-radius: 10px!important;
+  
+  }
