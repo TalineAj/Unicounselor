@@ -16,7 +16,6 @@ export class MyinformationPage implements OnInit {
   lastname= null;
   dateofbirth= null;
   gender= null;
-  email= null;
   userInfo: User;
 
 
@@ -36,7 +35,6 @@ if(this.id){
     this.lastname = this.user.lastname;
     this.dateofbirth = this.user.dateofbirth;
     this.gender = this.user.gender;
-    this.email = this.user.email;
   });
 }else{
  console.log('no user signed in');
@@ -53,7 +51,7 @@ check = (password)=> !!password.match(/^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%* #+=\(
       });
       await loading.present();
   //Making sure fields are not empty
-if(form.value.email==='' || form.value.gender==='' || form.value.date==='' ||
+if(form.value.gender==='' || form.value.date==='' ||
 form.value.lastname==='' || form.value.firstname==='')
 {const toast = await this.toastController.create({
  message: 'Please fill all fields',
@@ -62,15 +60,6 @@ form.value.lastname==='' || form.value.firstname==='')
 loading.dismiss();
 await toast.present();
 return;
-} //Making sure the email format is valid
-if(!form.value.email.endsWith('@student.com')){
-  const toast = await this.toastController.create({
-    message: 'The email should end with @student.com',
-    duration: 4000,
-   });
-   loading.dismiss();
-   await toast.present();
-   return;
 }
    else{
       await loading.dismiss();
