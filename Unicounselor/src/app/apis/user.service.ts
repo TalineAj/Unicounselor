@@ -23,5 +23,8 @@ addUser(user: User, id: any){
 const docRef = doc(this.firestore, 'Users', id);
 return setDoc(docRef,user);
 }
-
+updateUser(user: User, id: any){
+  const docRef = doc(this.firestore, 'Users', id);
+  return setDoc(docRef,user);
+  }
 }
