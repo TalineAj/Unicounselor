@@ -20,15 +20,12 @@ export class TipsPage implements OnInit {
     this.tipsService.getTips().subscribe( res => {
       this.tips = res;
       this.notips = this.tips.length;
-// console.log(this.tips);
-  //subbsribe to wait for the result to be returned
 });
 //test
-    const id = '0YFTg7vFb54K1elZb3Ys';
-this.tipsService.getTipById(id).subscribe( res => {
-console.log(res);
-//subbsribe to wait for the result to be returned
-});
+//     const id = '0YFTg7vFb54K1elZb3Ys';
+// this.tipsService.getTipById(id).subscribe( res => {
+// console.log(res);
+// });
 
 
   }
