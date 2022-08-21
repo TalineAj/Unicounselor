@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthService } from '../apis/auth.service';
 
 // import {LoginService} from '../apis/login.service';
 @Component({
@@ -9,16 +10,26 @@ import { Router } from '@angular/router';
 })
 export class HomePage {
    today = new Date().toLocaleDateString();
-
-  constructor( private route: Router) {
-//     this.dataService.getNotes().subscribe( res => {
-// console.log(res);
-//     });
+   id: any;
+   user: any;
+   name: any;
+  constructor( private route: Router, private authService: AuthService) {
+this.id =  this.authService.getCurrentUserId();
+  if(this.id){
+   //there is a signed in user
+   this.authService.getUserById(this.id).subscribe(res =>{
+     this.user = res;
+     this.name = this.user.firstname;
+   });
+  }else{
+  console.log('no user signed in');
   }
-  //testing
+  }
+
 
   redirect()
   {
     this.route.navigate(['/login']);
   }
+
 }

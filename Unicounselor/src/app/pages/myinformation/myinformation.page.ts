@@ -65,7 +65,6 @@ return;
       await loading.dismiss();
     this.userInfo = form.value;
     this.userService.updateUser(this.userInfo,this.id);
- console.log(this.userInfo);
 
           }
         }

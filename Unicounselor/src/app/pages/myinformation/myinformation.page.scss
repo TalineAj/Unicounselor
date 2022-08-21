@@ -29,6 +29,7 @@ ion-content {
     margin-left: 85%;
     margin-top: 5px;
     color:#4CBB17;
+
 }
 
   .options{
@@ -41,10 +42,12 @@ ion-content {
   
 ion-input{
   height: 10%;
-  width: 60%;
+  width: 70%;
   color: black !important;
   margin-left: 8% !important;
-  
+// border-top-left-radius: 40% !important;
+// border-bottom-left-radius: 50% !important;
+// border-radius: 50%;
 }
 form{
   height: 100%;
@@ -58,7 +61,6 @@ ion-label{
   color: black !important;
   font-weight: bold !important;
 
-
 }
 #add
 {
@@ -70,6 +72,7 @@ ion-label{
 ion-select{
   margin-left: 5% !important;
   color: black  !important;
+
 }
 #pass{
   margin-bottom: 20%;

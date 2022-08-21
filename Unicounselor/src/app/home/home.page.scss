@@ -3,17 +3,21 @@ ion-content {
 
 }
 
-ion-toolbar{    
+ion-toolbar{   
+  --padding-top: 10% !important;
+  --padding-start: 10%!important; 
 --background: white;
 --color: rgb(129, 119, 119);
 display: flex !important;
 
 }
 
+
 ion-label{
   display: flex !important;
 flex-direction: column !important;
---color: rgb(184, 179, 179);
+color:#4CBB17 !important;
+font-size: large !important;
 }
 
 ion-icon{
@@ -38,25 +42,131 @@ ion-tab-bar{
 
 // }
 .photo{
-    background-image: url('../../assets/images/bwink_ppl_04_single_08.jpg');
+    background-image: url('../../assets/images/Dr.png');
   // margin-top: 15% !important;
-  // background-position: 50% 50%;
-  // background-size: cover;
+  background-position: 50% 10%;
+  background-size: cover;
   height: 100%;
   width: 100%;
-  flex-direction: row;
-  
+  // text-align: center;
 
 }
-.content{
+#calendar{
+  size: 20px !important;
+  width: 100px;
+  height: 90px;
+  margin-top: 10%;
+}
+.div1{
   background-color: #4CBB17;
   width: 100%;
   height: 35%;
-  //   margin-top: 15% !important;
-display: flex;
-
-  // // border-bottom-left-radius: 10%;
-  // // border-bottom-right-radius: 10%;
+  margin-top: 5%;
+  display: flex;
+  // border-bottom-left-radius: 10%;
+  border-bottom-right-radius: 10%;
+  border-top-left-radius: 10%;
   // border-radius: 10%;
+  
 
+}
+
+#text{
+  margin-top: 10%;
+}
+.div1:hover{
+  background-color: #74df43;
+
+}
+#text:hover{
+  transform: skew(-10deg);
+
+}
+#icon{
+  margin-top: 10%;
+}
+#icon:hover{
+transform: translate(60px);
+transition : 1000ms linear;
+}
+#icon:active{
+}
+ion-tabs{
+  background-color:  red !important;
+}
+ion-tab-bar{
+  background-color: #4CBB17 !important;
+}
+
+.div2{
+  // background-color: #4CBB17;
+  width: 100%;
+  height: 40%;
+  margin-top: 10%;
+}
+.text2{
+  color: #4CBB17;
+  margin-left: 5%;
+font-weight: bold;
+}
+//card
+#author{
+  color:#4CBB17;
+  font-size: 95% !important;
+  margin-left: 20%;
+
+ }
+ion-card-title{
+ --color: black;
+ font-size: 100% !important;
+  font-weight:bold;
+
+}
+ion-card{
+ --background: white;
+//  box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
+width: 100% !important;
+margin: 0 !important;
+height: 43% !important;
+margin-top: 2% !important;
+}
+
+ion-card-content{
+text-overflow: ellipsis !important;
+}
+.text3{
+  color: #4CBB17;
+  margin-left: 65%;
+  margin-top: 5%;
+align-items: baseline;
+}
+#arrow2{
+  align-items: baseline;
+  margin-left: 2%;
+  margin-top: 3%;
+}
+.div3{
+display: flex;
+}
+.div3:hover{
+  transform: skew(-5deg);
+}
+.text3:hover{
+  text-decoration: underline !important;
+}
+
+
+
+
+.welcome{
+  display:flex;
+}
+
+#welcometxt{
+align-items: baseline;
+}
+#icon0{
+  align-items: baseline;
+  margin-left: 5%!important;
+  // flex-direction: row !important;
 }

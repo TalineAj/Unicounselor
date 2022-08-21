@@ -1,37 +1,108 @@
 <ion-header class="ion-no-border">
   <ion-toolbar>
     {{today}}
- <ion-label><b>Welcome X!</b></ion-label>
-      </ion-toolbar>
+ <ion-label>
+  <div class ="welcome">
+  <div id ="welcometxt">
+    <b>Welcome {{name}}! 
+ </b>
+</div>
+ <div id="icon0">  <ion-icon name="happy-outline" class="icon0" id="icon0"></ion-icon></div>
+</div> 
+</ion-label>
+    </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <div class="content">
-    <div class="photo"></div>
-    <div class ="text">salskdfjsdf;alkj</div>
+  <div class="div1">
+    <div class="photo"> 
+      <!-- <ion-icon id="calendar" name="calendar-outline"></ion-icon>  -->
+    </div>
+    <div id="text">
+      Book your counselor appointment
+    <div id ="icon">  <ion-icon id = "arrow" name="chevron-forward-circle-outline" style="color:white;
+      " routerLink="/appointments"></ion-icon>
+      </div>
+    </div>
 </div>
+
+
+
+<div class ="div2">
+
+<div class ="text2">Tips from our counselors
+</div>
+
+<ion-card>
+  <ion-card-header>
+    <ion-card-title> Take care
+    </ion-card-title>
+
+  </ion-card-header>
+
+  <ion-card-content>
+    <span id="tip"> Please take care</span>
+    <span id="author">~John~</span>
+  </ion-card-content>
+</ion-card>
+
+<ion-card>
+  <ion-card-header>
+    <ion-card-title> Take care
+    </ion-card-title>
+
+  </ion-card-header>
+
+  <ion-card-content>
+    <span id="tip"> Please take care</span>
+    <span id="author">~John~</span>
+  </ion-card-content>
+</ion-card>
+
+<div class = div3>
+<div class="text3" routerLink="/tips">View all 
+       </div>
+       <div id="arrow2">   <ion-icon id = "arrow2" name="chevron-forward-circle-outline" style="color:  #4CBB17;
+        " routerLink="/tips"></ion-icon>
+        </div>
+      </div>
+
+</div>
+
+
+
+
+
+
+
+
+
+
 </ion-content>
  
- <ion-toolbar>
-<ion-tabs>
-  <ion-tab-bar slot="bottom" class="ion-no-border">
-    <ion-tab-button tab="home" routerLink="/home" >
-      <ion-icon name="home-outline"  id="current"></ion-icon>
-    </ion-tab-button>
-  
-    <ion-tab-button tab="appoinments" routerLink="/appointments">
-      <ion-icon name="calendar-clear-outline"></ion-icon> 
-    </ion-tab-button>
-  
-  
-    <ion-tab-button tab="tips"  routerLink="/tips">
-      <ion-icon name="bulb-outline"></ion-icon>
-    </ion-tab-button>
-  
-    <ion-tab-button tab="tips"   routerLink="/profile">
-      <ion-icon name="person-outline"> </ion-icon>
-    </ion-tab-button>
-  
-  </ion-tab-bar> 
-  </ion-tabs>
-</ion-toolbar>
+
+
+
+<ion-toolbar>
+  <ion-tabs>
+    <ion-tab-bar slot="bottom" class="ion-no-border">
+      <ion-tab-button tab="home" routerLink="/home" >
+        <ion-icon name="home-outline"  id="current"></ion-icon>
+      </ion-tab-button>
+    
+      <ion-tab-button tab="appoinments" routerLink="/appointments">
+        <ion-icon name="calendar-clear-outline"></ion-icon> 
+      </ion-tab-button>
+    
+    
+      <ion-tab-button tab="tips"  routerLink="/tips">
+        <ion-icon name="bulb-outline"></ion-icon>
+      </ion-tab-button>
+    
+      <ion-tab-button tab="tips"   routerLink="/profile">
+        <ion-icon name="person-outline"> </ion-icon>
+      </ion-tab-button>
+    
+    </ion-tab-bar> 
+    </ion-tabs>
+  </ion-toolbar>
