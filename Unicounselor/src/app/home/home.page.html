@@ -33,31 +33,51 @@
 <div class ="text2">Tips from our counselors
 </div>
 
-<ion-card>
+<ng-container *ngIf="notips>2">
+<ion-card *ngFor="let tip  of tiptoDisplay">
   <ion-card-header>
-    <ion-card-title> Get and give support
+    <ion-card-title> {{tip.title}}
     </ion-card-title>
 
   </ion-card-header>
 
   <ion-card-content>
-    <span id="tip">Studying in silos can be effective, but at times, there is a need to study with others.</span>
-    <span id="author">~John~</span>
+    <span id="tip"> {{tip.tip}}</span>
+    <span id="author">~{{tip.author}}~</span>
   </ion-card-content>
 </ion-card>
+</ng-container>
 
-<ion-card>
-  <ion-card-header>
-    <ion-card-title> Enjoy breaks
-    </ion-card-title>
+<div  *ngIf="notips<2">
 
-  </ion-card-header>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title> Get and give support
+      </ion-card-title>
+  
+    </ion-card-header>
+  
+    <ion-card-content>
+      <span id="tip">There is a need to study with others.</span>
+      <span id="author">~John~</span>
+    </ion-card-content>
+  </ion-card>
 
-  <ion-card-content>
-    <span id="tip"> Taking short breaks is important for effective learning.</span>
-    <span id="author">~John~</span>
-  </ion-card-content>
-</ion-card>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title> Take a break
+      </ion-card-title>
+  
+    </ion-card-header>
+  
+    <ion-card-content>
+      <span id="tip">Taking a break is crucial  academical imporvement.</span>
+      <span id="author">~Jane~</span>
+    </ion-card-content>
+  </ion-card>
+</div>
+
 
 <div class = div3>
 <div class="text3" routerLink="/tips">View all 
@@ -68,8 +88,6 @@
       </div>
 
 </div>
-
-
 
 
 

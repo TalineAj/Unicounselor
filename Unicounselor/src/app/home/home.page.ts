@@ -19,8 +19,8 @@ export class HomePage {
    name: any;
    notips: any;
    tips: any[];
-   tip1: any[];
-   tip2: any[];
+   tiptoDisplay: any[];
+
 
 
   constructor( private route: Router, private authService: AuthService
@@ -36,12 +36,11 @@ export class HomePage {
   console.log('no user signed in');
   }
   ///tips
-  // this.tipsService.getTips().subscribe( res => {
-  //   this.tips= res;
-  //   this.notips = this.tips.length;
-  //   this.tip1 = this.tips[0];
-  //   this.tip2 = this.tips[1];
-  // });
+  this.tipsService.getTips().subscribe( res => {
+    this.tips= res;
+    this.notips = this.tips.length;
+    this.tiptoDisplay = this.tips.slice(0,2);
+  });
 //FOR NOW GENERAL TIPS
     }
 
