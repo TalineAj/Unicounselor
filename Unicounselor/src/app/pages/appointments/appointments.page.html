@@ -8,6 +8,18 @@
 
 <ion-content>
 
+  <ion-card *ngFor="let counselor  of counselors">
+    <ion-card-header>
+      <ion-card-title> {{counselor.firstname}}
+      </ion-card-title>
+  
+    </ion-card-header>
+  
+    <ion-card-content>
+    
+    </ion-card-content>
+  </ion-card>
+  
 
 
 
@@ -37,7 +49,7 @@
 
 <ion-tabs>
 <ion-tab-bar slot="bottom" class="ion-no-border">
-  <ion-tab-button tab="home" routerLink="/home" >
+  <ion-tab-button (click)="getCounselor()" >
     <ion-icon name="home-outline"  ></ion-icon>
   </ion-tab-button>
 

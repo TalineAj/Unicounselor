@@ -17,6 +17,7 @@ export class TipsPage implements OnInit {
 
   }
   ngOnInit() {
+
     this.tipsService.getTips().subscribe( res => {
       this.tips = res;
       this.notips = this.tips.length;
