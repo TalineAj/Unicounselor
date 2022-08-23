@@ -7,17 +7,37 @@
 </ion-header>
 
 <ion-content>
-
+  <ion-label id="title">
+    Our counselors
+  </ion-label>
+  
   <ion-card *ngFor="let counselor  of counselors">
+ <div id="fullinfo">
+    <div id="img">
+
+    </div>
+    <div id = "info">
     <ion-card-header>
-      <ion-card-title> {{counselor.firstname}}
+      <ion-card-title> {{counselor.firstname}} {{counselor.lastname}}
       </ion-card-title>
   
     </ion-card-header>
   
     <ion-card-content>
-    
+    {{counselor.field}}
     </ion-card-content>
+  </div>
+</div>
+
+
+<div id="buttons">
+  <ion-button  id="open-modal" expand="block" id="book">Book</ion-button>
+  <ion-button  id="open-modal" expand="block" id="rating">Rating</ion-button>
+
+</div>
+
+
+
   </ion-card>
   
 
