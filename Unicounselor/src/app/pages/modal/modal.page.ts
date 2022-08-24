@@ -20,4 +20,8 @@ export class ModalPage implements OnInit {
 closeModal(){
   this.modalController.dismiss();
 }
+book(){
+
+
+}
 }

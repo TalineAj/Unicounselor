@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {addDoc, collectionData, doc, docData, Firestore, getDoc, getDocs} from '@angular/fire/firestore';
+import {addDoc, collectionData, doc, docData, Firestore, getDoc, getDocs, setDoc} from '@angular/fire/firestore';
 import {collection, limit , query, orderBy} from '@firebase/firestore';
 import { Observable } from 'rxjs';
 export interface Tip{
@@ -15,8 +15,8 @@ export class TipsService {
 
   constructor(private firestore: Firestore) { }
   addTip(tip: Tip){
-    const tipRef = collection(this.firestore,'users');
-    return addDoc(tipRef,tip);
+    const docRef = doc(this.firestore,'tips');
+    return setDoc(docRef,tip);
   }
   getTips(){
     const tipsRef =collection(this.firestore,'tips');

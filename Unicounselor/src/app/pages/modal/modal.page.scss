@@ -14,3 +14,28 @@
     margin-bottom: 5%;
     display: flex;
   }
+  ion-content {
+    --ion-background-color: white;
+  
+  }
+  
+  ion-toolbar{    
+  --background: white;
+  }
+  
+  ion-tab-bar {
+    border: 0;
+  }
+  ion-card-title{
+    color: #4CBB17;
+    margin-left: 5%;
+    font-weight: bold;
+    font-size: large;
+  }
+  ion-card-content{
+    color: black;
+  }
+
+  form{
+    background-color: #a7e889d8 !important;
+  }
