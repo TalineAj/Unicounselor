@@ -17,10 +17,11 @@ import { provideMessaging,getMessaging } from '@angular/fire/messaging';
 import { providePerformance,getPerformance } from '@angular/fire/performance';
 import { provideRemoteConfig,getRemoteConfig } from '@angular/fire/remote-config';
 import { provideStorage,getStorage } from '@angular/fire/storage';
+import { ModalPageModule } from './pages/modal/modal.module';
 
 @NgModule({
   declarations: [AppComponent],
-  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, 
+  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, ModalPageModule,
     provideFirebaseApp(() => initializeApp(environment.firebase)),
      provideAnalytics(() => getAnalytics()),
       provideAuth(() => getAuth()),
