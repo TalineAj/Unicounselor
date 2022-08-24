@@ -1,6 +1,12 @@
 import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { ModalController, NavParams } from '@ionic/angular';
-
+import {
+  AlertController,
+  LoadingController,
+  ToastController,
+} from '@ionic/angular';
+import { Appointment, AppointmentsService } from 'src/app/apis/appointments.service';
 @Component({
   selector: 'app-modal',
   templateUrl: './modal.page.html',
@@ -10,7 +16,11 @@ export class ModalPage implements OnInit {
   firstname: any;
   lastname: any;
   field: any;
-  constructor(private navParams: NavParams, private modalController: ModalController) { }
+  appointment: Appointment;
+
+  constructor(private navParams: NavParams, private modalController: ModalController, private alertController: AlertController,
+    private loadingController: LoadingController,
+    private toastController: ToastController, private appointmentService: AppointmentsService) { }
 
   ngOnInit() {
   this.firstname = this.navParams.get('fname');
@@ -20,8 +30,53 @@ export class ModalPage implements OnInit {
 closeModal(){
   this.modalController.dismiss();
 }
-book(){
-
-
+async onSubmit(form: NgForm) {
+  const loading = await this.loadingController.create({
+    message: `Requesting appointment`,
+  });
+  await loading.present();
+//Also make sure the date  is valid FOR LATER
+if(form.value.date===''){
+const toast1 = await this.toastController.create({
+message: 'Please select a date ',
+duration: 4000,
+});
+loading.dismiss();
+await toast1.present();
+return;
 }
+this.appointment = {
+  student: 'a',
+  date: form.value.date,
+  counselor: this.firstname,
+  message: form.value.message,
+};
+
+console.log(this.appointment);
+  const appointmentbooked = await this.appointmentService.addAppointment(this.appointment);
+  await loading.dismiss();
+
+  const toast = await this.toastController.create({
+    // eslint-disable-next-line max-len
+    message: 'Appointment Successfully requested',
+    duration: 5000,
+  });
+  loading.dismiss();
+  await toast.present();
+
+
+
+
+
+//   if(){
+//Check if it worked
+//   }
+//   else{
+//     const alert = await this.alertController.create({
+//             message: 'Booking unsuccessful',
+//             buttons: ['Close'],
+//           });
+//           await alert.present();
+//         }
+  }
 }
