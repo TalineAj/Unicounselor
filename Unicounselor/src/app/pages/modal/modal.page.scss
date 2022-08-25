@@ -1,7 +1,9 @@
 #img{
-    height: 100%;
-    width: 30%;
-   flex-direction: column;
+
+   width: 40%;
+  background-image: url('../../../assets/images/Dr2.png');
+  background-position: 50% 10%;
+  background-size: cover;
   }
   #info
   {
@@ -10,9 +12,17 @@
     flex-direction: column;
   
   }
+  ion-input{
+    border-radius: 5%;
+    background-color: #b7e1a3;
+    margin-left: 3px;
+    color: #4CBB17 !important;
+  }
   #fullinfo{
+    margin-top: 20%;
     margin-bottom: 5%;
     display: flex;
+    height: 25%;
   }
   ion-content {
     --ion-background-color: white;
@@ -37,5 +47,30 @@
   }
 
   form{
-    background-color: #a7e889d8 !important;
+    margin-top: 15%;
+    margin-bottom: 5%;
+
+    height: 40%;
+    color: #4CBB17;
+  }
+  ion-card{
+    height: 40%;
+  }
+  #book{
+    margin-left: 40%;
+    margin-bottom: 5%;
+  }
+ ion-label{
+  margin-left: 5% !important;
+ }
+  #message{
+    width:90% ;
+    margin-left:5%;
+    height:50%;
+    border: solid 1px #4CBB17;
+    border-radius: 5%;
+    margin-bottom: 5%;
+  }
+  #back{
+    margin-top: 5%;
   }

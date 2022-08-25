@@ -1,8 +1,8 @@
-<ion-header>
+<!-- <ion-header class="ion-no-border">
   <ion-toolbar>
     <ion-title></ion-title>
   </ion-toolbar>
-</ion-header>
+</ion-header> -->
 
 <ion-content>
 
@@ -22,23 +22,29 @@
     </ion-card-content>
   </div>
 </div>
+<div id="msg" style="color:black ;margin-left: 5%;">
+Book a meeting and await the confirmation from the counselor!
+</div>
 
 <form #f="ngForm" (ngSubmit)="onSubmit(f)">
      
 
 
-  <ion-label>Date to set:</ion-label>
+  <ion-label>Pick a date and a time:</ion-label>
   <ion-input ngModel placeholder="" type="datetime-local"
   name="date"> </ion-input>
+
+
   <ion-textarea ngModel placeholder="Enter a message..." type="textarea"
-  name="message"  required="true"></ion-textarea>
-  <ion-button type="submit" name="submit" id="add">Book</ion-button>
+  name="message" id="message" required="true"></ion-textarea>
+
+  <ion-button type="submit" name="submit" id="book">Book</ion-button>
 
 
 
 </form>
 
 
-  <ion-button expand="full" fill ="clear" (click)="closeModal()">Back</ion-button>
+  <ion-button id="back" expand="full" fill ="clear" (click)="closeModal()">Back</ion-button>
 
 </ion-content>
