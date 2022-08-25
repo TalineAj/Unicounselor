@@ -30,7 +30,6 @@ export class AppointmentsPage implements OnInit {
   this.counselors.push(obj);
 
   });
-  console.log(this.counselors[0].lastname);
 
   }
 async openModal(i){

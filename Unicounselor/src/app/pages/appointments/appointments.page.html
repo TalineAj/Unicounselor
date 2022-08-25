@@ -1,21 +1,25 @@
+<!-- <a href="https://www.freepik.com/free-photo/happy-african-american-doctor-talking-with-female-patient-during-psychotherapy-session_26644458.htm#query=guidance%20counselor&position=25&from_view=keyword">Image by Drazen Zigic</a> on <a href="https://www.freepik.com/">Freepik</a> -->
 <ion-header class="ion-no-border">
   <ion-toolbar>
-    <div id = "profile">
-      <ion-icon name="person-outline" [routerLink]="['/profile']" size="large"> </ion-icon>
-    </div>
-      </ion-toolbar>
+      <div id = "wrapper">
+     <h5 id ="title"> Our counselors</h5>
+<ion-icon id ="profile" name="person-outline" [routerLink]="['/profile']" size="large"> </ion-icon>
+</div>  
+  </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <ion-label id="title">
-    Our counselors
-  </ion-label>
+
   
   <ion-card *ngFor="let counselor  of counselors; let i = index">
- <div id="fullinfo">
-    <div id="img">
-
+   <div id="bigdiv">
+    <div id="img1">
+      
     </div>
+    <!-- <div id="fullinfo"> -->
+    <!-- <div id="img">
+      
+    </div> -->
     <div id = "info">
     <ion-card-header>
       <ion-card-title> {{counselor.firstname}} {{counselor.lastname}}
@@ -26,13 +30,17 @@
     <ion-card-content>
     {{counselor.field}}
     </ion-card-content>
+  <!-- </div> -->
+  <div id="buttons">
+    <ion-button size= "small" id="book" (click)="openModal(i)" expand="block">Book</ion-button>
+    <ion-button size= "small"  id="rating" (click)="openModal(i)" expand="block">Rating</ion-button>
+
   </div>
 </div>
 
-
-<div id="buttons">
-  <ion-button (click)="openModal(i)" expand="block">Book</ion-button>
 </div>
+
+
   </ion-card>
   
 
@@ -69,7 +77,7 @@
 <ion-toolbar>
 <ion-tabs>
   <ion-tab-bar slot="bottom" class="ion-no-border">
-    <ion-tab-button (click)="getCounselor()" >
+    <ion-tab-button routerLink = "/home">
       <ion-icon name="home-outline"  ></ion-icon>
     </ion-tab-button>
   
