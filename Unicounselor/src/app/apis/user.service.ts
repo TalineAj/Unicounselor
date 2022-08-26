@@ -28,6 +28,7 @@ const docRef = doc(this.firestore, 'Users', id);
 return setDoc(docRef,user);
 }
 updateUser(user: User, id: any){
+  //Updates it since same "name=firstname" etc...
   const docRef = doc(this.firestore, 'Users', id);
   return setDoc(docRef,user);
   }

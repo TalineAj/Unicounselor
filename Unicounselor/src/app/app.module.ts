@@ -18,10 +18,11 @@ import { providePerformance,getPerformance } from '@angular/fire/performance';
 import { provideRemoteConfig,getRemoteConfig } from '@angular/fire/remote-config';
 import { provideStorage,getStorage } from '@angular/fire/storage';
 import { ModalPageModule } from './pages/modal/modal.module';
+import { ReviewsmodalPageModule } from './pages/reviewsmodal/reviewsmodal.module';
 
 @NgModule({
   declarations: [AppComponent],
-  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, ModalPageModule,
+  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, ReviewsmodalPageModule,ModalPageModule,
     provideFirebaseApp(() => initializeApp(environment.firebase)),
      provideAnalytics(() => getAnalytics()),
       provideAuth(() => getAuth()),

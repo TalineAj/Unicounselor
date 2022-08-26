@@ -17,29 +17,17 @@ export class ModalPage implements OnInit {
   firstname: any;
   lastname: any;
   field: any;
-  student: any;
   appointment: Appointment;
-  id: any;
-  user: any;
-
+studentname: any;
   constructor(private navParams: NavParams, private modalController: ModalController, private alertController: AlertController,
     private loadingController: LoadingController,
-    private toastController: ToastController, private appointmentService: AppointmentsService, private authService: AuthService) { }
+    private toastController: ToastController, private appointmentService: AppointmentsService) { }
 
   ngOnInit() {
   this.firstname = this.navParams.get('fname');
   this.lastname = this.navParams.get('lname');
   this.field = this.navParams.get('field');
-  this.id =  this.authService.getCurrentUserId();
-if(this.id){
-  //there is a signed in user
-  this.authService.getUserById(this.id).subscribe(res =>{
-    this.user = res;
-    this.student = this.user.firstname + ' '+ this.user.lastname;
-  });
-}else{
- console.log('no user signed in');
-}
+  this.studentname = this.navParams.get('student');
   }
 closeModal(){
   this.modalController.dismiss();
@@ -60,7 +48,7 @@ await toast1.present();
 return;
 }
 this.appointment = {
-  student: this.student,
+  student: this.studentname,
   date: form.value.date,
   counselor: this.firstname + ' '+ this.lastname,
   message: form.value.message,
