@@ -18,7 +18,7 @@ export class ModalPage implements OnInit {
   lastname: any;
   field: any;
   appointment: Appointment;
-studentname: any;
+  studentname: any;
   constructor(private navParams: NavParams, private modalController: ModalController, private alertController: AlertController,
     private loadingController: LoadingController,
     private toastController: ToastController, private appointmentService: AppointmentsService) { }

@@ -47,7 +47,7 @@ const routes: Routes = [
   {
     path: 'myappointments',
     loadChildren: () => import('./pages/myappointments/myappointments.module').then( m => m.MyappointmentsPageModule)
-  },
+  }
 ];
 
 @NgModule({

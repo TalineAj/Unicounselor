@@ -5,5 +5,24 @@
 </ion-header>
 
 <ion-content>
-
+  <ion-button  id="open-modal" expand="block">more</ion-button>
+   <ion-modal #modal trigger="open-modal" [initialBreakpoint]="0.25" [breakpoints]="[0, 0.25, 0.5, 0.75]">
+    <ng-template>
+      <form #f="ngForm" (ngSubmit)="onSubmit(f)">
+        <ion-item>
+            <ion-label position ="floating"> Rating</ion-label>
+            <ion-input type="text" ngModel  
+            name="rating" required="true"> </ion-input>   
+        </ion-item>
+    
+        <ion-item>
+        <ion-label position ="floating">Review</ion-label>
+        <ion-input type="text" ngModel name="review" required="true"> </ion-input>     
+        </ion-item> 
+        
+        <ion-button  type="submit" name="submit">Submit</ion-button>
+        
+      </form>
+    </ng-template>
+  </ion-modal>
 </ion-content>

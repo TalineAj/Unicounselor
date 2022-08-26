@@ -5,6 +5,7 @@ import {Firestore} from '@angular/fire/firestore';
 import { ModalController } from '@ionic/angular';
 import { ModalPage } from '../modal/modal.page';
 import { AuthService } from 'src/app/apis/auth.service';
+import { ReviewsmodalPage } from '../reviewsmodal/reviewsmodal.page';
 
 @Component({
   selector: 'app-appointments',
@@ -53,6 +54,21 @@ async openModal(i){
   const modal = await this.modalController.create(
     {
 component: ModalPage,
+componentProps:{
+  fname : this.counselors[i].firstname,
+  lname: this.counselors[i].lastname,
+  field: this.counselors[i].field,
+  student: this.student
+
+}
+});
+modal.present();
+
+}
+async openReviewsModal(i){
+  const modal = await this.modalController.create(
+    {
+component: ReviewsmodalPage,
 componentProps:{
   fname : this.counselors[i].firstname,
   lname: this.counselors[i].lastname,

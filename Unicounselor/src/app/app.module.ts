@@ -22,7 +22,7 @@ import { ReviewsmodalPageModule } from './pages/reviewsmodal/reviewsmodal.module
 
 @NgModule({
   declarations: [AppComponent],
-  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, ReviewsmodalPageModule,ModalPageModule,
+  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule,ReviewsmodalPageModule,ModalPageModule,
     provideFirebaseApp(() => initializeApp(environment.firebase)),
      provideAnalytics(() => getAnalytics()),
       provideAuth(() => getAuth()),

@@ -4,7 +4,7 @@ import {addDoc, collectionData, doc, docData, getDoc, getDocs , setDoc} from '@a
 import {collection, limit , query, orderBy} from '@firebase/firestore';
 
 export interface Review{
-  studentname: string;
+  student: string;
   counselor: string;
   review: string;
   rating: number;
