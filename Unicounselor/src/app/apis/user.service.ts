@@ -1,12 +1,16 @@
 import { Injectable } from '@angular/core';
 import {addDoc, doc, Firestore, setDoc} from '@angular/fire/firestore';
 import {collection} from '@firebase/firestore';
-import {RegisterPage} from 'src/app/pages/register/register.page';
+
 export interface User {
 email: any;
 name: any;
 password: any;
 level: any;
+}
+export interface Sum{
+  review: string;
+  rating: number;
 }
 @Injectable({
   providedIn: 'root'
@@ -27,5 +31,11 @@ updateUser(user: User, id: any){
   const docRef = doc(this.firestore, 'Users', id);
   return setDoc(docRef,user);
   }
+  // addSum(sum: any , id: any){
+  // const docRef = doc(this.firestore, 'Users',id);
+  // return setDoc(docRef,sum,{merge: true});
+  // }
+
+
 
 }

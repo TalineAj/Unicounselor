@@ -5,5 +5,19 @@
 </ion-header>
 
 <ion-content>
+  <form #f="ngForm" (ngSubmit)="onSubmit(f)">
+    <ion-item>
+        <ion-label position ="floating"> Rating</ion-label>
+        <ion-input type="text" ngModel  
+        name="rating" required="true"> </ion-input>   
+    </ion-item>
 
+    <ion-item>
+    <ion-label position ="floating">Review</ion-label>
+    <ion-input type="text" ngModel name="review" required="true"> </ion-input>     
+    </ion-item> 
+    
+    <ion-button  type="submit" name="submit">Register</ion-button>
+    
+  </form>
 </ion-content>

@@ -13,11 +13,15 @@
   
   }
   ion-input{
-    border-radius: 5%;
     background-color: #b7e1a3;
     margin-left: 3px;
     color: #4CBB17 !important;
   }
+ion-datetime{
+  color: red;
+  --placeholder-color: #0f9;
+
+}
   #fullinfo{
     margin-top: 20%;
     margin-bottom: 5%;
