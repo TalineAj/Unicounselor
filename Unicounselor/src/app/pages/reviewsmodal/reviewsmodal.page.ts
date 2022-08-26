@@ -6,10 +6,9 @@ import {
   LoadingController,
   ToastController,
 } from '@ionic/angular';
-import { from } from 'rxjs';
-import { AuthService } from 'src/app/apis/auth.service';
 import { ReviewsService, Review } from 'src/app/apis/reviews.service';
-
+import { collection, query, where, getDocs } from 'firebase/firestore';
+import {Firestore} from '@angular/fire/firestore';
 @Component({
   selector: 'app-reviewsmodal',
   templateUrl: './reviewsmodal.page.html',
@@ -20,14 +19,46 @@ export class ReviewsmodalPage implements OnInit {
   lastname: any;
   review: Review;
   studentname: any;
-  constructor(private navParams: NavParams, private modalController: ModalController, private alertController: AlertController,
+  fetchedreviews = [];
+
+  constructor( private firestore: Firestore,
+    private navParams: NavParams, private modalController: ModalController, private alertController: AlertController,
     private loadingController: LoadingController,
     private toastController: ToastController, private reviewsService: ReviewsService) { }
 
-  ngOnInit() {
+    async ngOnInit() {
+    //getting props
     this.firstname = this.navParams.get('fname');
     this.lastname = this.navParams.get('lname');
     this.studentname = this.navParams.get('student');
+
+    //retreiving the reviews of selected counselor
+    const counselorRef =collection(this.firestore,'Reviews');
+    const q = query(counselorRef, where('counselor', '==', this.firstname + ' '+ this.lastname));
+    const querySnapshot = await getDocs(q);
+    querySnapshot.forEach((doc) => {
+      // doc.data() is never undefined for query doc snapshots
+      // console.log(doc.id, ' =>' , doc.data());
+      const obj = JSON.parse(JSON.stringify(doc.data()));
+      // obj.id = doc.id;
+      //obj.eventId = doc.id;
+    this.fetchedreviews.push(obj);
+    });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   }
   closeModal(){
     this.modalController.dismiss();
