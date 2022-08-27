@@ -1,6 +1,6 @@
-<ion-header>
+<ion-header class="ion-no-border">
   <ion-toolbar>
-    <ion-title>reviewsmodal</ion-title>
+    <ion-title> Dr. {{firstname}} {{lastname}}</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -9,13 +9,13 @@
   <ion-card *ngFor="let review  of fetchedreviews">
 
   <ion-card-header>
-    <ion-card-title> {{firstname}} {{lastname}}
+    <ion-card-title> <ion-icon name="star-sharp"></ion-icon> {{review.rating}}
     </ion-card-title>
 
   </ion-card-header>
 
-  <ion-card-content style="color: red !important;">
-  {{review.review}} {{review.rating}}
+  <ion-card-content >
+  {{review.review}} 
   </ion-card-content>
 </ion-card>
 
@@ -31,7 +31,10 @@
 
 
 
-  <ion-button  id="open-modal" expand="block">more</ion-button>
+  <ion-button shape="round" class="button" id="open-modal" >
+    <ion-icon size="large" id="plus" name="add-outline"></ion-icon>
+    <!-- <ion-icon size="large" name="add-circle-outline"></ion-icon> -->
+  </ion-button>
    <ion-modal #modal trigger="open-modal" [initialBreakpoint]="0.25" [breakpoints]="[0, 0.25, 0.5, 0.75]">
     <ng-template>
       <form #f="ngForm" (ngSubmit)="onSubmit(f)">
@@ -46,7 +49,7 @@
         <ion-input type="text" ngModel name="review" required="true"> </ion-input>     
         </ion-item> 
         
-        <ion-button  type="submit" name="submit">Submit</ion-button>
+        <ion-button style="margin-bottom: 70px;" type="submit" name="submit">Submit</ion-button>
         
       </form>
     </ng-template>
