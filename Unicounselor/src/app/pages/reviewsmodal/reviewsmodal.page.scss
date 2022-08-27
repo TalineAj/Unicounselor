@@ -50,4 +50,27 @@ ion-title{
  position: fixed;
  bottom: 0px;
  right: 5px; 
+
+}
+ion-modal{
+--background: white;
+}
+#submit{
+margin-left: 200px;
+margin-bottom: 350px;
+}
+
+form{
+    background-color: white !important;
+}
+.form{
+    background-color: white !important;
+
+}
+ion-item{
+    width: 90%!important;
+--background: white;
+}
+ion-label{
+    color: black !important;
 }

@@ -37,7 +37,7 @@
   </ion-button>
    <ion-modal #modal trigger="open-modal" [initialBreakpoint]="0.25" [breakpoints]="[0, 0.25, 0.5, 0.75]">
     <ng-template>
-      <form #f="ngForm" (ngSubmit)="onSubmit(f)">
+      <form class ="form" #f="ngForm" (ngSubmit)="onSubmit(f)">
         <ion-item>
             <ion-label position ="floating"> Rating</ion-label>
             <ion-input type="text" ngModel  
@@ -49,7 +49,7 @@
         <ion-input type="text" ngModel name="review" required="true"> </ion-input>     
         </ion-item> 
         
-        <ion-button style="margin-bottom: 70px;" type="submit" name="submit">Submit</ion-button>
+        <ion-button id="submit" type="submit" name="submit">Submit</ion-button>
         
       </form>
     </ng-template>
