@@ -45,8 +45,7 @@ export class LoginPage implements OnInit {
         //Will be used later to redirect to appropriate home
                  //to be changed
         if(form.value.email.endsWith('@uni.com')){
-          this.route.navigate(['/login']);
-          form.reset();
+          this.route.navigate(['/homec']);
           }else{
             this.route.navigate(['/home']);
           }
