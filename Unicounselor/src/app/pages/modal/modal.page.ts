@@ -52,6 +52,7 @@ this.appointment = {
   date: form.value.date,
   counselor: this.firstname + ' '+ this.lastname,
   message: form.value.message,
+  status: 'pending',
 };
 
   const appointmentbooked = await this.appointmentService.addAppointment(this.appointment);

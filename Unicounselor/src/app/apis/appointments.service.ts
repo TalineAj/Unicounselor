@@ -8,6 +8,7 @@ student: string;
 counselor: string;
 date: any;
 message: string;
+status: string;
 }
 
 @Injectable({
