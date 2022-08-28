@@ -1,7 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import { AppointmentsService } from 'src/app/apis/appointments.service';
+import { collection, query, where, getDocs } from 'firebase/firestore';
+import {Firestore} from '@angular/fire/firestore';
+import { ModalController, NavParams } from '@ionic/angular';
+import { ModalPage } from '../modal/modal.page';
 import { AuthService } from 'src/app/apis/auth.service';
-import { UserService, Sum } from 'src/app/apis/user.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-myappointments',
@@ -9,23 +13,29 @@ import { UserService, Sum } from 'src/app/apis/user.service';
   styleUrls: ['./myappointments.page.scss'],
 })
 export class MyappointmentsPage implements OnInit {
-sum: Sum;
   id: any;
+  user: any;
+  username = null;
+  appointments =[];
 
-  constructor(private authService: AuthService,
-    private userService: UserService) { }
-  ngOnInit() {
+  constructor(private authService: AuthService, private firestore: Firestore, private activatedRoute: ActivatedRoute) { }
+async  ngOnInit() {
+this.username = this.activatedRoute.snapshot.paramMap.get('myusername');
 
 
-    // this.id =  this.authService.getCurrentUserId();
-  }
-  // async onSubmit(form: NgForm) {
-  // this.sum = form.value;
-  // const sums = {
-  //   review : 'sdf',
-  //   rating: '2'
-  // };
-  // this.userService.addSum(sums,this.id);
-  // }
+  const appointmentsRef =collection(this.firestore,'Appointments');
+  //to only get counselors
+  const q = query(appointmentsRef, where('student', '==', this.username));
+  const querySnapshot = await getDocs(q);
+  querySnapshot.forEach((doc) => {
+    // doc.data() is never undefined for query doc snapshots
+    // console.log(doc.id, ' =>' , doc.data());
+    const obj = JSON.parse(JSON.stringify(doc.data()));
+    // obj.id = doc.id;
+    //obj.eventId = doc.id;
+  this.appointments.push(obj);
+  });
 
+
+}
 }

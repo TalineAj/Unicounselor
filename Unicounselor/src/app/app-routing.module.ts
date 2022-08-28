@@ -45,7 +45,7 @@ const routes: Routes = [
     loadChildren: () => import('./pages/myinformation/myinformation.module').then( m => m.MyinformationPageModule)
   },
   {
-    path: 'myappointments',
+    path: 'myappointments/:myusername',
     loadChildren: () => import('./pages/myappointments/myappointments.module').then( m => m.MyappointmentsPageModule)
   }
 ];
