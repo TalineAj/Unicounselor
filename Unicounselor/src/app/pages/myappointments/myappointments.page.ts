@@ -34,6 +34,7 @@ this.username = this.activatedRoute.snapshot.paramMap.get('myusername');
     // obj.id = doc.id;
     //obj.eventId = doc.id;
   this.appointments.push(obj);
+  console.log(this.appointments);
   });
 
 

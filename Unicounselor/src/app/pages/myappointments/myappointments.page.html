@@ -1,23 +1,55 @@
-<ion-header>
+<!-- <a href="https://www.freepik.com/free-photo/happy-african-american-doctor-talking-with-female-patient-during-psychotherapy-session_26644458.htm#query=guidance%20counselor&position=25&from_view=keyword">Image by Drazen Zigic</a> on <a href="https://www.freepik.com/">Freepik</a> -->
+<ion-header class="ion-no-border">
   <ion-toolbar>
-    <ion-title>myappointments</ion-title>
+      <div id = "wrapper">
+     <h5 id ="title">My appointments</h5>
+<ion-icon id ="profile" name="person-outline" [routerLink]="['/profile']" size="large"> </ion-icon>
+</div>  
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-  <form #f="ngForm" (ngSubmit)="onSubmit(f)">
-    <ion-item>
-        <ion-label position ="floating"> Rating</ion-label>
-        <ion-input type="text" ngModel  
-        name="rating" required="true"> </ion-input>   
-    </ion-item>
+<ion-content>  
+  <ion-card *ngFor="let appointment  of appointments; let i = index">
+   <div  id="bigdiv">
+    <div id="img1">
+      
+    </div>
 
-    <ion-item>
-    <ion-label position ="floating">Review</ion-label>
-    <ion-input type="text" ngModel name="review" required="true"> </ion-input>     
-    </ion-item> 
-    
-    <ion-button  type="submit" name="submit">Register</ion-button>
-    
-  </form>
+    <div id = "info">
+    <ion-card-header>
+      <ion-card-title> {{appointment.counselor}}
+      </ion-card-title>
+  
+    </ion-card-header>
+  
+    <ion-card-content>
+      <div id = "content">
+      {{appointment.date}}
+      <br>
+      Staus: <span id="status">{{appointment.status}}</span>
+    </div>
+    </ion-card-content>
+
+</div>
+
+</div>
+
+
+  </ion-card>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 </ion-content>

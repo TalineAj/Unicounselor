@@ -1,0 +1,77 @@
+ion-content {
+    --ion-background-color: white;
+  
+  }
+  
+  ion-toolbar{    
+  --background: white;
+  }
+  ion-icon{
+    font-size:24px ;
+  }
+  ion-tab-bar {
+    border: 0;
+  }
+
+  ion-tab-bar{
+    --background:white;
+  }
+  #wrapper{
+    margin-top: 5%;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+  }
+  #profile{
+    // margin-left: 85%;
+    // margin-top: 5px;
+    color:#4CBB17;
+
+   
+}
+#status{
+    color:#4CBB17;
+}
+
+  
+  #title{
+    margin-top: 5px;
+    color: #4CBB17;
+    margin-left: 5%;
+    font-weight: bold;
+    font-size: large;
+  }
+  ion-card{
+    height: 20%;
+    margin-top: 5% !important;
+    margin-bottom: 5% !important;
+    background-color: white !important;
+  }
+#img1{
+width: 40%;
+  background-image: url('../../../assets/images/Dr2.png');
+  background-position: 50% 10%;
+  background-size: cover;
+  height: 100px;
+}
+#bigdiv{
+display: flex;
+}
+#info
+{
+  // height: 30%;
+  width:70%;
+  flex-direction: column;
+
+}
+
+
+ion-card-title{
+  color: #4CBB17;
+  font-weight: bold;
+  font-size: large;
+}
+#content{
+    font-size: 12px;
+}
