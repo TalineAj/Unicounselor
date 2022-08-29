@@ -17,7 +17,8 @@ username: any;
 
   ngOnInit() {
       //get the student and sending their name to the my appointments page to query the appointments of that student
-  this.id =  this.authService.getCurrentUserId();
+      //Could later change it and do it like appointmentsc
+      this.id =  this.authService.getCurrentUserId();
   if(this.id){
     //there is a signed in user
     this.authService.getUserById(this.id).subscribe(res =>{
