@@ -1,9 +1,68 @@
-<ion-header>
+<!-- <a href="https://www.freepik.com/free-photo/happy-african-american-doctor-talking-with-female-patient-during-psychotherapy-session_26644458.htm#query=guidance%20counselor&position=25&from_view=keyword">Image by Drazen Zigic</a> on <a href="https://www.freepik.com/">Freepik</a> -->
+<ion-header class="ion-no-border">
   <ion-toolbar>
-    <ion-title>appointmentsc</ion-title>
+      <div id = "wrapper">
+     <h5 id ="title">Requested appointments</h5>
+<ion-icon id ="profile" name="person-outline" [routerLink]="['/profile']" size="large"> </ion-icon>
+</div>  
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
 
+  
+  <ion-card *ngFor="let appoinment  of appointments; let i = index">
+   <div id="bigdiv">
+    <div id="img1">
+      
+    </div>
+    <div id = "info">
+    <ion-card-header>
+      <ion-card-title> {{appoinment.student}}
+      </ion-card-title>
+  
+    </ion-card-header>
+  
+    <ion-card-content>
+    {{appoinment.date}}
+    <br>
+    {{appoinment.message}}
+    </ion-card-content>
+  <!-- </div> -->
+  <div id="buttons">
+    <ion-button size= "small" id="approve" (click)="Approve(i)" expand="block">Approve</ion-button>
+    <ion-button size= "small"  id="decline" (click)="Decline(i)" expand="block">Decline</ion-button>
+
+  </div>
+</div>
+
+</div>
+
+
+  </ion-card>
 </ion-content>
+ 
+ 
+<ion-toolbar>
+<ion-tabs>
+  <ion-tab-bar slot="bottom" class="ion-no-border">
+    <ion-tab-button routerLink = "/homec">
+      <ion-icon name="home-outline"  ></ion-icon>
+    </ion-tab-button>
+  
+    <ion-tab-button tab="appoinments" routerLink="/appointmentsc">
+      <ion-icon name="calendar-clear-outline" id="current"></ion-icon> 
+    </ion-tab-button>
+  
+  
+    <ion-tab-button tab="tips"  routerLink="/tips">
+      <ion-icon name="bulb-outline"></ion-icon>
+    </ion-tab-button>
+  
+    <ion-tab-button tab="tips"   routerLink="/profile">
+      <ion-icon name="person-outline"> </ion-icon>
+    </ion-tab-button>
+  
+  </ion-tab-bar> 
+  </ion-tabs>
+</ion-toolbar>
