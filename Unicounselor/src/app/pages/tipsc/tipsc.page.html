@@ -1,23 +1,57 @@
-<ion-header>
+<ion-header class="ion-no-border">
   <ion-toolbar>
-    <ion-title>tipsc</ion-title>
+      <div id = "wrapper">
+     <h5 id ="title">Tips</h5>
+<ion-icon id ="profile" name="person-outline" [routerLink]="['/profilec']" size="large"> </ion-icon>
+</div>  
   </ion-toolbar>
 </ion-header>
 
+
 <ion-content>
+  <ion-card>
+    <ion-card-content>
   <form class ="form" #f="ngForm" (ngSubmit)="onSubmit(f)">
-    <ion-item>
+    <ion-item  >
         <ion-label position ="floating"> Title</ion-label>
         <ion-input type="text" ngModel  
-        name="title" required="true"> </ion-input>   
+        name="title" placeholder="Exam stress..." required="true"> </ion-input>   
     </ion-item>
 
     <ion-item>
     <ion-label position ="floating">Tip</ion-label>
-    <ion-input type="text" ngModel name="tip" required="true"> </ion-input>     
+    <ion-input type="text" placeholder="Make a studying schedule..." ngModel name="tip" required="true"> </ion-input>     
     </ion-item> 
     
     <ion-button id="submit" type="submit" name="submit">Submit</ion-button>
     
   </form>
+</ion-card-content>
+</ion-card>
 </ion-content>
+
+
+
+<ion-toolbar>
+  <ion-tabs>
+    <ion-tab-bar slot="bottom" class="ion-no-border">
+      <ion-tab-button tab="homec" routerLink="/homec" >
+        <ion-icon name="home-outline"  ></ion-icon>
+      </ion-tab-button>
+    
+      <ion-tab-button tab="appoinmentsc" routerLink="/appointmentsc">
+        <ion-icon name="calendar-clear-outline"></ion-icon> 
+      </ion-tab-button>
+    
+    
+      <ion-tab-button tab="tipsc"  routerLink="/tipsc">
+        <ion-icon name="bulb-outline" id="current"></ion-icon>
+      </ion-tab-button>
+    
+      <ion-tab-button tab="profilec"   routerLink="/profilec">
+        <ion-icon name="person-outline" > </ion-icon>
+      </ion-tab-button>
+    
+    </ion-tab-bar> 
+    </ion-tabs>
+  </ion-toolbar>
