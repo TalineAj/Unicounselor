@@ -1,0 +1,130 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <div id = "profile1">
+      <ion-icon name="person-outline" [routerLink]="['/profilec']" size="large"> </ion-icon>
+    </div>
+      </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div id="div1">
+    <ion-icon name="person-outline" size="large" id="profile"> </ion-icon>
+  </div>
+
+  <div class="options">
+    <div>
+      <p style="margin: 9%">My information</p>
+      <ion-button
+        id="back"
+        color="white"
+        size="large"
+        [routerLink]="['/myinformationc']"
+      >
+        <ion-icon name="chevron-forward-circle-outline" style="color:white;
+        "></ion-icon>
+      </ion-button>
+    </div>
+  
+
+
+    <div >
+      <p style="margin: 9%">My appointments</p>
+      <ion-button
+        id="back"
+        color="white"
+        size="large"
+       (click)="pushPage()"
+      >
+        <ion-icon name="chevron-forward-circle-outline" style="color:white;
+        "></ion-icon>
+      </ion-button>
+    </div>
+ 
+
+ <div>
+  <p style="margin: 9%">My reviews</p>
+  <ion-button
+    id="back"
+    color="white"
+    size="large"
+    [routerLink]="['/myreviewsc']"
+  >
+    <ion-icon name="chevron-forward-circle-outline" style="color:white;
+    "></ion-icon>
+  </ion-button>
+</div>
+
+
+
+
+
+
+
+
+    
+    <div >
+      <p style="margin: 9%">Logout</p>
+      <ion-button
+        id="back"
+        color="white"
+        size="large"
+        (click)="logout()"
+      >
+        <ion-icon name="log-out-outline" style="color:white;
+        "></ion-icon>
+      </ion-button>
+    </div>
+  </div>
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<ion-toolbar>
+  <ion-tabs>
+<ion-tab-bar slot="bottom" class="ion-no-border">
+  <ion-tab-button tab="home" routerLink="/homec" >
+    <ion-icon name="home-outline"  ></ion-icon>
+  </ion-tab-button>
+
+  <ion-tab-button tab="appoinments" routerLink="/appointmentsc">
+    <ion-icon name="calendar-clear-outline" ></ion-icon> 
+  </ion-tab-button>
+
+
+  <ion-tab-button tab="tips"  routerLink="/tipsc">
+    <ion-icon name="bulb-outline"></ion-icon>
+  </ion-tab-button>
+
+  <ion-tab-button tab="tips"   routerLink="/profilec">
+    <ion-icon name="person-outline" id="current"> </ion-icon>
+  </ion-tab-button>
+
+</ion-tab-bar> 
+</ion-tabs>
+
+</ion-toolbar>
+
+
+
+</ion-content>
+ 
+ 
+
+

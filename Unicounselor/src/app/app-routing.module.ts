@@ -59,6 +59,10 @@ const routes: Routes = [
   {
     path: 'tipsc',
     loadChildren: () => import('./pages/tipsc/tipsc.module').then( m => m.TipscPageModule)
+  },
+  {
+    path: 'profilec',
+    loadChildren: () => import('./pages/profilec/profilec.module').then( m => m.ProfilecPageModule)
   }
 ];
 
