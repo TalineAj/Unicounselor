@@ -35,20 +35,33 @@ ion-content {
 
   
   #title{
-    margin-top: 5px;
+    margin-top: 5x;
     color: #4CBB17;
     margin-left: 5%;
     font-weight: bold;
     font-size: large;
   }
   ion-card{
-    height: 25%;
+    height: 30%;
     margin-top: 5% !important;
     margin-bottom: 5% !important;
     background-color: white !important;
   }
-
-
+#img{
+  height: 100%;
+  // background-image: url('../../../assets/images/Dr2.png');
+  // background-position: 50% 10%;
+  // background-size: cover;
+}
+#img1{
+width: 40%;
+  background-image: url('../../../assets/images/Dr2.png');
+  background-position: 50% 10%;
+  background-size: cover;
+}
+#bigdiv{
+display: flex;
+}
 #info
 {
   // height: 30%;
@@ -57,11 +70,26 @@ ion-content {
 
 }
 
+#buttons{
+  width: 100%;
+  height: 10%;//changed 
+  display: flex;
+  justify-content:left;
+  margin-bottom: 10px;
 
-
+}
+.cancel{
+  --background: red; 
+flex-direction: row;
+align-items:flex-start;
+margin-left: 5% ;
+}
 
 ion-card-title{
   color: #4CBB17;
   font-weight: bold;
-  font-size: large;
+  font-size: 12px;
+}
+ion-card-content{
+    font-size: 11px;
 }
