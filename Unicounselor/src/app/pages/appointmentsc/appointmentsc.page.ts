@@ -3,7 +3,7 @@ import { AuthService } from 'src/app/apis/auth.service';
 import { Appointment, AppointmentsService, Status } from 'src/app/apis/appointments.service';
 import { collection, query, where, getDocs } from 'firebase/firestore';
 import {Firestore} from '@angular/fire/firestore';
-import { AlertController, ModalController, NavParams } from '@ionic/angular';
+import { AlertController, LoadingController, ModalController, NavParams, ToastController } from '@ionic/angular';
 import { ModalPage } from '../modal/modal.page';
 import { ActivatedRoute } from '@angular/router';
 import { NgForm } from '@angular/forms';
@@ -22,7 +22,8 @@ export class AppointmentscPage implements OnInit {
   status: Status;
 
   constructor(private alertController: AlertController , private authService: AuthService, private firestore: Firestore,
-    private appointmentService: AppointmentsService) { }
+    private appointmentService: AppointmentsService , private loadingController: LoadingController,
+     private toastController: ToastController) { }
 
     ngOnInit() {
 
@@ -87,9 +88,15 @@ async presentAlert(i: any) {
 
 
 }
-approve(appointmentid: any, msg: any){
+async approve(appointmentid: any, msg: any){
+  const loading = await this.loadingController.create({
+    message: `Approving appointment`,
+  });
+  await loading.present();
   const id = this.appointmentsids[appointmentid];
-  if(this.appointments[appointmentid].status!=='pending'){
+  // console.log(this.appointments[appointmentid].status);
+  // console.log(this.appointments[appointmentid].status!=='pending');
+  // if(this.appointments[appointmentid].status!=='pending'){
     // const toast1 = await this.toastController.create({
     // message: 'Please select a date ',
     // duration: 4000,
@@ -97,14 +104,21 @@ approve(appointmentid: any, msg: any){
     // loading.dismiss();
     // await toast1.present();
     // return;
-    console.log('erreurr');
-    }else {
+    // console.log('erreurr');
+    // }else {
   this.status = {
    messagec: msg,
    status: 'Approved'
   };
    this.appointmentService.setStatus( this.status, id);
-}
+   const toast = await this.toastController.create({
+    message: 'Appointment Successfully approved',
+    duration: 4000,
+  });
+  loading.dismiss();
+  await toast.present();
+
+// }
  }
  //Alert and function when declined
 
@@ -136,13 +150,23 @@ approve(appointmentid: any, msg: any){
 
 
 }
-decline(appointmentid: any, msg: any){
+async decline(appointmentid: any, msg: any){
+  const loading = await this.loadingController.create({
+  message: `Declining appointment`,
+});
+await loading.present();
   const id = this.appointmentsids[appointmentid];
   this.status = {
    messagec: msg,
    status: 'Declined'
   };
    this.appointmentService.setStatus( this.status, id);
+   const toast = await this.toastController.create({
+    message: 'Appointment Successfully declined',
+    duration: 4000,
+  });
+  loading.dismiss();
+  await toast.present();
  }
 
 
