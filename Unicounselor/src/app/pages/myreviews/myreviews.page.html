@@ -11,7 +11,7 @@
 <ion-content>
 
   
-  <ion-card *ngFor="let review  of reviews; let i = index">
+  <ion-card *ngFor="let review  of fetchedreviews; let i = index">
     <div id = "info">
     <ion-card-header>
       <ion-card-title> <ion-icon name="star-sharp"></ion-icon> {{review.rating}}
