@@ -5,16 +5,16 @@ import { AlertController, LoadingController, ToastController } from '@ionic/angu
 import { AuthService } from 'src/app/apis/auth.service';
 import { UserService, User } from 'src/app/apis/user.service';
 @Component({
-  selector: 'app-myinformation',
-  templateUrl: './myinformation.page.html',
-  styleUrls: ['./myinformation.page.scss'],
+  selector: 'app-myinformationc',
+  templateUrl: './myinformationc.page.html',
+  styleUrls: ['./myinformationc.page.scss'],
 })
-export class MyinformationPage implements OnInit {
+export class MyinformationcPage implements OnInit {
   id: any;
   user: any;
   firstname= null;
   lastname= null;
-  dateofbirth= null;
+  field= null;
   gender= null;
   userInfo: User;
 
@@ -32,16 +32,14 @@ if(this.id){
     console.log(this.user);
     this.firstname = this.user.firstname;
     this.lastname = this.user.lastname;
-    this.dateofbirth = this.user.dateofbirth;
+    this.field = this.user.field;
     this.gender = this.user.gender;
   });
 }else{
  console.log('no user signed in');
 }
   }
-// //regex to check password
-// check = (password)=> !!password.match(/^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%* #+=\(\)\^?&])[A-Za-z\d$@$!%* #+=\(\)\^?&]{3,}$/);
-// ;
+
 
 
     async onSubmit(form: NgForm) {
@@ -50,7 +48,7 @@ if(this.id){
       });
       await loading.present();
   //Making sure fields are not empty
-if(form.value.gender==='' || form.value.date==='' ||
+if(form.value.gender==='' || form.value.field==='' ||
 form.value.lastname==='' || form.value.firstname==='')
 {
   const toast = await this.toastController.create({

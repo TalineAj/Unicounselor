@@ -63,6 +63,10 @@ const routes: Routes = [
   {
     path: 'profilec',
     loadChildren: () => import('./pages/profilec/profilec.module').then( m => m.ProfilecPageModule)
+  },
+  {
+    path: 'myinformationc',
+    loadChildren: () => import('./pages/myinformationc/myinformationc.module').then( m => m.MyinformationcPageModule)
   }
 ];
 
