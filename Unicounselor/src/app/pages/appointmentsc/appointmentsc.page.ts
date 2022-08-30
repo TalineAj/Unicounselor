@@ -43,7 +43,7 @@ export class AppointmentscPage implements OnInit {
   async getMeetings(){
     const appointmentsRef =collection(this.firestore,'Appointments');
     //to only get counselors
-    const q = query(appointmentsRef, where('counselor', '==', this.username), where('status', '==', 'pending'));
+    const q = query(appointmentsRef, where('counselor', '==', this.username), where('status', '==', 'Pending'));
     const querySnapshot = await getDocs(q);
     querySnapshot.forEach((doc) => {
       // doc.data() is never undefined for query doc snapshots
