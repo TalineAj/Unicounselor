@@ -15,13 +15,14 @@ export class TipsService {
 
   constructor(private firestore: Firestore) { }
   addTip(tip: Tip){
-    const docRef = doc(this.firestore,'tips');
-    return setDoc(docRef,tip);
+    const tipsRef = collection(this.firestore,'tips');
+    return addDoc(tipsRef,tip);
   }
   getTips(){
     const tipsRef =collection(this.firestore,'tips');
     return collectionData(tipsRef);
   }
+
   //did not work
   // async getTwoTips(){
   //   const tipsRef =collection(this.firestore,'tips');

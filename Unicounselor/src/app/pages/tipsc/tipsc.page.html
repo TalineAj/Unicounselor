@@ -1,0 +1,23 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>tipsc</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form class ="form" #f="ngForm" (ngSubmit)="onSubmit(f)">
+    <ion-item>
+        <ion-label position ="floating"> Title</ion-label>
+        <ion-input type="text" ngModel  
+        name="title" required="true"> </ion-input>   
+    </ion-item>
+
+    <ion-item>
+    <ion-label position ="floating">Tip</ion-label>
+    <ion-input type="text" ngModel name="tip" required="true"> </ion-input>     
+    </ion-item> 
+    
+    <ion-button id="submit" type="submit" name="submit">Submit</ion-button>
+    
+  </form>
+</ion-content>

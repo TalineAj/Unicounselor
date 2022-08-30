@@ -55,6 +55,10 @@ const routes: Routes = [
   {
     path: 'appointmentsc',
     loadChildren: () => import('./pages/appointmentsc/appointmentsc.module').then( m => m.AppointmentscPageModule)
+  },
+  {
+    path: 'tipsc',
+    loadChildren: () => import('./pages/tipsc/tipsc.module').then( m => m.TipscPageModule)
   }
 ];
 
