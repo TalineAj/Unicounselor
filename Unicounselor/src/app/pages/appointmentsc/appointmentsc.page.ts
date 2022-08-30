@@ -62,6 +62,7 @@ export class AppointmentscPage implements OnInit {
 async presentAlert(i: any) {
   const alert = await this.alertController.create({
     header: 'Approve',
+    cssClass: 'app-alert',
     message:'Please confirm your approval',
     inputs: [
       {
@@ -125,6 +126,7 @@ async approve(appointmentid: any, msg: any){
  async presentAlert1(i: any) {
   const alert = await this.alertController.create({
     header: 'Decline',
+    cssClass: 'app-alert',
     message:'Please confirm your declinature',
     inputs: [
       {
