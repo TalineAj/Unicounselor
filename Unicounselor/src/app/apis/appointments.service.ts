@@ -10,6 +10,10 @@ date: any;
 message: string;
 status: string;
 }
+export interface Status{
+  messagec: string;
+  status: string;
+}
 
 @Injectable({
   providedIn: 'root'
@@ -22,6 +26,10 @@ export class AppointmentsService {
   const appointmentRef = collection(this.firestore,'Appointments');
   return addDoc(appointmentRef,appointment);
 
+    }
+  setStatus(status: Status , id: any){
+  const docRef = doc(this.firestore,'Appointments',id);
+  return setDoc(docRef,status,{merge: true});
     }
 
 }

@@ -30,8 +30,48 @@
     </ion-card-content>
   <!-- </div> -->
   <div id="buttons">
-    <ion-button size= "small" id="approve" (click)="Approve(i)" expand="block">Approve</ion-button>
-    <ion-button size= "small"  id="decline" (click)="Decline(i)" expand="block">Decline</ion-button>
+    <ion-button size= "small" class="approve"  (click)="presentAlert(i)">Approve</ion-button>
+    <ion-button size= "small"  class="decline" (click)="presentAlert1(i)">Decline</ion-button>
+  
+    <!--Approve modal-->
+    <!-- <ion-modal #modal trigger="open-modal" [initialBreakpoint]="0.25" [breakpoints]="[0, 0.25, 0.5, 0.75]">
+      <ng-template>
+        <form class ="form" #f="ngForm" (ngSubmit)="onSubmit(f,i)">
+      
+          <ion-item>
+          <ion-label position ="floating">Message</ion-label>
+
+          <ion-textarea ngModel placeholder="Enter a message..." type="textarea"
+          name="message" id="message" required="true"></ion-textarea>
+                  </ion-item> 
+          
+          <ion-button id="submit" type="submit" name="submit">Submit</ion-button>
+          
+        </form>
+      </ng-template>
+    </ion-modal> -->
+
+    <!--Decline modal-->
+    <!-- <ion-modal #modal trigger="open-modal2" [initialBreakpoint]="0.25" [breakpoints]="[0, 0.25, 0.5, 0.75]">
+      <ng-template>
+        <form class ="form" #f="ngForm" (ngSubmit)="onSubmit(f)">
+          <ion-item>
+              <ion-label position ="floating"> Rawr</ion-label>
+              <ion-input type="text" ngModel  
+              name="rating" required="true"> </ion-input>   
+          </ion-item>
+      
+          <ion-item>
+          <ion-label position ="floating">Review</ion-label>
+          <ion-input type="text" ngModel name="review" required="true"> </ion-input>     
+          </ion-item> 
+          
+          <ion-button id="submit" type="submit" name="submit">Submit</ion-button>
+          
+        </form>
+      </ng-template>
+    </ion-modal> -->
+
 
   </div>
 </div>

@@ -78,11 +78,11 @@ display: flex;
   margin-bottom: 10px;
 
 }
-#approve{
+.approve{
 flex-direction: row;
 align-items: center;
 }
-#decline{
+.decline{
     --background: red; 
   flex-direction: row;
   align-items: center;
