@@ -1,10 +1,13 @@
 <ion-header class="ion-no-border">
   <ion-toolbar>
+    <ion-icon size="large" style="color: #4CBB17;" name="arrow-back-outline" (click)="closeModal()"></ion-icon>
     <ion-title> Dr. {{firstname}} {{lastname}}</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+
+
 
   <ion-card *ngFor="let review  of fetchedreviews">
 
@@ -23,6 +26,14 @@
 
 
 
+<div class="no-reviews" *ngIf="noreviews===0">
+  <div class ="wrap">
+    <ion-icon name="star-half-outline" id="center"></ion-icon> 
+  <p id = "noreviewstext">No rating or reviews were added yet!</p>
+</div>
+
+
+</div>
 
 
 
@@ -54,4 +65,12 @@
       </form>
     </ng-template>
   </ion-modal>
+
+
+
+
+
+
+
+
 </ion-content>

@@ -19,6 +19,7 @@ export class ReviewsmodalPage implements OnInit {
   lastname: any;
   review: Review;
   studentname: any;
+  noreviews =0;
   fetchedreviews = [];
 
   constructor( private firestore: Firestore,
@@ -37,6 +38,7 @@ export class ReviewsmodalPage implements OnInit {
     const q = query(counselorRef, where('counselor', '==', this.firstname + ' '+ this.lastname));
     const querySnapshot = await getDocs(q);
     querySnapshot.forEach((doc) => {
+      this.noreviews = 1;
       // doc.data() is never undefined for query doc snapshots
       // console.log(doc.id, ' =>' , doc.data());
       const obj = JSON.parse(JSON.stringify(doc.data()));

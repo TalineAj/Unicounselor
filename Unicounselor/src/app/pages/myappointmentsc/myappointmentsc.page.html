@@ -39,6 +39,14 @@
 
 
   </ion-card>
+  <div class="no-appointments" *ngIf="noappointments===0">
+    <div class ="wrap">
+      <ion-icon name="calendar-outline" id="center"></ion-icon> 
+          <p id = "noappointmentstext">No appoinments were acceptd or declined yet!</p>
+  </div>
+
+
+  </div>
 </ion-content>
  
  
@@ -50,7 +58,7 @@
     </ion-tab-button>
   
     <ion-tab-button tab="appoinments" routerLink="/appointmentsc">
-      <ion-icon name="calendar-clear-outline" id="current"></ion-icon> 
+      <ion-icon name="calendar-clear-outline" ></ion-icon> 
     </ion-tab-button>
   
   
@@ -59,7 +67,7 @@
     </ion-tab-button>
   
     <ion-tab-button tab="tips"   routerLink="/profilec">
-      <ion-icon name="person-outline"> </ion-icon>
+      <ion-icon name="person-outline" id="current"> </ion-icon>
     </ion-tab-button>
   
   </ion-tab-bar> 

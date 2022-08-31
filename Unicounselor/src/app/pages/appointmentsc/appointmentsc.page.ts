@@ -17,6 +17,7 @@ export class AppointmentscPage implements OnInit {
   id: any;
   user: any;
   username = null;
+  noappointments= 0 ;
   appointments =[];
   appointmentsids =[];
   status: Status;
@@ -45,7 +46,10 @@ export class AppointmentscPage implements OnInit {
     //to only get counselors
     const q = query(appointmentsRef, where('counselor', '==', this.username), where('status', '==', 'Pending'));
     const querySnapshot = await getDocs(q);
+    console.log(this.noappointments);
     querySnapshot.forEach((doc) => {
+      //if the query does not return anything it doesnt enter here thats why we set it inside to 1
+      this.noappointments = 1 ;
       // doc.data() is never undefined for query doc snapshots
       // console.log(doc.id, ' =>' , doc.data());
       const obj = JSON.parse(JSON.stringify(doc.data()));
@@ -54,10 +58,13 @@ export class AppointmentscPage implements OnInit {
       //obj.eventId = doc.id;
     this.appointmentsids.push(obj1);
     this.appointments.push(obj);
-    console.log(this.appointments);
-    console.log(this.appointmentsids);
+
+
+
   });
   }
+
+
 //Alert and function when approved
 async presentAlert(i: any) {
   const alert = await this.alertController.create({
@@ -114,7 +121,7 @@ async approve(appointmentid: any, msg: any){
    this.appointmentService.setStatus( this.status, id);
    const toast = await this.toastController.create({
     message: 'Appointment Successfully approved',
-    duration: 4000,
+    duration: 3000,
   });
   loading.dismiss();
   await toast.present();
@@ -165,7 +172,7 @@ await loading.present();
    this.appointmentService.setStatus( this.status, id);
    const toast = await this.toastController.create({
     message: 'Appointment Successfully declined',
-    duration: 4000,
+    duration: 3000,
   });
   loading.dismiss();
   await toast.present();

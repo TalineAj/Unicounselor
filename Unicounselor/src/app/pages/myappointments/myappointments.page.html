@@ -28,7 +28,7 @@
       <br>
       Staus: <span id="status">{{appointment.status}}</span>
       <br>
-      Message: {{appointment.messagec}}
+      {{appointment.messagec}}
     </div>
     </ion-card-content>
 
@@ -46,6 +46,15 @@
 
 
 
+  <div class="no-appointments" *ngIf="noappointments===0">
+    <div class ="wrap">
+      <ion-icon name="calendar-outline" id="center"></ion-icon> 
+          <p id = "noappointmentstext">No appoinments were requested yet!</p>
+  </div>
+  
+  
+  </div>
+  
 
 
 

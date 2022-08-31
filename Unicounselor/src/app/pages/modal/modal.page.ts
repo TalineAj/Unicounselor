@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
 import { ModalController, NavParams } from '@ionic/angular';
 import {
   AlertController,
@@ -19,7 +20,7 @@ export class ModalPage implements OnInit {
   appointment: Appointment;
   studentname: any;
   constructor(private navParams: NavParams, private modalController: ModalController, private alertController: AlertController,
-    private loadingController: LoadingController,
+    private loadingController: LoadingController,private route: Router,
     private toastController: ToastController, private appointmentService: AppointmentsService) { }
 
   ngOnInit() {

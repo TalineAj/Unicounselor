@@ -80,8 +80,19 @@
 
 
   </ion-card>
+
+
+  <div class="no-appointments" *ngIf="noappointments===0">
+    <div class ="wrap">
+      <ion-icon name="calendar-outline" id="center"></ion-icon> 
+          <p id = "noappointmentstext">No appoinments were requested yet!</p>
+  </div>
+
+
+  </div>
 </ion-content>
  
+
  
 <ion-toolbar>
 <ion-tabs>

@@ -43,7 +43,7 @@ ion-content {
     font-size: large;
   }
   ion-card{
-    height: 20%;
+    height: 25%;
     margin-top: 5% !important;
     margin-bottom: 5% !important;
     background-color: white !important;
@@ -74,4 +74,25 @@ ion-card-title{
 }
 #content{
     font-size: 12px;
+}
+.no-appointments{
+  width: 100%;
+  height: 100%;
+ display: flex;
+ justify-content: center;
+ text-align: center;
+ color: #4CBB17;
+ align-items: center;
+}
+.wrap{
+height: 20%;
+width: 50%;
+
+}
+#center{
+  width: 35%;
+  height: 40%;
+}
+#noappointmentstext{
+  color: #4CBB17;
 }
