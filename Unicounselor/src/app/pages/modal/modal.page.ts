@@ -7,7 +7,6 @@ import {
   ToastController,
 } from '@ionic/angular';
 import { Appointment, AppointmentsService } from 'src/app/apis/appointments.service';
-import { AuthService } from 'src/app/apis/auth.service';
 @Component({
   selector: 'app-modal',
   templateUrl: './modal.page.html',
@@ -61,8 +60,9 @@ this.appointment = {
   const toast = await this.toastController.create({
     // eslint-disable-next-line max-len
     message: 'Appointment Successfully requested',
-    duration: 5000,
+    duration: 3000,
   });
+  form.reset();
   loading.dismiss();
   await toast.present();
 
