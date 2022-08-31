@@ -3,10 +3,10 @@ import {addDoc, doc, Firestore, setDoc} from '@angular/fire/firestore';
 import {collection} from '@firebase/firestore';
 
 export interface User {
-email: any;
-name: any;
-password: any;
-level: any;
+firstname: any;
+lastname: any;
+dateofbirth: any;
+gender: any;
 }
 export interface Sum{
   review: string;

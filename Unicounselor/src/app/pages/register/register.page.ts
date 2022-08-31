@@ -53,9 +53,9 @@ await toast.present();
 return;
 } 
 //Making sure the email format is valid
-if(!form.value.email.endsWith('@student.com')&&!form.value.email.endsWith('@uni.com')){
+if(!form.value.email.endsWith('@student.com')){
   const toast = await this.toastController.create({
-    message: 'The email should end with @student.com or @uni.com',
+    message: 'The email should end with @student.com',
     duration: 4000,
    });
    loading.dismiss();
@@ -85,7 +85,15 @@ else{
     //to avoid storing password not working
     // this.userInfo.name = form.value.name;
     // this.userInfo.email = form.value.email;
-    this.userInfo.password = null; //temporary fix
+    // this.userInfo.password = null; //temporary fix
+
+this.userInfo ={
+firstname: form.value.firstname,
+lastname: form.value.lastname,
+dateofbirth: form.value.dateofbirth,
+gender : form.value.gender
+};
+
 
     this.userService.addUser(this.userInfo,user.user.uid);
     this.route.navigate(['/login']);
