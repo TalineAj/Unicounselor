@@ -58,7 +58,7 @@ export class MyappointmentscPage implements OnInit {
     console.log(this.appointmentsids);
   });
   }
-//Alert and function when approved
+//Alert and function when cancelled
 async presentAlert(i: any) {
   const alert = await this.alertController.create({
     header: 'Cancel',

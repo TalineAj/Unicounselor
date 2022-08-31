@@ -43,7 +43,7 @@ ion-content {
     font-size: large;
   }
   ion-card{
-    height: 25%;
+    height: 35%;
     margin-top: 5% !important;
     margin-bottom: 5% !important;
     background-color: white !important;
@@ -53,7 +53,7 @@ width: 40%;
   background-image: url('../../../assets/images/Dr2.png');
   background-position: 50% 10%;
   background-size: cover;
-  height: 100px;
+  height: 200px;
 }
 #bigdiv{
 display: flex;
@@ -95,4 +95,8 @@ width: 50%;
 }
 #noappointmentstext{
   color: #4CBB17;
+}
+.cancel{
+  --background: red; 
+
 }

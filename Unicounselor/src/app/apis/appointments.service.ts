@@ -14,6 +14,10 @@ export interface Status{
   messagec: string;
   status: string;
 }
+export interface Statusstudent{
+  message: string;
+  status: string;
+}
 
 @Injectable({
   providedIn: 'root'
@@ -31,5 +35,9 @@ export class AppointmentsService {
   const docRef = doc(this.firestore,'Appointments',id);
   return setDoc(docRef,status,{merge: true});
     }
+    setStatusstudent(status: Statusstudent , id: any){
+      const docRef = doc(this.firestore,'Appointments',id);
+      return setDoc(docRef,status,{merge: true});
+        }
 
 }

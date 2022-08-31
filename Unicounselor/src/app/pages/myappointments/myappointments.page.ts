@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { AppointmentsService } from 'src/app/apis/appointments.service';
+import { AppointmentsService, Status, Statusstudent } from 'src/app/apis/appointments.service';
 import { collection, query, where, getDocs } from 'firebase/firestore';
 import {Firestore} from '@angular/fire/firestore';
-import { ModalController, NavParams } from '@ionic/angular';
+import { AlertController, LoadingController, ModalController, NavParams, ToastController } from '@ionic/angular';
 import { ModalPage } from '../modal/modal.page';
 import { AuthService } from 'src/app/apis/auth.service';
 import { ActivatedRoute } from '@angular/router';
@@ -18,9 +18,15 @@ export class MyappointmentsPage implements OnInit {
   username = null;
   appointments =[];
   noappointments= 0 ;
+  appointmentsids =[];
+  status: Statusstudent;
 
 
-  constructor(private authService: AuthService, private firestore: Firestore, private activatedRoute: ActivatedRoute) { }
+  constructor(private firestore: Firestore,
+    private activatedRoute: ActivatedRoute,
+    private alertController: AlertController , private authService: AuthService,
+    private appointmentService: AppointmentsService , private loadingController: LoadingController,
+     private toastController: ToastController) { }
 async  ngOnInit() {
 this.username = this.activatedRoute.snapshot.paramMap.get('myusername');
 
@@ -37,6 +43,10 @@ this.username = this.activatedRoute.snapshot.paramMap.get('myusername');
     // doc.data() is never undefined for query doc snapshots
     // console.log(doc.id, ' =>' , doc.data());
     const obj = JSON.parse(JSON.stringify(doc.data()));
+    const obj1 = JSON.parse(JSON.stringify(doc.id));
+    // obj.id = doc.id;
+    //obj.eventId = doc.id;
+  this.appointmentsids.push(obj1);
     // obj.id = doc.id;
     //obj.eventId = doc.id;
   this.appointments.push(obj);
@@ -45,4 +55,54 @@ this.username = this.activatedRoute.snapshot.paramMap.get('myusername');
 
 
 }
+//Alert and function when cancelled
+async presentAlert(i: any) {
+  const alert = await this.alertController.create({
+    header: 'Cancel',
+    cssClass: 'app-alert',
+    message:'Please confirm your cancellation',
+    inputs: [
+      {
+        type: 'textarea',
+        name: 'msg',
+        placeholder: 'Enter your message',
+      },
+    ],
+    buttons: [
+      { text: 'Confirm', handler: (res)=>{
+        this.cancel(i,res.msg);
+      }
+
+      },
+      {
+        text: 'Cancel'
+      }
+
+    ],
+  });
+
+  await alert.present();
+
+
+}
+async cancel(appointmentid: any, msg: any){
+  const loading = await this.loadingController.create({
+    message: `Cancelling appointment`,
+  });
+  await loading.present();
+  const id = this.appointmentsids[appointmentid];
+  this.status= {
+   message: msg,
+   status: 'Cancelled'
+  };
+   this.appointmentService.setStatusstudent( this.status, id);
+   const toast = await this.toastController.create({
+    message: 'Appointment Successfully cancelled',
+    duration: 4000,
+  });
+  loading.dismiss();
+  await toast.present();
+
+// }
+ }
 }

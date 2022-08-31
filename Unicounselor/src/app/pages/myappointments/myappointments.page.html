@@ -29,6 +29,10 @@
       Staus: <span id="status">{{appointment.status}}</span>
       <br>
       {{appointment.messagec}}
+
+    </div>
+    <div  *ngIf="appointment.status==='Approved'">
+    <ion-button size= "small" class="cancel"  (click)="presentAlert(i)">Cancel</ion-button>
     </div>
     </ion-card-content>
 
