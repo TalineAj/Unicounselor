@@ -81,12 +81,6 @@ else{
       if(user){
         //Will be used later to redirect to appropriate home
                  //to be changed
-    this.userInfo = form.value;
-    //to avoid storing password not working
-    // this.userInfo.name = form.value.name;
-    // this.userInfo.email = form.value.email;
-    // this.userInfo.password = null; //temporary fix
-
 this.userInfo ={
 firstname: form.value.firstname,
 lastname: form.value.lastname,
