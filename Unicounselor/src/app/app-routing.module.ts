@@ -75,7 +75,11 @@ const routes: Routes = [
   {
     path: 'myappointmentsc',
     loadChildren: () => import('./pages/myappointmentsc/myappointmentsc.module').then( m => m.MyappointmentscPageModule)
+  },  {
+    path: 'calender',
+    loadChildren: () => import('./pages/calender/calender.module').then( m => m.CalenderPageModule)
   }
+
 ];
 
 @NgModule({

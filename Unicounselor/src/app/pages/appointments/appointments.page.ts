@@ -34,7 +34,7 @@ export class AppointmentsPage implements OnInit {
     const obj = JSON.parse(JSON.stringify(doc.data()));
     // obj.id = doc.id;
     //obj.eventId = doc.id;
-  this.counselors.push(obj);
+    this.counselors.push(obj);
 
   });
   //get the student

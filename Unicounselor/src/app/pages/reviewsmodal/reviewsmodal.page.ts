@@ -47,20 +47,6 @@ export class ReviewsmodalPage implements OnInit {
     this.fetchedreviews.push(obj);
     });
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
   }
   closeModal(){
     this.modalController.dismiss();

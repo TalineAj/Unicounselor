@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouteReuseStrategy } from '@angular/router';
+import { NgCalendarModule  } from 'ionic2-calendar';
 
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 
@@ -19,10 +20,12 @@ import { provideRemoteConfig,getRemoteConfig } from '@angular/fire/remote-config
 import { provideStorage,getStorage } from '@angular/fire/storage';
 import { ModalPageModule } from './pages/modal/modal.module';
 import { ReviewsmodalPageModule } from './pages/reviewsmodal/reviewsmodal.module';
+import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 
 @NgModule({
   declarations: [AppComponent],
-  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule,ReviewsmodalPageModule,ModalPageModule,
+  imports: [BrowserModule, AngularFirestoreModule ,
+    NgCalendarModule,IonicModule.forRoot(), AppRoutingModule,ReviewsmodalPageModule,ModalPageModule,
     provideFirebaseApp(() => initializeApp(environment.firebase)),
      provideAnalytics(() => getAnalytics()),
       provideAuth(() => getAuth()),
