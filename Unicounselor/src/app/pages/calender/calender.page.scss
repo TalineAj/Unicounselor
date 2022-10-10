@@ -1,0 +1,30 @@
+ion-content {
+    // display: flex !important; 
+//--ion-background-color: green;
+--ion-background-color: white !important;
+}
+ion-toolbar{
+    --background: white !important;
+    color: black !important;
+
+}
+:host ::ng-deep{
+    .monthview-container{
+        height:auto !important;
+        background-color:white !important;
+    }
+
+    ion-slides{
+        // height: 200px !important;
+        background-color:white !important;
+        color: black !important;
+
+    }
+}
+form{
+    // background-color: white !important;
+    // color: black;
+}
+#add{
+    margin-left: 5%;
+}

@@ -35,6 +35,7 @@ this.username = this.activatedRoute.snapshot.paramMap.get('myusername');
   //to only get counselors
   const q = query(appointmentsRef, where('student', '==', this.username));
   const querySnapshot = await getDocs(q);
+  console.log(this.username);
   console.log(this.noappointments);
   querySnapshot.forEach((doc) => {
     //if the query does not return anything it doesnt enter here thats why we set it inside to 1

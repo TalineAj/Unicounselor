@@ -31,6 +31,7 @@ username: any;
   }
   }
 pushPage(){
+
   this.nav.navigateForward(`/myappointments/${this.username}`);
 }
 

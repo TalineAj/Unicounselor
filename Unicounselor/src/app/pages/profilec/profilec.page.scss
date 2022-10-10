@@ -24,7 +24,7 @@ ion-content {
   
   #div1{
     width: auto;
-    height: 30%;
+    height: 13%;
     display: flex;
     flex-direction: column;
     margin-bottom: 10%;
@@ -35,7 +35,7 @@ ion-content {
   #profile{
   margin-top: 5px;
   width: 35%;
-  height: 50%;
+  height: 60%;
   display: flex;
   align-items: center;
   text-align: center;
@@ -44,13 +44,12 @@ ion-content {
   #profile1{
     margin-left: 85%;
     margin-top: 5px;
-    color:#4CBB17;
+     color:#4CBB17;
   }
   
   .options{
-  // background-color: red;
   border-radius: 30px 30px 0 0;
-  height: 54%;
+  height: 70%;
   background-color: #8af459ed;
   background-color: #4CBB17;
   }
