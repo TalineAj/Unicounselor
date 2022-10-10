@@ -5,6 +5,7 @@ import { CalenderAuthService, Event } from 'src/app/apis/calender-auth.service';
 import { NgForm } from '@angular/forms';
 import { collection, query, where, getDocs } from 'firebase/firestore';
 import { AuthService } from 'src/app/apis/auth.service';
+import { LoadingController, ToastController } from '@ionic/angular';
 
 @Component({
   selector: 'app-calender',
@@ -21,15 +22,36 @@ calendar = {
     currentDate: new Date(),
   };
   selectedDate = new Date();
-  constructor(private firestore: Firestore, private authService: AuthService, private calenderService: CalenderAuthService) {
+  constructor( private toastController: ToastController, private loadingController: LoadingController, 
+    private firestore: Firestore, private authService: AuthService, private calenderService: CalenderAuthService) {
 
 
 
   }
-  addNewEvent(form: NgForm) {
+ async addNewEvent(form: NgForm) {
 //Since the selectedDate chooses a random time
 //I let the user choose a date using a form and then created a new date with the selected date from calender and time from form
-    const start = new Date(this.selectedDate
+
+const loading = await this.loadingController.create({
+  message: `Adding event`,
+});
+await loading.present();
+//Validation (no need for validation for selecteddate since it is never empty, it takes the date of the current day)
+if(form.value.starttime==='' || form.value.endtime===''){
+  console.log('entered'
+  );
+const toast1 = await this.toastController.create({
+message: 'Please enter the start and end time',
+duration: 4000,
+});
+loading.dismiss();
+await toast1.present();
+return;
+}
+
+
+//preparing the data
+const start = new Date(this.selectedDate
       .getFullYear(), this.selectedDate
       .getMonth(), this.selectedDate
       .getDate(),form.value.starttime.split(':')[0],form.value.starttime.split(':')[1]);
@@ -38,16 +60,29 @@ calendar = {
       .getFullYear(), this.selectedDate
       .getMonth(), this.selectedDate
       .getDate(),form.value.endtime.split(':')[0],form.value.endtime.split(':')[1]);
-
+//creating the event
     const event = {
       title: form.value.title,
       startTime: start,
       endTime: end,
       allDay: false,
       counselor: this.username,
+      //counselor can be null but wont be since only logged in users can access the page
     };
-    this.calenderService.addEvent(event);
+    await this.calenderService.addEvent(event);
+    await loading.dismiss();
+
+    const toast = await this.toastController.create({
+      message: 'Event Successfully submitted',
+      duration: 4000,
+    });
+    loading.dismiss();
+    form.reset();
+    await toast.present();
   }
+
+
+
 
   onViewTitleChanged(title) {
     console.log(title);
@@ -108,7 +143,6 @@ querySnapshot.forEach((doc) => {
 
   events.push(event);
   this.eventSource = events;
-  console.log(this.eventSource)
 });
 //   this.calenderService.getEvent().subscribe( res => {
 //       this.eventSource = res;
