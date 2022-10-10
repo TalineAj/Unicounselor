@@ -7,6 +7,7 @@ import { AlertController, LoadingController, ModalController, NavParams, ToastCo
 import { ModalPage } from '../modal/modal.page';
 import { ActivatedRoute } from '@angular/router';
 import { NgForm } from '@angular/forms';
+import { CalenderAuthService } from 'src/app/apis/calender-auth.service';
 
 @Component({
   selector: 'app-appointmentsc',
@@ -24,7 +25,7 @@ export class AppointmentscPage implements OnInit {
 
   constructor(private alertController: AlertController , private authService: AuthService, private firestore: Firestore,
     private appointmentService: AppointmentsService , private loadingController: LoadingController,
-     private toastController: ToastController) { }
+     private toastController: ToastController,  private calenderService: CalenderAuthService) { }
 
     ngOnInit() {
 
@@ -51,17 +52,15 @@ export class AppointmentscPage implements OnInit {
       //if the query does not return anything it doesnt enter here thats why we set it inside to 1
       this.noappointments = 1 ;
       // doc.data() is never undefined for query doc snapshots
-      // console.log(doc.id, ' =>' , doc.data());
       const obj = JSON.parse(JSON.stringify(doc.data()));
       const obj1 = JSON.parse(JSON.stringify(doc.id));
-      // obj.id = doc.id;
-      //obj.eventId = doc.id;
     this.appointmentsids.push(obj1);
     this.appointments.push(obj);
 
 
-
   });
+
+
   }
 
 
@@ -125,9 +124,50 @@ async approve(appointmentid: any, msg: any){
   });
   loading.dismiss();
   await toast.present();
-
+  //To add the confirmed appointment to the
+  //couselor's calender
+  this.addNewEvent(appointmentid);
 // }
  }
+async addNewEvent(appointmentid: any){
+const element = this.appointments[appointmentid]; //Getting the appointment
+
+//Transorming the datetime local format to new Date format since this is what is stored in calender
+const year = element.date.split('-')[0];
+const month = (element.date.split('-')[1])-1;//FIX THIS ISSUE THERE SHOULD BE ANOTHER FIX
+const day =(element.date.split('-')[2]).split('T')[0];
+const hours = (((element.date.split('-')[2]).split('T')[1]).split(':')[0]);
+const minutes = ((element.date.split('-')[2]).split('T')[1]).split(':')[1];
+const date = new Date(year,month,day,hours,minutes);
+const end = new Date( year,month,day,hours,minutes+30);
+//Assuming each appointment is 60 minutes
+const event = {
+  title: 'Appointment with'+' '+ element.student,
+  startTime: date,
+  endTime: end,
+  allDay: false,
+  counselor: this.username,
+};
+await this.calenderService.addEvent(event);
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
  //Alert and function when declined
 
  async presentAlert1(i: any) {

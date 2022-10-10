@@ -55,6 +55,7 @@ this.appointment = {
   status: 'Pending',
 };
 
+
   const appointmentbooked = await this.appointmentService.addAppointment(this.appointment);
   await loading.dismiss();
 
