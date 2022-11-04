@@ -25,8 +25,11 @@ export class AppointmentscPage implements OnInit {
   status: Status;
   conflict: boolean[] = [];
    events = [];
+   eventsids = [];
    conflictid: number[] = [];
-
+  isAppointment: boolean;
+  conflictingEvent: any;
+  conflictingEventid: any;
 
   constructor(private alertController: AlertController , private authService: AuthService, private firestore: Firestore,
     private appointmentService: AppointmentsService , private loadingController: LoadingController,
@@ -103,6 +106,7 @@ async presentAlert(i: any) {
 }
 async approve(appointmentid: any, msg: any){
   if(this.conflict[appointmentid]===true){
+  this.resolution(this.isAppointment,this.conflictingEvent,this.conflictingEventid);
 //an appointment or event is already booked at that time , so it must be unbooked
 
 //delete event from calender
@@ -228,18 +232,17 @@ await loading.present();
 //Getting the calender appointments of the counselor
 
 async getEvents() {
-  //storing  the events of that particular logged in counselor in the events array to display on their calender
   const counselorRef = collection(this.firestore, 'Calender');
   const q = query(counselorRef, where('counselor', '==', this.username));
   const querySnapshot = await getDocs(q);
   querySnapshot.forEach((doc) => {
-    // doc.data() is never undefined for query doc snapshots
-    // console.log(doc.id, ' =>' , doc.data());
     const event = JSON.parse(JSON.stringify(doc.data()));
     event.id = doc.id;
+    const eventid = JSON.parse(JSON.stringify(doc.id));
     event.startTime = new Date(event.startTime.seconds * 1000);
     event.endTime = new Date(event.endTime.seconds * 1000);
    this.events.push(event);
+   this.eventsids.push(eventid);
   });
   console.log(this.events);
   console.log(this.appointments);
@@ -250,10 +253,20 @@ async getEvents() {
   for (let i = 0; i <this.appointments.length; i++) {
     // eslint-disable-next-line @typescript-eslint/prefer-for-of
     for (let j = 0; j <this.events.length; j++) {
+      //looping in the requested appointments array and compareing each element with the event array events to determine any conflict
       if((this.events[j].startTime).getTime()===(new Date (this.appointments[i].date)).getTime())
     {
+      //storing true in the conflict array at i , the index of the appointments array
         this.conflict[i]= true;
-        this.conflictid[i]= this.events[j].id;
+        this.conflictid[i]= this.events[j];
+        this.conflictingEvent = this.events[j];
+        this.conflictingEventid = this.eventsids[j];
+        if (this.conflictingEvent.appointmentId === undefined){
+          //Checking if the conflicting event is an event or an appointment event
+          this.isAppointment= false;
+        }else{
+          this.isAppointment = true;
+        }
         break;
     }
     else{
@@ -268,13 +281,51 @@ async getEvents() {
 }
 
 
-public resolution(){
- // eslint-disable-next-line @typescript-eslint/prefer-for-of
- for(let i = 0; i <this.conflictid.length; i++){
-
+public resolution(isAppointment: boolean, event: any,eventid: any){//could have only used one param but its more tidy this way
+if(isAppointment=== true){
+  //Delete event and cancel appointment
+  this.deleteAppintmentEvent(event.appointmentId);
+  //cancelling the conflicting appointment
+  this.cancel(event.appointmentId);
+}
+else{
+  //Delete event
+  this.deleteEvent(event,eventid);
+}
 }
 
-}
+//Delete the conflicting appointment event
+async deleteAppintmentEvent(id: number){
+  console.log('Deleting conflicting appointment event');
+
+  //Getting the event we want to delete by looking at the appointmentid of that event if it matches the cancelled appointment id
+   const calenderRef =collection(this.firestore,'Calender');
+   const q = query(calenderRef, where('appointmentId', '==', id));
+   const querySnapshot = await getDocs(q);
+   querySnapshot.forEach((doc) => {
+     const obj = JSON.parse(JSON.stringify(doc.data()));//this returns the appointment event
+     //doc.id returns the id of the event
+     this.calenderService.deleteEvent(obj,doc.id);//deletes that appointment event
+ });
+ }
+
+ //Cancelling the conflicing appointment
+ async cancel(appointmentid: any){
+  this.status = {
+   messagec: 'Conflicts with an appointment I have',
+   status: 'Cancelled'
+  };
+   this.appointmentService.setStatus( this.status, appointmentid);
+
+ }
+
+
+
+
+ //Deleting the conflicting event
+ async deleteEvent( event: any , id: any){
+     this.calenderService.deleteEvent(event,id);//deletes that appointment event
+ }
 
 
 
