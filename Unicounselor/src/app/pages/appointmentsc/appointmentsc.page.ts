@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ɵɵsetComponentScope } from '@angular/core';
 import { AuthService } from 'src/app/apis/auth.service';
 import { Appointment, AppointmentsService, Status } from 'src/app/apis/appointments.service';
 import { collection, query, where, getDocs } from 'firebase/firestore';
@@ -8,6 +8,7 @@ import { ModalPage } from '../modal/modal.page';
 import { ActivatedRoute } from '@angular/router';
 import { NgForm } from '@angular/forms';
 import { CalenderAuthService } from 'src/app/apis/calender-auth.service';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-appointmentsc',
@@ -22,6 +23,10 @@ export class AppointmentscPage implements OnInit {
   appointments =[];
   appointmentsids =[];
   status: Status;
+  conflict: boolean[] = [];
+   events = [];
+   conflictid: number[] = [];
+
 
   constructor(private alertController: AlertController , private authService: AuthService, private firestore: Firestore,
     private appointmentService: AppointmentsService , private loadingController: LoadingController,
@@ -37,6 +42,7 @@ export class AppointmentscPage implements OnInit {
         this.username = this.user.firstname + ' '+ this.user.lastname;
         console.log(this.username);
         this.getMeetings();
+        this.getEvents();
       });
     }else{
      console.log('no user signed in');
@@ -96,23 +102,17 @@ async presentAlert(i: any) {
 
 }
 async approve(appointmentid: any, msg: any){
+  if(this.conflict[appointmentid]===true){
+//an appointment or event is already booked at that time , so it must be unbooked
+
+//delete event from calender
+//delete appointment from appointments
+  }
   const loading = await this.loadingController.create({
     message: `Approving appointment`,
   });
   await loading.present();
   const id = this.appointmentsids[appointmentid];
-  // console.log(this.appointments[appointmentid].status);
-  // console.log(this.appointments[appointmentid].status!=='pending');
-  // if(this.appointments[appointmentid].status!=='pending'){
-    // const toast1 = await this.toastController.create({
-    // message: 'Please select a date ',
-    // duration: 4000,
-    // });
-    // loading.dismiss();
-    // await toast1.present();
-    // return;
-    // console.log('erreurr');
-    // }else {
   this.status = {
    messagec: msg,
    status: 'Approved'
@@ -129,9 +129,12 @@ async approve(appointmentid: any, msg: any){
   this.addNewEvent(appointmentid);
 // }
  }
+
+
+
 async addNewEvent(appointmentid: any){
 const element = this.appointments[appointmentid]; //Getting the appointment
-
+console.log(new Date(element.date).toString());
 //Transorming the datetime local format to new Date format since this is what is stored in calender
 const year = element.date.split('-')[0];
 const month = (element.date.split('-')[1])-1;//FIX THIS ISSUE THERE SHOULD BE ANOTHER FIX
@@ -140,6 +143,7 @@ const hours = (((element.date.split('-')[2]).split('T')[1]).split(':')[0]);
 const minutes = ((element.date.split('-')[2]).split('T')[1]).split(':')[1];
 const date = new Date(year,month,day,hours,minutes);
 const end = new Date( year,month,day,hours,minutes+30);
+
 //Assuming each appointment is 60 minutes
 const event = {
   title: 'Appointment with'+' '+ element.student,
@@ -147,6 +151,7 @@ const event = {
   endTime: end,
   allDay: false,
   counselor: this.username,
+  appointmentId: this.appointmentsids[appointmentid],
 };
 await this.calenderService.addEvent(event);
 
@@ -217,6 +222,67 @@ await loading.present();
   loading.dismiss();
   await toast.present();
  }
+
+
+
+//Getting the calender appointments of the counselor
+
+async getEvents() {
+  //storing  the events of that particular logged in counselor in the events array to display on their calender
+  const counselorRef = collection(this.firestore, 'Calender');
+  const q = query(counselorRef, where('counselor', '==', this.username));
+  const querySnapshot = await getDocs(q);
+  querySnapshot.forEach((doc) => {
+    // doc.data() is never undefined for query doc snapshots
+    // console.log(doc.id, ' =>' , doc.data());
+    const event = JSON.parse(JSON.stringify(doc.data()));
+    event.id = doc.id;
+    event.startTime = new Date(event.startTime.seconds * 1000);
+    event.endTime = new Date(event.endTime.seconds * 1000);
+   this.events.push(event);
+  });
+  console.log(this.events);
+  console.log(this.appointments);
+
+
+  console.log(this.conflict);
+  // eslint-disable-next-line @typescript-eslint/prefer-for-of
+  for (let i = 0; i <this.appointments.length; i++) {
+    // eslint-disable-next-line @typescript-eslint/prefer-for-of
+    for (let j = 0; j <this.events.length; j++) {
+      if((this.events[j].startTime).getTime()===(new Date (this.appointments[i].date)).getTime())
+    {
+        this.conflict[i]= true;
+        this.conflictid[i]= this.events[j].id;
+        break;
+    }
+    else{
+      this.conflict[i]= false;
+    }
+    }
+  }
+
+
+
+
+}
+
+
+public resolution(){
+ // eslint-disable-next-line @typescript-eslint/prefer-for-of
+ for(let i = 0; i <this.conflictid.length; i++){
+
+}
+
+}
+
+
+
+
+
+
+
+
 
 
 

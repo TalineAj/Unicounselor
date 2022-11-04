@@ -28,6 +28,10 @@
     <br> 
     {{appoinment.message}}
     </ion-card-content>
+    <div class="conflict" *ngIf="conflict[i]===true" > <!--change style-->
+    <span style="color: rgba(187, 187, 32, 0.954);"> Warning:</span>  Time conflict
+    </div>
+  
   <!-- </div> -->
   <div id="buttons">
     <ion-button size= "small" class="approve"  (click)="presentAlert(i)">Approve</ion-button>

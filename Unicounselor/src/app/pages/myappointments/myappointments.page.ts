@@ -6,6 +6,7 @@ import { AlertController, LoadingController, ModalController, NavParams, ToastCo
 import { ModalPage } from '../modal/modal.page';
 import { AuthService } from 'src/app/apis/auth.service';
 import { ActivatedRoute } from '@angular/router';
+import { CalenderAuthService } from 'src/app/apis/calender-auth.service';
 
 @Component({
   selector: 'app-myappointments',
@@ -25,7 +26,8 @@ export class MyappointmentsPage implements OnInit {
   constructor(private firestore: Firestore,
     private activatedRoute: ActivatedRoute,
     private alertController: AlertController , private authService: AuthService,
-    private appointmentService: AppointmentsService , private loadingController: LoadingController,
+    private appointmentService: AppointmentsService ,  private calenderService: CalenderAuthService,
+    private loadingController: LoadingController,
      private toastController: ToastController) { }
 async  ngOnInit() {
 this.username = this.activatedRoute.snapshot.paramMap.get('myusername');
@@ -103,7 +105,23 @@ async cancel(appointmentid: any, msg: any){
   });
   loading.dismiss();
   await toast.present();
-
-// }
+  this.deleteEvent(this.appointmentsids[appointmentid]);
  }
+
+ async deleteEvent(id: number){
+  //Getting the event we want to delete by looking at the appointmentid of that event if it matches the cancelled appointment id
+   const calenderRef =collection(this.firestore,'Calender');
+   const q = query(calenderRef, where('appointmentId', '==', id));
+   const querySnapshot = await getDocs(q);
+   querySnapshot.forEach((doc) => {
+     const obj = JSON.parse(JSON.stringify(doc.data()));//this returns the appointment event
+     //doc.id returns the id of the event
+     this.calenderService.deleteEvent(obj,doc.id);//deletes that appointment event
+ });
+ }
+
+
+
+
+
 }

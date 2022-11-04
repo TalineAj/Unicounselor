@@ -4,6 +4,7 @@ import { Appointment, AppointmentsService, Status } from 'src/app/apis/appointme
 import { collection, query, where, getDocs } from 'firebase/firestore';
 import {Firestore} from '@angular/fire/firestore';
 import { AlertController, LoadingController, ToastController } from '@ionic/angular';
+import { CalenderAuthService } from 'src/app/apis/calender-auth.service';
 
 @Component({
   selector: 'app-myappointmentsc',
@@ -21,6 +22,7 @@ export class MyappointmentscPage implements OnInit {
 
   constructor(private alertController: AlertController , private authService: AuthService, private firestore: Firestore,
     private appointmentService: AppointmentsService , private loadingController: LoadingController,
+    private calenderService: CalenderAuthService,
      private toastController: ToastController) { }
 
     ngOnInit() {
@@ -105,7 +107,22 @@ async cancel(appointmentid: any, msg: any){
   });
   loading.dismiss();
   await toast.present();
-
+  this.deleteEvent(this.appointmentsids[appointmentid]);
 // }
  }
+async deleteEvent(id: number){
+ //Getting the event we want to delete by looking at the appointmentid of that event if it matches the cancelled appointment id
+  const calenderRef =collection(this.firestore,'Calender');
+  const q = query(calenderRef, where('appointmentId', '==', id));
+  const querySnapshot = await getDocs(q);
+  querySnapshot.forEach((doc) => {
+    const obj = JSON.parse(JSON.stringify(doc.data()));//this returns the appointment event
+    //doc.id returns the id of the event
+    this.calenderService.deleteEvent(obj,doc.id);//deletes that appointment event
+
+});
+}
+
+
+
 }

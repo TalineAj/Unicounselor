@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {Firestore} from '@angular/fire/firestore';
+import {deleteDoc, Firestore} from '@angular/fire/firestore';
 import {collection, limit , query, orderBy} from '@firebase/firestore';
 import {addDoc, collectionData, doc, docData, getDoc, getDocs , setDoc} from '@angular/fire/firestore';
 
@@ -51,4 +51,8 @@ export class CalenderAuthService {
         const eventRef =collection(this.firestore,'Calender');
         return collectionData(eventRef);
       }
+      deleteEvent(event: Event, id: any){
+        const eventRef =doc(this.firestore,'Calender', id);
+        return deleteDoc(eventRef);
+         }
 }

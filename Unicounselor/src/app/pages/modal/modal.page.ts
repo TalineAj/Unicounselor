@@ -33,6 +33,7 @@ closeModal(){
   this.modalController.dismiss();
 }
 async onSubmit(form: NgForm) {
+  console.log(form);
   const loading = await this.loadingController.create({
     message: `Requesting appointment`,
   });
@@ -83,4 +84,18 @@ this.appointment = {
 //           await alert.present();
 //         }
   }
+
+  test = (dateString: string) => {
+    const date = new Date('2022-10-13T02:00');
+    const tempdate  = new Date(dateString);
+    /**
+     * Date will be enabled if it is not
+     * Sunday or Saturday
+     */
+    console.log(tempdate);
+    console.log('dateeeeeeeeeeeeeee'+date);
+    console.log(tempdate !== date);
+    return tempdate !== date;
+  };
+
 }

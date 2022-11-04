@@ -31,12 +31,18 @@ Book a meeting and await the confirmation from the counselor!
 
 
   <ion-label>Pick a date and a time:</ion-label>
-  <ion-input ngModel placeholder="" type="datetime-local"
-  name="date" color="primary" > </ion-input>
-
+  <!-- <ion-datetime ngModel placeholder="" type="datetime-local"
+  name="date" color="primary" minuteValues="0,30" [isDateEnabled]="test"> </ion-datetime>
+  
 
   <ion-textarea ngModel placeholder="Enter a message..." type="textarea"
-  name="message" id="message" required="true"></ion-textarea>
+  name="message" id="message" required="true"></ion-textarea> -->
+
+  
+  <ion-input ngModel placeholder="" type="datetime-local"
+  name="date"> </ion-input>
+  <ion-textarea ngModel placeholder="Enter a message..." type="textarea"
+  name="message"  required="true"></ion-textarea>
 
   <ion-button type="submit" name="submit" id="book">Book</ion-button>
 
