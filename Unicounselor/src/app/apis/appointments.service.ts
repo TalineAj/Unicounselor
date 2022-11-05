@@ -9,6 +9,7 @@ counselor: string;
 date: any;
 message: string;
 status: string;
+profileImage: any;
 }
 export interface Status{
   messagec: string;

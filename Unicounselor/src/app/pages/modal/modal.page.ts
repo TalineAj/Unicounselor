@@ -19,6 +19,7 @@ export class ModalPage implements OnInit {
   field: any;
   appointment: Appointment;
   studentname: any;
+  image: any;
   constructor(private navParams: NavParams, private modalController: ModalController, private alertController: AlertController,
     private loadingController: LoadingController,private route: Router,
     private toastController: ToastController, private appointmentService: AppointmentsService) { }
@@ -28,6 +29,7 @@ export class ModalPage implements OnInit {
   this.lastname = this.navParams.get('lname');
   this.field = this.navParams.get('field');
   this.studentname = this.navParams.get('student');
+  this.image = this.navParams.get('image');
   }
 closeModal(){
   this.modalController.dismiss();
@@ -54,6 +56,7 @@ this.appointment = {
   counselor: this.firstname + ' '+ this.lastname,
   message: form.value.message,
   status: 'Pending',
+  profileImage: this.image,
 };
 
 

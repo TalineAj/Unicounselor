@@ -58,7 +58,8 @@ componentProps:{
   fname : this.counselors[i].firstname,
   lname: this.counselors[i].lastname,
   field: this.counselors[i].field,
-  student: this.student
+  student: this.student,
+  image: this.user.imageUrl,
 
 }
 });

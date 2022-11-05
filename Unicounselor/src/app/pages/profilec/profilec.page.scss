@@ -65,3 +65,15 @@ ion-content {
   color: white;
   }
   
+//photo css
+
+ion-avatar{
+  width:  128px;
+  height:  128px;
+}
+.preview{
+  margin-top: 10px;
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: center;
+}

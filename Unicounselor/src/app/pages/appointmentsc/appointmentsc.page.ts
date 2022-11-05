@@ -30,7 +30,7 @@ export class AppointmentscPage implements OnInit {
   isAppointment: boolean;
   conflictingEvent: any;
   conflictingEventid: any;
-
+  images = [];
   constructor(private alertController: AlertController , private authService: AuthService, private firestore: Firestore,
     private appointmentService: AppointmentsService , private loadingController: LoadingController,
      private toastController: ToastController,  private calenderService: CalenderAuthService) { }
@@ -65,8 +65,7 @@ export class AppointmentscPage implements OnInit {
       const obj1 = JSON.parse(JSON.stringify(doc.id));
     this.appointmentsids.push(obj1);
     this.appointments.push(obj);
-
-
+    this.images.push(obj.profileImage);
   });
 
 
