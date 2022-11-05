@@ -7,9 +7,26 @@
 </ion-header>
 
 <ion-content>
-  <div id="div1">
+  <div id="div1" *ngIf ="!imagePresent">
     <ion-icon name="person-outline" size="large" id="profile"> </ion-icon>
+
   </div>
+
+  <div class="preview">
+  <ion-avatar (click)="changeImage()">
+  <img *ngIf = "user?.imageUrl" [src]="user.imageUrl" />
+  <!-- <ng-template *ngIf ="!user?.imageUrl">
+    <div class = "fallback">
+      <p style="background-color: red;">Select photo</p>
+      </div>
+    </ng-template> -->
+    </ion-avatar>
+  </div>
+
+
+
+
+
 
   <div class="options">
     <div>
