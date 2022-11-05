@@ -10,6 +10,7 @@ date: any;
 message: string;
 status: string;
 profileImage: any;
+profileImagec: any;
 }
 export interface Status{
   messagec: string;

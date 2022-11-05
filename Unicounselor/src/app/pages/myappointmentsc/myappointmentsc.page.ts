@@ -75,8 +75,8 @@ export class MyappointmentscPage implements OnInit {
       //obj.eventId = doc.id;
       this.appointmentsids.push(obj1);
       this.appointments.push(obj);
-      this.images.push(obj.profileImage);
-      console.log(this.images);
+    //  this.images.push(obj.profileImage);
+      console.log(this.appointments);
      // console.log(this.appointments);
       //console.log(this.appointmentsids);
     });

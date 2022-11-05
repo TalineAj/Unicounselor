@@ -16,7 +16,6 @@ export class AppointmentsPage implements OnInit {
   student: any;
   id: any;
   user: any;
-
   counselors = [];
   nocounselors: any;
   constructor(private modalController: ModalController, private firestore: Firestore, private appointmentsService: AppointmentsService,
@@ -35,7 +34,7 @@ export class AppointmentsPage implements OnInit {
     // obj.id = doc.id;
     //obj.eventId = doc.id;
     this.counselors.push(obj);
-
+    console.log(this.counselors);
   });
   //get the student
   this.id =  this.authService.getCurrentUserId();
@@ -60,7 +59,7 @@ componentProps:{
   field: this.counselors[i].field,
   student: this.student,
   image: this.user.imageUrl,
-
+  counselorimage: this.counselors[i].imageUrl,
 }
 });
 modal.present();

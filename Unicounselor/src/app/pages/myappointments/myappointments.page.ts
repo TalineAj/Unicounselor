@@ -54,6 +54,7 @@ this.username = this.activatedRoute.snapshot.paramMap.get('myusername');
     //obj.eventId = doc.id;
   this.appointments.push(obj);
   console.log(this.appointments);
+  console.log(this.appointments[0].profileImage);
   });
 
 
