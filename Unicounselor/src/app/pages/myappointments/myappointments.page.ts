@@ -15,7 +15,6 @@ import { CalenderAuthService } from 'src/app/apis/calender-auth.service';
 })
 export class MyappointmentsPage implements OnInit {
   id: any;
-  user: any;
   username = null;
   appointments =[];
   noappointments= 0 ;
@@ -31,7 +30,6 @@ export class MyappointmentsPage implements OnInit {
      private toastController: ToastController) { }
 async  ngOnInit() {
 this.username = this.activatedRoute.snapshot.paramMap.get('myusername');
-
 
   const appointmentsRef =collection(this.firestore,'Appointments');
   //to only get counselors
