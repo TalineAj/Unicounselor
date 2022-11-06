@@ -3,7 +3,11 @@
   <ion-toolbar>
       <div id = "wrapper">
      <h5 id ="title"> Our counselors</h5>
-<ion-icon id ="profile" name="person-outline" [routerLink]="['/profile']" size="large"> </ion-icon>
+     <div  [routerLink]="['/profile']"  id = "profile1" *ngIf = "user?.imageUrl">
+      <img style="border-radius:50%; width: 40px; height: 37px; object-fit: cover;" id="profileimg" [src]="user.imageUrl" />
+     
+    </div>
+<!-- <ion-icon id ="profile" name="person-outline" [routerLink]="['/profile']" size="large"> </ion-icon> -->
 </div>  
   </ion-toolbar>
 </ion-header>
@@ -13,13 +17,14 @@
   
   <ion-card *ngFor="let counselor  of counselors; let i = index">
    <div id="bigdiv">
-    <div id="img1">
-      <img [src]="counselor.imageUrl" alt="">
+   
+  
+<div id = "img1container">
+    <div id="img1" >
+      <img *ngIf = "counselor?.imageUrl" [src]="counselor.imageUrl" alt="">
+      <!-- <ion-icon id= "no-photo" *ngIf ="counselor.imageUrl===undefined" name="person-outline" size="large"> </ion-icon> -->
     </div>
-    <!-- <div id="fullinfo"> -->
-    <!-- <div id="img">
-      
-    </div> -->
+  </div>
     <div id = "info">
     <ion-card-header>
       <ion-card-title> {{counselor.firstname}} {{counselor.lastname}}

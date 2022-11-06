@@ -7,14 +7,14 @@
 </ion-header>
 
 <ion-content>
-  <div id="div1" *ngIf ="!imagePresent">
+  <div id="div1" *ngIf ="!imagePresent" (click)="changeImage()">
     <ion-icon name="person-outline" size="large" id="profile"> </ion-icon>
 
   </div>
 
-  <div class="preview">
+  <div class="preview" *ngIf = "user?.imageUrl">
   <ion-avatar (click)="changeImage()">
-  <img *ngIf = "user?.imageUrl" [src]="user.imageUrl" />
+  <img [src]="user.imageUrl" />
     </ion-avatar>
   </div>
 

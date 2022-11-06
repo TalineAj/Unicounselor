@@ -53,28 +53,57 @@ ion-content {
   // background-position: 50% 10%;
   // background-size: cover;
 }
-#img1{
-width: 40%;
+img{
+
   //background-image: url('../../../assets/images/Dr2.png');
-  background-position: 50% 10%;
-  background-size: cover;
+ // background-position: 50% 10%;
+ // background-size: cover;
+  object-fit: cover;
+  // height: 70px;
+  //  width: 50%;
+
 }
+#img1{
+  width: 100%;
+  height: 85%;
+  // height: 180px;
+//background-color: #4CBB17;
+  // background-position: 50% 10%;
+  // background-size: cover;
+   position: relative;
+
+}
+#img1container{
+ // width: 50%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  // background-color: red;
+// position: relative;
+}
+// #no-photo{
+//   height: 50%;
+//   width: 50%;
+// }
 #bigdiv{
 display: flex;
+height: 320px;
 }
 #info
 {
   // height: 30%;
-  width:70%;
+  // width:70%;
   flex-direction: column;
-
+// background-color: orange;
+margin-bottom: 10px;
 }
 #fullinfo{
   height: 100%;
   width: 100%;
   margin-bottom: 5%;
   display: flex;
-  background-color: blue;
+  // background-color: blue;
 }
 #buttons{
   width: 100%;

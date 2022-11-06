@@ -1,7 +1,8 @@
 <ion-header class="ion-no-border">
   <ion-toolbar>
-    <div id = "profile1">
-      <ion-icon name="person-outline" [routerLink]="['/profile']" size="large"> </ion-icon>
+    <div  [routerLink]="['/profile']"  id = "profile1" *ngIf = "user?.imageUrl">
+      <img style="width: 100px; height: 37px; object-fit: cover;" id="profileimg" [src]="user.imageUrl" />
+     
     </div>
       </ion-toolbar>
 </ion-header>
@@ -12,9 +13,9 @@
 
   </div>
 
-  <div class="preview">
+  <div class="preview" *ngIf = "user?.imageUrl">
   <ion-avatar (click)="changeImage()">
-  <img *ngIf = "user?.imageUrl" [src]="user.imageUrl" />
+  <img  [src]="user.imageUrl" />
   <!-- <ng-template *ngIf ="!user?.imageUrl">
     <div class = "fallback">
       <p style="background-color: red;">Select photo</p>

@@ -80,7 +80,7 @@ export class RegisterPage implements OnInit {
     // loading.dismiss();
     else {
       const user = await this.authService.register(form.value);
-
+console.log(user);
       await loading.dismiss();
       if (user) {
         //Will be used later to redirect to appropriate home
@@ -93,6 +93,9 @@ export class RegisterPage implements OnInit {
         };
 
         this.userService.addUser(this.userInfo, user.user.uid);
+        // console.log('working till here');
+        this.authService.uploadDefaultImage();
+
         this.route.navigate(['/login']);
       } else {
         const alert = await this.alertController.create({
