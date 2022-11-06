@@ -18,15 +18,15 @@
     <form #f="ngForm" (ngSubmit)="onSubmit(f)">
       <ion-label id="fn">First name</ion-label>
       <ion-input ngModel placeholder="" type="text"
-      name="firstname" [value]="firstname" ></ion-input>
+      name="firstname" [value]="firstname" readonly ></ion-input>
   
       <ion-label>Last name</ion-label>
       <ion-input ngModel placeholder="" type="text"
-      name="lastname" [value]="lastname" ></ion-input>
+      name="lastname" [value]="lastname" readonly ></ion-input>
   
       
       <ion-label>Date of birth</ion-label>
-      <ion-input ngModel placeholder="" type="date"
+      <ion-input ngModel placeholder="" type="date" id="date"
       name="dateofbirth" [value]="dateofbirth" ></ion-input>
   
   
@@ -40,7 +40,8 @@
       </ion-select>
   
       
-
+      <ion-input ngModel placeholder="" type="hidden"
+      name="imageUrl" [value]="imageUrl" ></ion-input>
 
   
   

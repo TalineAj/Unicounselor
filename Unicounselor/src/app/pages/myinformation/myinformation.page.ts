@@ -17,6 +17,7 @@ export class MyinformationPage implements OnInit {
   dateofbirth= null;
   gender= null;
   userInfo: User;
+  imageUrl: any;
 
 
   constructor(private authService: AuthService,
@@ -34,6 +35,7 @@ if(this.id){
     this.lastname = this.user.lastname;
     this.dateofbirth = this.user.dateofbirth;
     this.gender = this.user.gender;
+    this.imageUrl = this.user.imageUrl;
   });
 }else{
  console.log('no user signed in');

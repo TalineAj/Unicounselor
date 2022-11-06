@@ -17,6 +17,7 @@ export class MyinformationcPage implements OnInit {
   field= null;
   gender= null;
   userInfo: User;
+  imageUrl: any;
 
 
   constructor(private authService: AuthService,
@@ -34,6 +35,8 @@ if(this.id){
     this.lastname = this.user.lastname;
     this.field = this.user.field;
     this.gender = this.user.gender;
+    this.imageUrl = this.user.imageUrl;
+
   });
 }else{
  console.log('no user signed in');
