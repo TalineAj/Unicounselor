@@ -8,6 +8,12 @@ export interface User {
   dateofbirth: any;
   gender: any;
 }
+export interface Counselor {
+  firstname: any;
+  lastname: any;
+  field: any;
+  gender: any;
+}
 export interface Sum {
   review: string;
   rating: number;

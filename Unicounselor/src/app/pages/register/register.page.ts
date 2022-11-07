@@ -9,7 +9,7 @@ import {
   ToastController,
 } from '@ionic/angular';
 import { Auth } from '@angular/fire/auth';
-import { UserService, User } from 'src/app/apis/user.service';
+import { UserService, User, Counselor } from 'src/app/apis/user.service';
 import * as internal from 'stream';
 
 @Component({
@@ -21,6 +21,7 @@ export class RegisterPage implements OnInit {
   userInfo: User;
   isStudent: any;
   displayDate: number;
+  counselorInfo: Counselor;
   constructor(
     private authService: AuthService,
     private userService: UserService,    private activatedRoute: ActivatedRoute,
@@ -54,12 +55,12 @@ export class RegisterPage implements OnInit {
       message: `Signing up`,
     });
     await loading.present();
-    //Making sure fields are not empty
+    //Making sure fields are not empty (common fields between both counselor and student)
     if (
       form.value.password === '' ||
       form.value.email === '' ||
       form.value.gender === '' ||
-      form.value.date === '' ||
+    //  form.value.date === '' ||
       form.value.lastname === '' ||
       form.value.firstname === ''
     ) {
@@ -71,8 +72,34 @@ export class RegisterPage implements OnInit {
       await toast.present();
       return;
     }
+    if(this.isStudent ==='true' && form.value.date ==='')
+    //specifically for students
+      {const toast = await this.toastController.create({
+        message: 'Please fill all fields',
+        duration: 3000,
+      });
+      loading.dismiss();
+      await toast.present();
+      return;
+
+        }
+
+    //spedifically for counselors
+    if(this.isStudent ==='false' &&  form.value.field ==='')
+    //specifically for students
+      {const toast = await this.toastController.create({
+        message: 'Please fill all fields',
+        duration: 3000,
+      });
+      loading.dismiss();
+      await toast.present();
+      return;
+        }
+
     //Making sure the email format is valid
-    if (!form.value.email.endsWith('@student.com')) {
+
+    //for students
+    if (this.isStudent ==='true' && !form.value.email.endsWith('@student.com')) {
       const toast = await this.toastController.create({
         message: 'The email should end with @student.com',
         duration: 4000,
@@ -81,6 +108,23 @@ export class RegisterPage implements OnInit {
       await toast.present();
       return;
     }
+
+    //for counselors
+    if (this.isStudent ==='false' && !form.value.email.endsWith('@uni.com')) {
+      const toast = await this.toastController.create({
+        message: 'The email should end with @uni.com',
+        duration: 4000,
+      });
+      loading.dismiss();
+      await toast.present();
+      return;
+    }
+
+
+
+
+
+
     // Checking if password has at least 3 characters at least 1 alphabet, 1 Number and 1 Special Character
     if (form.value.password.length < 5 || !this.check(form.value.password)) {
       const toast = await this.toastController.create({
@@ -93,22 +137,22 @@ export class RegisterPage implements OnInit {
       await toast.present();
       return;
     }
-    // loading.dismiss();
+
     else {
       const user = await this.authService.register(form.value);
 console.log(user);
       await loading.dismiss();
       if (user) {
-        //Will be used later to redirect to appropriate home
-        //to be changed
+        if(this.isStudent){
         this.userInfo = {
           firstname: form.value.firstname,
           lastname: form.value.lastname,
           dateofbirth: form.value.dateofbirth,
           gender: form.value.gender,
         };
-
         this.userService.addUser(this.userInfo, user.user.uid);
+      }
+
         // console.log('working till here');
         this.authService.uploadDefaultImage();
 
