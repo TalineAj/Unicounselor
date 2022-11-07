@@ -5,21 +5,25 @@ import { Router } from '@angular/router';
 import {
   AlertController,
   LoadingController,
+  NavController,
   ToastController,
 } from '@ionic/angular';
 import { Auth } from '@angular/fire/auth';
+import { timingSafeEqual } from 'crypto';
 @Component({
   selector: 'app-login',
   templateUrl: './login.page.html',
   styleUrls: ['./login.page.scss'],
 })
 export class LoginPage implements OnInit {
+  student: boolean;
   constructor(
     private authService: AuthService,
     private route: Router,
     private alertController: AlertController,
     private loadingController: LoadingController,
-    private toastController: ToastController
+    private toastController: ToastController,
+    private nav: NavController,
   ) {}
 
   async onSubmit(form: NgForm) {
@@ -57,7 +61,14 @@ export class LoginPage implements OnInit {
     }
   }
   ngOnInit() {}
-  redirect() {
-    this.route.navigate(['register']);
+  redirect(){
+    this.student = true;
+    this.nav.navigateForward(`/register?student=${this.student}`);
+
   }
+  redirectCounselor(){
+    this.student = false;
+    this.nav.navigateForward(`/register?student=${this.student}`);
+  }
+
 }

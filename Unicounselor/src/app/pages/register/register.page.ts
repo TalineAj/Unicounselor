@@ -2,7 +2,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/apis/auth.service';
 import { NgForm } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import {
   AlertController,
   LoadingController,
@@ -10,6 +10,7 @@ import {
 } from '@ionic/angular';
 import { Auth } from '@angular/fire/auth';
 import { UserService, User } from 'src/app/apis/user.service';
+import * as internal from 'stream';
 
 @Component({
   selector: 'app-register',
@@ -18,15 +19,30 @@ import { UserService, User } from 'src/app/apis/user.service';
 })
 export class RegisterPage implements OnInit {
   userInfo: User;
-
+  isStudent: any;
+  displayDate: number;
   constructor(
     private authService: AuthService,
-    private userService: UserService,
+    private userService: UserService,    private activatedRoute: ActivatedRoute,
     private route: Router,
     private alertController: AlertController,
     private loadingController: LoadingController,
     private toastController: ToastController
-  ) {}
+  ) {
+  //  Checking if this route was accesed by student and or counselors to customize the page and code accordingly
+    this.activatedRoute.queryParamMap.subscribe(params => {
+      this.isStudent = params.get('student');
+      console.log(this.isStudent); 
+      if(this.isStudent==='true'){
+        this.displayDate =1;
+      }else{
+        this.displayDate = 0;
+      }
+      console.log(this.displayDate);
+    });
+ 
+    
+  }
 
   //regex to check password
   check = (password) =>

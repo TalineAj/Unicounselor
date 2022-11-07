@@ -9,7 +9,7 @@
 
 <ion-content>
   <div id="div1" *ngIf ="!imagePresent">
-    <ion-icon name="person-outline" size="large" id="profile"> </ion-icon>
+    <ion-icon (click)="changeImage()" name="person-outline" size="large" id="profile"> </ion-icon>
 
   </div>
 

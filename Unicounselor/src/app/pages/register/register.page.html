@@ -1,39 +1,4 @@
-<!-- <ion-content> 
-  <div class="logo"> -->
-    <!--<a href='https://www.freepik.com/vectors/good-bye'>Good bye vector created by freepik - www.freepik.com</a>-->
-  <!-- </div>
-    <div>
-         <ion-card>
-         
-         <ion-card-content>
-           <form #f="ngForm" (ngSubmit)="onSubmit(f)">
-           <ion-item>
-               <ion-label position ="floating">Email</ion-label>
-               <ion-input type="email" ngModel name="email" required="true"> </ion-input>   
-           </ion-item>
-   
-   
-           <ion-item>
-           <ion-label position ="floating">Password</ion-label>
-           <ion-input type="password" ngModel name="password" required="true"> </ion-input>     
-           </ion-item> 
-           <ion-item>
-            <ion-label position ="floating">Name</ion-label>
-            <ion-input type="password" ngModel name="name" required="true"> </ion-input>     
-            </ion-item> 
-           <ion-button  type="submit" name="submit">Sign up</ion-button>
-   
-         </form>
-            
-         </ion-card-content> 
-   
-       </ion-card> 
-       </div >   
-         <p>Don't have an account? <span (click)="redirect()">Sign up</span></p>
-   
-    </ion-content> -->
-
-    <ion-content>
+  <ion-content>
       <ion-card>
         <ion-card-content>
       <form #f="ngForm" (ngSubmit)="onSubmit(f)">
@@ -48,11 +13,17 @@
         <ion-input type="text" ngModel name="lastname" required="true"> </ion-input>     
         </ion-item> 
     
-        <ion-item>
+        <ion-item *ngIf = "displayDate === 1">
           <ion-label position ="stacked" >Date of birth</ion-label>
           <ion-input type="date" class="date" ngModel name="dateofbirth" required="true"> </ion-input>     
         </ion-item> 
     
+
+        <ion-item *ngIf = "displayDate === 0">
+          <ion-label position ="floating">Field</ion-label>
+          <ion-input type="text" ngModel name="field" required="true"> </ion-input>     
+          </ion-item> 
+
           <ion-item>
             <ion-label position="floating">Gender</ion-label>
             <ion-select interface="popover" name="gender" [value]="gender" required="true" ngModel>
