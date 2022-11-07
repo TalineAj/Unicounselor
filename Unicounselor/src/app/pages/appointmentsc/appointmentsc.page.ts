@@ -278,7 +278,6 @@ async getEvents() {
 
 
 
-
 }
 
 
