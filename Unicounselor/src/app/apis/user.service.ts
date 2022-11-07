@@ -29,7 +29,7 @@ export class UserService {
   //   return addDoc(userRef,user);
 
   // }
-  addUser(user: User, id: any) {
+  addUser(user: any, id: any) {
     const docRef = doc(this.firestore, 'Users', id);
     return setDoc(docRef, user);
   }

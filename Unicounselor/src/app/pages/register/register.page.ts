@@ -143,7 +143,7 @@ export class RegisterPage implements OnInit {
 console.log(user);
       await loading.dismiss();
       if (user) {
-        if(this.isStudent){
+        if(this.isStudent ==='true'){
         this.userInfo = {
           firstname: form.value.firstname,
           lastname: form.value.lastname,
@@ -151,6 +151,15 @@ console.log(user);
           gender: form.value.gender,
         };
         this.userService.addUser(this.userInfo, user.user.uid);
+      }
+      if(this.isStudent  ==='false'){
+         this.counselorInfo = {
+          firstname: form.value.firstname,
+          lastname: form.value.lastname,
+          field: form.value.field,
+          gender: form.value.gender,
+         };
+         this.userService.addUser(this.counselorInfo, user.user.uid);
       }
 
         // console.log('working till here');
