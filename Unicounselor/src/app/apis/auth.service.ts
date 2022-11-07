@@ -6,6 +6,7 @@ import {Photo} from '@capacitor/camera';
 import {ref, Storage} from '@angular/fire/storage';
 import { getDownloadURL, uploadString } from '@firebase/storage';
 import { url } from 'inspector';
+import { ToastController } from '@ionic/angular';
 //testing
 // import {collectionData, Firestore} from '@angular/fire/firestore';
 // import {collection} from '@firebase/firestore';
@@ -17,6 +18,8 @@ export class AuthService {
 
   constructor(private auth: Auth,
     private firestore: Firestore,
+    private toastController: ToastController,
+
     private storage: Storage) { }
 async register({email,password}){
  try{
@@ -24,7 +27,14 @@ async register({email,password}){
     return user;
 
   }catch (e){
-    return null;
+    const toast = await this.toastController.create({
+      message:
+        // eslint-disable-next-line max-len
+      e.code,
+      duration: 5000,
+    });
+    await toast.present();
+return null;
   }
 }
 async login({email,password}){

@@ -130,7 +130,9 @@ async approve(appointmentid: any, msg: any){
   this.addNewEvent(appointmentid);
 // }
  }
-
+  addMinutes(date, minutes) {
+  return new Date(date.getTime() + minutes*60000);
+}
 
 
 async addNewEvent(appointmentid: any){
@@ -143,8 +145,8 @@ const day =(element.date.split('-')[2]).split('T')[0];
 const hours = (((element.date.split('-')[2]).split('T')[1]).split(':')[0]);
 const minutes = ((element.date.split('-')[2]).split('T')[1]).split(':')[1];
 const date = new Date(year,month,day,hours,minutes);
-const end = new Date( year,month,day,hours,minutes+30);
-
+// const end = new Date( year,month,day,hours,minutes+30);
+const end = this.addMinutes(date,30);
 //Assuming each appointment is 60 minutes
 const event = {
   title: 'Appointment with'+' '+ element.student,
@@ -251,7 +253,9 @@ async getEvents() {
     // eslint-disable-next-line @typescript-eslint/prefer-for-of
     for (let j = 0; j <this.events.length; j++) {
       //looping in the requested appointments array and compareing each element with the event array events to determine any conflict
-      if((this.events[j].startTime).getTime()===(new Date (this.appointments[i].date)).getTime())
+      if((this.events[j].startTime).getTime()===(new Date (this.appointments[i].date)).getTime() ||(
+      (this.events[j].startTime).getTime()<(new Date (this.appointments[i].date)).getTime() &&
+      (new Date (this.appointments[i].date)).getTime()<(this.events[j].endTime).getTime()) )
     {
       //storing true in the conflict array at i , the index of the appointments array
         this.conflict[i]= true;
