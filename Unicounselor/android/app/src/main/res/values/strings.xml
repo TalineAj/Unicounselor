@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Unicounselor</string>
+    <string name="title_activity_main">Unicounselor</string>
+    <string name="package_name">com.unicounselor.app</string>
+    <string name="custom_url_scheme">com.unicounselor.app</string>
+</resources>

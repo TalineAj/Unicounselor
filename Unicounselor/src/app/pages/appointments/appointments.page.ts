@@ -6,6 +6,7 @@ import { ModalController } from '@ionic/angular';
 import { ModalPage } from '../modal/modal.page';
 import { AuthService } from 'src/app/apis/auth.service';
 import { ReviewsmodalPage } from '../reviewsmodal/reviewsmodal.page';
+import { LazyLoadImageModule } from 'ng-lazyload-image';
 
 @Component({
   selector: 'app-appointments',
@@ -18,6 +19,8 @@ export class AppointmentsPage implements OnInit {
   user: any;
   counselors = [];
   nocounselors: any;
+  // defaultImage: any;
+  lazyLoadImage = '../../../assets/images/no-p.png';
   constructor(private modalController: ModalController, private firestore: Firestore, private appointmentsService: AppointmentsService,
     private authService: AuthService) { }
 
@@ -47,6 +50,7 @@ export class AppointmentsPage implements OnInit {
   }else{
    console.log('no user signed in');
   }
+  // this.lazyLoadImage = '../../../assets/images/no-p.png';
 
   }
 async openModal(i){

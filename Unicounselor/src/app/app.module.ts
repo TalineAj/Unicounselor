@@ -21,10 +21,11 @@ import { provideStorage,getStorage } from '@angular/fire/storage';
 import { ModalPageModule } from './pages/modal/modal.module';
 import { ReviewsmodalPageModule } from './pages/reviewsmodal/reviewsmodal.module';
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
+import { LazyLoadImageModule } from 'ng-lazyload-image';
 
 @NgModule({
   declarations: [AppComponent],
-  imports: [BrowserModule, AngularFirestoreModule ,
+  imports: [BrowserModule, AngularFirestoreModule , LazyLoadImageModule,
     NgCalendarModule,IonicModule.forRoot(), AppRoutingModule,ReviewsmodalPageModule,ModalPageModule,
     provideFirebaseApp(() => initializeApp(environment.firebase)),
      provideAnalytics(() => getAnalytics()),

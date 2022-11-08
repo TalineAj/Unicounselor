@@ -21,8 +21,7 @@
   
 <div id = "img1container">
     <div id="img1" >
-      <img *ngIf = "counselor?.imageUrl" [src]="counselor.imageUrl" alt="">
-      <!-- <ion-icon id= "no-photo" *ngIf ="counselor.imageUrl===undefined" name="person-outline" size="large"> </ion-icon> -->
+      <img *ngIf = "counselor?.imageUrl" [src]="counselor.imageUrl" [lazyLoad]="lazyLoad">
     </div>
   </div>
     <div id = "info">

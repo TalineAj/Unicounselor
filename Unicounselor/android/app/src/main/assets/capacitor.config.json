@@ -1,0 +1,6 @@
+{
+	"appId": "com.unicounselor.app",
+	"appName": "Unicounselor",
+	"webDir": "www",
+	"bundledWebRuntime": false
+}
