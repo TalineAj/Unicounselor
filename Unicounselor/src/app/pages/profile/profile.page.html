@@ -4,15 +4,18 @@
       <img style="width: 100px; height: 37px; object-fit: cover;" id="profileimg" [src]="user.imageUrl" />
      
     </div> -->
+    
       </ion-toolbar>
 </ion-header>
 
+
 <ion-content>
+
   <div id="div1" *ngIf ="!imagePresent">
     <ion-icon (click)="changeImage()" name="person-outline" size="large" id="profile"> </ion-icon>
-
+  
   </div>
-
+  
   <div class="preview" *ngIf = "user?.imageUrl">
   <ion-avatar (click)="changeImage()">
   <img  [src]="user.imageUrl" />
@@ -89,6 +92,7 @@
 
 
 
+</ion-content>
 
 
 <ion-toolbar>
@@ -118,7 +122,6 @@
 
 
 
-</ion-content>
  
  
 
