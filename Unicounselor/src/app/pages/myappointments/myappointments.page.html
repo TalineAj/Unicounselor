@@ -13,7 +13,7 @@
 </ion-header>
 
 <ion-content>  
-  <ion-card *ngFor="let appointment  of appointments; let i = index">
+  <ion-card *ngIf="time < 0" *ngFor="let appointment  of appointments; let i = index">
    <div  id="bigdiv">
     <div id="img1">
      <img [src]= "appointment.profileImagec" alt="">   
@@ -47,6 +47,7 @@
 
 
   </ion-card>
+
 
 
 

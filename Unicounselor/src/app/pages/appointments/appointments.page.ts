@@ -7,7 +7,7 @@ import { ModalPage } from '../modal/modal.page';
 import { AuthService } from 'src/app/apis/auth.service';
 import { ReviewsmodalPage } from '../reviewsmodal/reviewsmodal.page';
 import { LazyLoadImageModule } from 'ng-lazyload-image';
-
+import {timer} from 'rxjs';
 @Component({
   selector: 'app-appointments',
   templateUrl: './appointments.page.html',
@@ -19,6 +19,8 @@ export class AppointmentsPage implements OnInit {
   user: any;
   counselors = [];
   nocounselors: any;
+  loaded = false;
+  time =10;
   // defaultImage: any;
   lazyLoadImage = '../../../assets/images/no-p.png';
   constructor(private modalController: ModalController, private firestore: Firestore, private appointmentsService: AppointmentsService,
@@ -26,6 +28,7 @@ export class AppointmentsPage implements OnInit {
 
 
  async ngOnInit() {
+  timer(2000).subscribe(() => (this.time = -1));
   const counselorRef =collection(this.firestore,'Users');
   //to only get counselors
   const q = query(counselorRef, where('field', '!=', ''));
@@ -38,7 +41,10 @@ export class AppointmentsPage implements OnInit {
     //obj.eventId = doc.id;
     this.counselors.push(obj);
     console.log(this.counselors);
+  console.log(this.loaded);
   });
+  this.loaded = true;
+  console.log(this.loaded);
   //get the student
   this.id =  this.authService.getCurrentUserId();
   if(this.id){

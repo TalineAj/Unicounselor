@@ -20,9 +20,24 @@
    
   
 <div id = "img1container">
-    <div id="img1" >
-      <img *ngIf = "counselor?.imageUrl" [src]="counselor.imageUrl" [lazyLoad]="lazyLoad">
+    <!-- <div id="img1" >
+      <img *ngIf = "counselor?.imageUrl" [src]="counselor.imageUrl">
+     <img [defaultImage]="lazyLoad" [lazyLoad] ="counselor.imageUrl" >  
+  </div> -->
+
+  <div id ="img1" *ngIf="time < 0">
+    <img [src]="counselor.imageUrl">
+  </div>
+
+ <div id ="img1" *ngIf="time > 0 ">
+    <ion-thumbnail slot="start">
+      <ion-skeleton-text style="width: 200px; height: 235px; --background-rgb: 29.8,73.3,9 ;" [animated]="true">Hello</ion-skeleton-text>
+    </ion-thumbnail>
     </div>
+
+
+
+
   </div>
     <div id = "info">
     <ion-card-header>

@@ -7,6 +7,7 @@ import { ModalPage } from '../modal/modal.page';
 import { AuthService } from 'src/app/apis/auth.service';
 import { ActivatedRoute } from '@angular/router';
 import { CalenderAuthService } from 'src/app/apis/calender-auth.service';
+import {timer} from 'rxjs';
 
 @Component({
   selector: 'app-myappointments',
@@ -20,6 +21,7 @@ export class MyappointmentsPage implements OnInit {
   noappointments= 0 ;
   appointmentsids =[];
   status: Statusstudent;
+  time =10; //for lazy loading
 
 
   constructor(private firestore: Firestore,
@@ -29,6 +31,8 @@ export class MyappointmentsPage implements OnInit {
     private loadingController: LoadingController,
      private toastController: ToastController) { }
 async  ngOnInit() {
+  timer(2000).subscribe(() => (this.time = -1));
+
 this.username = this.activatedRoute.snapshot.paramMap.get('myusername');
 
   const appointmentsRef =collection(this.firestore,'Appointments');
