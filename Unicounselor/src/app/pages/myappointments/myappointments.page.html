@@ -12,7 +12,8 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>  
+<ion-content> 
+  <ng-container  *ngIf="time < 0">
   <ion-card *ngFor="let appointment  of appointments; let i = index">
    <div  id="bigdiv">
     <div id="img1">
@@ -47,7 +48,7 @@
 
 
   </ion-card>
-
+</ng-container>
 
 
 
