@@ -10,7 +10,7 @@ import {
 } from '@ionic/angular';
 import { Auth } from '@angular/fire/auth';
 import { UserService, User, Counselor } from 'src/app/apis/user.service';
-import * as internal from 'stream';
+
 
 @Component({
   selector: 'app-register',
@@ -24,25 +24,24 @@ export class RegisterPage implements OnInit {
   counselorInfo: Counselor;
   constructor(
     private authService: AuthService,
-    private userService: UserService,    private activatedRoute: ActivatedRoute,
+    private userService: UserService,
+    private activatedRoute: ActivatedRoute,
     private route: Router,
     private alertController: AlertController,
     private loadingController: LoadingController,
     private toastController: ToastController
   ) {
-  //  Checking if this route was accesed by student and or counselors to customize the page and code accordingly
-    this.activatedRoute.queryParamMap.subscribe(params => {
+
+    //  Checking if this route was accesed by student and or counselors to customize the page and code accordingly
+    this.activatedRoute.queryParamMap.subscribe((params) => {
       this.isStudent = params.get('student');
-      console.log(this.isStudent); 
-      if(this.isStudent==='true'){
-        this.displayDate =1;
-      }else{
+      if (this.isStudent === 'true') {
+        //Since in order to sign up as a student, birth field is required
+        this.displayDate = 1;
+      } else {
         this.displayDate = 0;
       }
-      console.log(this.displayDate);
     });
- 
-    
   }
 
   //regex to check password
@@ -50,6 +49,7 @@ export class RegisterPage implements OnInit {
     !!password.match(
       /^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%* #+=\(\)\^?&])[A-Za-z\d$@$!%* #+=\(\)\^?&]{3,}$/
     );
+
   async onSubmit(form: NgForm) {
     const loading = await this.loadingController.create({
       message: `Signing up`,
@@ -60,7 +60,6 @@ export class RegisterPage implements OnInit {
       form.value.password === '' ||
       form.value.email === '' ||
       form.value.gender === '' ||
-    //  form.value.date === '' ||
       form.value.lastname === '' ||
       form.value.firstname === ''
     ) {
@@ -72,34 +71,34 @@ export class RegisterPage implements OnInit {
       await toast.present();
       return;
     }
-    if(this.isStudent ==='true' && form.value.date ==='')
-    //specifically for students
-      {const toast = await this.toastController.create({
+    if (this.isStudent === 'true' && form.value.dateofbirth === '') {
+      //specifically for students
+      const toast = await this.toastController.create({
         message: 'Please fill all fields',
         duration: 3000,
       });
       loading.dismiss();
       await toast.present();
       return;
-
-        }
-
+    }
     //spedifically for counselors
-    if(this.isStudent ==='false' &&  form.value.field ==='')
-    //specifically for students
-      {const toast = await this.toastController.create({
+    if (this.isStudent === 'false' && form.value.field === '') {
+      //specifically for students
+      const toast = await this.toastController.create({
         message: 'Please fill all fields',
         duration: 3000,
       });
       loading.dismiss();
       await toast.present();
       return;
-        }
+    }
 
     //Making sure the email format is valid
-
     //for students
-    if (this.isStudent ==='true' && !form.value.email.endsWith('@student.com')) {
+    if (
+      this.isStudent === 'true' &&
+      !form.value.email.endsWith('@student.com')
+    ) {
       const toast = await this.toastController.create({
         message: 'The email should end with @student.com',
         duration: 4000,
@@ -110,7 +109,7 @@ export class RegisterPage implements OnInit {
     }
 
     //for counselors
-    if (this.isStudent ==='false' && !form.value.email.endsWith('@uni.com')) {
+    if (this.isStudent === 'false' && !form.value.email.endsWith('@uni.com')) {
       const toast = await this.toastController.create({
         message: 'The email should end with @uni.com',
         duration: 4000,
@@ -119,11 +118,6 @@ export class RegisterPage implements OnInit {
       await toast.present();
       return;
     }
-
-
-
-
-
 
     // Checking if password has at least 3 characters at least 1 alphabet, 1 Number and 1 Special Character
     if (form.value.password.length < 5 || !this.check(form.value.password)) {
@@ -136,35 +130,30 @@ export class RegisterPage implements OnInit {
       loading.dismiss();
       await toast.present();
       return;
-    }
-
-    else {
+    } else {
       const user = await this.authService.register(form.value);
-console.log(user);
       await loading.dismiss();
       if (user) {
-        if(this.isStudent ==='true'){
-        this.userInfo = {
-          firstname: form.value.firstname,
-          lastname: form.value.lastname,
-          dateofbirth: form.value.dateofbirth,
-          gender: form.value.gender,
-        };
-        this.userService.addUser(this.userInfo, user.user.uid);
-      }
-      if(this.isStudent  ==='false'){
-         this.counselorInfo = {
-          firstname: form.value.firstname,
-          lastname: form.value.lastname,
-          field: form.value.field,
-          gender: form.value.gender,
-         };
-         this.userService.addUser(this.counselorInfo, user.user.uid);
-      }
+        if (this.isStudent === 'true') {
+          this.userInfo = {
+            firstname: form.value.firstname,
+            lastname: form.value.lastname,
+            dateofbirth: form.value.dateofbirth,
+            gender: form.value.gender,
+          };
+          this.userService.addUser(this.userInfo, user.user.uid);
+        }
+        if (this.isStudent === 'false') {
+          this.counselorInfo = {
+            firstname: form.value.firstname,
+            lastname: form.value.lastname,
+            field: form.value.field,
+            gender: form.value.gender,
+          };
+          this.userService.addUser(this.counselorInfo, user.user.uid);
+        }
 
-        // console.log('working till here');
         this.authService.uploadDefaultImage();
-
         this.route.navigate(['/login']);
       } else {
         const alert = await this.alertController.create({

@@ -1,32 +1,32 @@
-<ion-content> 
-<div class="logo">
-  <!--<a href='https://www.freepik.com/vectors/good-bye'>Good bye vector created by freepik - www.freepik.com</a>-->
-</div>
+<ion-content>
+  <div class="logo">
+    <!--<a href='https://www.freepik.com/vectors/good-bye'>Good bye vector created by freepik - www.freepik.com</a>-->
+  </div>
   <div>
-       <ion-card>
-       
-       <ion-card-content>
-         <form #f="ngForm" (ngSubmit)="onSubmit(f)">
-         <ion-item>
-             <ion-label position ="floating">Email</ion-label>
-             <ion-input type="email" ngModel name="email" required="true"> </ion-input>   
-         </ion-item>
- 
- 
-         <ion-item>
-         <ion-label position ="floating">Password</ion-label>
-         <ion-input type="password" ngModel name="password" required="true"> </ion-input>     
-         </ion-item> 
-         <ion-button  type="submit" name="submit">Login</ion-button>
- 
-       </form>
-          
-       </ion-card-content> 
- 
-     </ion-card> 
-     </div >   
-     <div id = "footer">
-      <p>Don't have an account? <br> <span (click)="redirect()">Sign up as a student</span>
-      <br> <span (click)="redirectCounselor()">Sign up as a counselor</span></p>
-     </div>
-  </ion-content>
+    <ion-card>
+      <ion-card-content>
+        <form #f="ngForm" (ngSubmit)="onSubmit(f)">
+          <ion-item>
+            <ion-label position="floating">Email</ion-label>
+            <ion-input type="email" ngModel name="email" required="true">
+            </ion-input>
+          </ion-item>
+
+          <ion-item>
+            <ion-label position="floating">Password</ion-label>
+            <ion-input type="password" ngModel name="password" required="true">
+            </ion-input>
+          </ion-item>
+          <ion-button type="submit" name="submit">Login</ion-button>
+        </form>
+      </ion-card-content>
+    </ion-card>
+  </div>
+  <div id="footer">
+    <p>
+      Don't have an account? <br />
+      <span (click)="redirect()">Sign up as a student</span> <br />
+      <span (click)="redirectCounselor()">Sign up as a counselor</span>
+    </p>
+  </div>
+</ion-content>
