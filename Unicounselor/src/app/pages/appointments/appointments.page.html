@@ -1,119 +1,92 @@
-<!-- <a href="https://www.freepik.com/free-photo/happy-african-american-doctor-talking-with-female-patient-during-psychotherapy-session_26644458.htm#query=guidance%20counselor&position=25&from_view=keyword">Image by Drazen Zigic</a> on <a href="https://www.freepik.com/">Freepik</a> -->
 <ion-header class="ion-no-border">
   <ion-toolbar>
-      <div id = "wrapper">
-     <h5 id ="title"> Our counselors</h5>
-     <div  [routerLink]="['/profile']"  id = "profile1" *ngIf = "user?.imageUrl">
-      <img style="border-radius:50%; width: 40px; height: 37px; object-fit: cover;" id="profileimg" [src]="user.imageUrl" />
-     
+    <div id="wrapper">
+      <h5 id="title">Our counselors</h5>
+      <div [routerLink]="['/profile']" id="profile1" *ngIf="user?.imageUrl">
+        <img
+          style="
+            border-radius: 50%;
+            width: 40px;
+            height: 37px;
+            object-fit: cover;
+          "
+          id="profileimg"
+          [src]="user.imageUrl"
+        />
+      </div>
     </div>
-<!-- <ion-icon id ="profile" name="person-outline" [routerLink]="['/profile']" size="large"> </ion-icon> -->
-</div>  
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-
-  
   <ion-card *ngFor="let counselor  of counselors; let i = index">
-   <div id="bigdiv">
-   
-  
-<div id = "img1container">
-    <!-- <div id="img1" > -->
-      <!-- <img *ngIf = "counselor?.imageUrl" [src]="counselor.imageUrl" [lazyLoad]="lazyLoad"> -->
-    
-    <div id ="img1" *ngIf="time < 0">
-    <img [src]="counselor.imageUrl">
-  </div>
+    <div id="bigdiv">
+      <div id="img1container">
+        <div id="img1" *ngIf="time < 0">
+          <img [src]="counselor.imageUrl" />
+        </div>
 
- <div id ="img1" *ngIf="time > 0 ">
-    <ion-thumbnail slot="start">
-      <ion-skeleton-text style="width: 200px; height: 235px; --background-rgb: 29.8,73.3,9 ;" [animated]="true">Hello</ion-skeleton-text>
-    </ion-thumbnail>
-    
-    
-    
-    
+        <div id="img1" *ngIf="time > 0 ">
+          <ion-thumbnail slot="start">
+            <ion-skeleton-text
+              style="
+                width: 200px;
+                height: 235px;
+                --background-rgb: 29.8, 73.3, 9;
+              "
+              [animated]="true"
+              >Hello</ion-skeleton-text
+            >
+          </ion-thumbnail>
+        </div>
+      </div>
+      <div id="info">
+        <ion-card-header>
+          <ion-card-title>
+            {{counselor.firstname}} {{counselor.lastname}}
+          </ion-card-title>
+        </ion-card-header>
+
+        <ion-card-content> {{counselor.field}} </ion-card-content>
+        <div id="buttons">
+          <ion-button
+            size="small"
+            id="book"
+            (click)="openModal(i)"
+            expand="block"
+            >Book</ion-button
+          >
+          <ion-button
+            size="small"
+            id="rating"
+            (click)="openReviewsModal(i)"
+            expand="block"
+            >Rating</ion-button
+          >
+        </div>
+      </div>
     </div>
-
-
-
-
-  </div>
-    <div id = "info">
-    <ion-card-header>
-      <ion-card-title> {{counselor.firstname}} {{counselor.lastname}}
-      </ion-card-title>
-  
-    </ion-card-header>
-  
-    <ion-card-content>
-    {{counselor.field}}
-    </ion-card-content>
-  <!-- </div> -->
-  <div id="buttons">
-    <ion-button size= "small" id="book" (click)="openModal(i)" expand="block">Book</ion-button>
-    <ion-button size= "small"  id="rating" (click)="openReviewsModal(i)" expand="block">Rating</ion-button>
-
-  </div>
-</div>
-
-</div>
-
   </ion-card>
-  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 </ion-content>
- 
- 
+
 <ion-toolbar>
-<ion-tabs>
-  <ion-tab-bar slot="bottom" class="ion-no-border">
-    <ion-tab-button routerLink = "/home">
-      <ion-icon name="home-outline"  ></ion-icon>
-    </ion-tab-button>
-  
-    <ion-tab-button tab="appoinments" routerLink="/appointments">
-      <ion-icon name="calendar-clear-outline" id="current"></ion-icon> 
-    </ion-tab-button>
-  
-  
-    <ion-tab-button tab="tips"  routerLink="/tips">
-      <ion-icon name="bulb-outline"></ion-icon>
-    </ion-tab-button>
-  
-    <ion-tab-button tab="tips"   routerLink="/profile">
-      <ion-icon name="person-outline"> </ion-icon>
-    </ion-tab-button>
-  
-  </ion-tab-bar> 
+  <ion-tabs>
+    <ion-tab-bar slot="bottom" class="ion-no-border">
+      <ion-tab-button routerLink="/home">
+        <ion-icon name="home-outline"></ion-icon>
+      </ion-tab-button>
+
+      <ion-tab-button tab="appoinments" routerLink="/appointments">
+        <ion-icon name="calendar-clear-outline" id="current"></ion-icon>
+      </ion-tab-button>
+
+      <ion-tab-button tab="tips" routerLink="/tips">
+        <ion-icon name="bulb-outline"></ion-icon>
+      </ion-tab-button>
+
+      <ion-tab-button tab="tips" routerLink="/profile">
+        <ion-icon name="person-outline"> </ion-icon>
+      </ion-tab-button>
+    </ion-tab-bar>
   </ion-tabs>
 </ion-toolbar>

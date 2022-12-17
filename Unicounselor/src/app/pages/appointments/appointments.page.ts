@@ -22,7 +22,6 @@ export class AppointmentsPage implements OnInit {
   nocounselors: any;
   loaded = false;
   time =10;
-  // defaultImage: any;
   lazyLoadImage = '../../../assets/images/no-p.png';
   constructor(private modalController: ModalController, private firestore: Firestore, private appointmentsService: AppointmentsService,
     private authService: AuthService) { }
