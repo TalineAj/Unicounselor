@@ -22,16 +22,6 @@ export class TipsService {
     const tipsRef =collection(this.firestore,'tips');
     return collectionData(tipsRef);
   }
-
-  //did not work
-  // async getTwoTips(){
-  //   const tipsRef =collection(this.firestore,'tips');
-    // return collectionData(tipsRef);
-  //   // const q = query(tipsRef, limit(1));
-  //   // const querySnapshot = await getDocs(q);
-  //   // return querySnapshot;
-  //   }
-
   //  async getTwoTips(){
   // const tipsRef =collection(this.firestore,'tips');
   // const q = query(tipsRef, limit(2));

@@ -1,107 +1,54 @@
 <ion-header class="ion-no-border">
   <ion-toolbar>
-    <div id = "profile">
+    <div id="profile">
       <ion-icon name="leaf-outline" size="large"> </ion-icon>
     </div>
-      </ion-toolbar>
-
+  </ion-toolbar>
 </ion-header>
 
 <ion-content>
- 
-  <!-- <ion-grid> -->
-    <!-- <ion-row> -->
-      <ion-col *ngFor="let tip  of tips" size="6">
-  
-        <ion-card>
-    <ion-card-header>
-      <ion-card-title>{{tip.title}}
-        <!-- <ion-icon name="leaf-outline"></ion-icon>  -->
-      </ion-card-title>
-  
-    </ion-card-header>
+  <ion-col *ngFor="let tip  of tips" size="6">
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>{{tip.title}} </ion-card-title>
+      </ion-card-header>
 
-    <ion-card-content>
-      <span id="tip">{{tip.tip}}</span>
-      
-      <!-- <span id="tip">{{ (tip.tip.length>30)?(tip.tip.slice(0,30)+"..."):tip.tip}}
-    </span> -->
+      <ion-card-content>
+        <span id="tip">{{tip.tip}}</span>
 
-    <!-- <ion-button (click)="check(tip.tip)"></ion-button> -->
+        <br />
 
-<!--Problem: ngif lon==true is executing on all cards since its in the for loop
-however I want to show more only in the clicked card if long is true in it, if i remove it from for loop i cant acces the tips nor all the cards-->
-<!--Trying to get if its true on one card then create the div and the modal-->    
-        <!-- <div *ngIf="long===true">
-      <ion-button  id="open-modal" expand="block">more</ion-button>
-
-      <ion-modal #modal trigger="open-modal" [initialBreakpoint]="0.25" [breakpoints]="[0, 0.25, 0.5, 0.75]">
-        <ng-template>
-        </ng-template>
-      </ion-modal>
-      </div> -->
-
-      <br>
-
-
-
-
-
-
-
-
-
-
-      <span id="author">~{{tip.author}}~</span>
-    </ion-card-content>
-  </ion-card>
-
-
-</ion-col>
+        <span id="author">~{{tip.author}}~</span>
+      </ion-card-content>
+    </ion-card>
+  </ion-col>
 
   <div class="no-tips" *ngIf="notips===0">
-    <div class ="wrap">
-      <ion-icon name="leaf-outline" id="center"></ion-icon> 
-    <p id = "notipstext">No tips were added yet!</p>
+    <div class="wrap">
+      <ion-icon name="leaf-outline" id="center"></ion-icon>
+      <p id="notipstext">No tips were added yet!</p>
+    </div>
   </div>
-
-
-  </div>
-  
-
-
-<!-- </ion-row> -->
-
-<!-- </ion-grid> -->
-
-
-
-
 </ion-content>
- 
- 
+
 <ion-toolbar>
-<ion-tabs>
-  
-  <ion-tab-bar slot="bottom" class="ion-no-border">
-    <ion-tab-button tab="home" (click)="redirectToHome()">
-      <ion-icon name="home-outline"></ion-icon>
-    </ion-tab-button>
-  
-    <ion-tab-button tab="appoinments" routerLink="/appointments">
-      <ion-icon name="calendar-clear-outline"></ion-icon> 
-    </ion-tab-button>
-  
-  
-    <ion-tab-button tab="tips"  routerLink="/tips">
-      <ion-icon name="bulb-outline" id="current"></ion-icon>
-    </ion-tab-button>
-  
-    <ion-tab-button tab="tips"   routerLink="/profile">
-      <ion-icon name="person-outline"> </ion-icon>
-    </ion-tab-button>
-  
-  </ion-tab-bar> 
+  <ion-tabs>
+    <ion-tab-bar slot="bottom" class="ion-no-border">
+      <ion-tab-button tab="home" (click)="redirectToHome()">
+        <ion-icon name="home-outline"></ion-icon>
+      </ion-tab-button>
+
+      <ion-tab-button tab="appoinments" routerLink="/appointments">
+        <ion-icon name="calendar-clear-outline"></ion-icon>
+      </ion-tab-button>
+
+      <ion-tab-button tab="tips" routerLink="/tips">
+        <ion-icon name="bulb-outline" id="current"></ion-icon>
+      </ion-tab-button>
+
+      <ion-tab-button tab="tips" routerLink="/profile">
+        <ion-icon name="person-outline"> </ion-icon>
+      </ion-tab-button>
+    </ion-tab-bar>
   </ion-tabs>
 </ion-toolbar>
-  
