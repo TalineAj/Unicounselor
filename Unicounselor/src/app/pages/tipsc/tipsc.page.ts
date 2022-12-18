@@ -30,12 +30,12 @@ id: any;
     }
   }
   async onSubmit(form: NgForm) {
+    console.log(form.value);
     const loading = await this.loadingController.create({
       message: `Submitting tip`,
     });
     await loading.present();
-  //More checking regarding the length of review
-  if(form.value.tip==='' || form.value.title===''){
+  if(form.value.tip==='' || form.value.title===''|| form.value.tip===null || form.value.title===null){
   const toast1 = await this.toastController.create({
   message: 'Please enter a title and a tip',
   duration: 4000,
