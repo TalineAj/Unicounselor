@@ -1,171 +1,139 @@
 ion-content {
   --ion-background-color: white;
-
 }
 
-ion-toolbar{   
+ion-toolbar {
   --padding-top: 10% !important;
-  --padding-start: 10%!important; 
---background: white;
---color: rgb(129, 119, 119);
-display: flex !important;
-
-}
-
-
-ion-label{
+  --padding-start: 10% !important;
+  --background: white;
+  --color: rgb(129, 119, 119);
   display: flex !important;
-flex-direction: column !important;
-color:#4CBB17 !important;
-font-size: large !important;
 }
 
-ion-icon{
-  font-size:24px ;
+ion-label {
+  display: flex !important;
+  flex-direction: column !important;
+  color: #4cbb17 !important;
+  font-size: large !important;
+}
+
+ion-icon {
+  font-size: 24px;
 }
 ion-tab-bar {
   border: 0;
 }
-#current{
-  color:#4CBB17;
+#current {
+  color: #4cbb17;
 }
 
-ion-tab-bar{
-  --background:white;
+ion-tab-bar {
+  --background: white;
 }
-// .content{
-//   background-image: url('../../assets/images/3918491.jpg');
-//   height: 40%;
-//   // margin-top: 15% !important;
-//   background-position: 50% 50%;
-//   background-size: cover;
 
-// }
-.photo{
-    background-image: url('../../assets/images/Dr.png');
+.photo {
+  background-image: url("../../assets/images/Dr.png");
   // margin-top: 15% !important;
   background-position: 50% 10%;
   background-size: cover;
   height: 100%;
   width: 100%;
   // text-align: center;
+}
 
-}
-#calendar{
-  size: 20px !important;
-  width: 100px;
-  height: 90px;
-  margin-top: 10%;
-}
-.div1{
-  background-color: #4CBB17;
+.div1 {
+  background-color: #4cbb17;
   width: 100%;
   height: 35%;
   margin-top: 5%;
   display: flex;
-  // border-bottom-left-radius: 10%;
   border-bottom-right-radius: 10%;
   border-top-left-radius: 10%;
-  // border-radius: 10%;
-  
-
 }
 
-#text{
+#text {
   margin-top: 10%;
 }
-.div1:hover{
+.div1:hover {
   background-color: #74df43;
-
 }
-#text:hover{
+#text:hover {
   transform: skew(-10deg);
-
 }
-#icon{
+#icon {
   margin-top: 10%;
 }
-#icon:hover{
-transform: translate(60px);
-transition : 1000ms linear;
-}
-#icon:active{
-}
-ion-tabs{
-  // background-color:  red !important;
-}
-ion-tab-bar{
-  background-color: #4CBB17 !important;
+#icon:hover {
+  transform: translate(60px);
+  transition: 1000ms linear;
 }
 
-.div2{
+ion-tab-bar {
+  background-color: #4cbb17 !important;
+}
+
+.div2 {
   // background-color: #4CBB17;
   width: 100%;
   height: 40%;
   margin-top: 10%;
 }
-.text2{
-  color: #4CBB17;
+.text2 {
+  color: #4cbb17;
   margin-left: 5%;
-font-weight: bold;
+  font-weight: bold;
 }
 //card
-#author{
-  color:#4CBB17;
+#author {
+  color: #4cbb17;
   font-size: 95% !important;
   margin-left: 20%;
- }
-ion-card-title{
- --color: black;
- font-size: 100% !important;
-  font-weight:bold;
-
 }
-ion-card{
- --background: white;
-//  box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
-width: 100% !important;
-margin: 0 !important;
-height: 43% !important;
-margin-top: 2% !important;
+ion-card-title {
+  --color: black;
+  font-size: 100% !important;
+  font-weight: bold;
+}
+ion-card {
+  --background: white;
+  width: 100% !important;
+  margin: 0 !important;
+  height: 43% !important;
+  margin-top: 2% !important;
 }
 
-ion-card-content{
-text-overflow: ellipsis !important;
+ion-card-content {
+  text-overflow: ellipsis !important;
 }
-.text3{
-  color: #4CBB17;
+.text3 {
+  color: #4cbb17;
   margin-left: 65%;
   margin-top: 5%;
-align-items: baseline;
+  align-items: baseline;
 }
-#arrow2{
+#arrow2 {
   align-items: baseline;
   margin-left: 2%;
   margin-top: 3%;
 }
-.div3{
-display: flex;
+.div3 {
+  display: flex;
 }
-.div3:hover{
+.div3:hover {
   transform: skew(-5deg);
 }
-.text3:hover{
+.text3:hover {
   text-decoration: underline !important;
 }
 
-
-
-
-.welcome{
-  display:flex;
+.welcome {
+  display: flex;
 }
 
-#welcometxt{
-align-items: baseline;
-}
-#icon0{
+#welcometxt {
   align-items: baseline;
-  margin-left: 5%!important;
-  // flex-direction: row !important;
+}
+#icon0 {
+  align-items: baseline;
+  margin-left: 5% !important;
 }

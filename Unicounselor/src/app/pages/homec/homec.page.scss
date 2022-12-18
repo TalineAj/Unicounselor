@@ -1,99 +1,84 @@
 ion-content {
-    --ion-background-color: white;
-  
-  }
-  
-  ion-toolbar{   
-    --padding-top: 10% !important;
-    --padding-start: 10%!important; 
+  --ion-background-color: white;
+}
+
+ion-toolbar {
+  --padding-top: 10% !important;
+  --padding-start: 10% !important;
   --background: white;
   --color: rgb(129, 119, 119);
   display: flex !important;
-  
-  }
-  
-  
-  ion-label{
-    display: flex !important;
+}
+
+ion-label {
+  display: flex !important;
   flex-direction: column !important;
-  color:#4CBB17 !important;
+  color: #4cbb17 !important;
   font-size: large !important;
-  }
-  
-  ion-icon{
-    font-size:24px ;
-  }
-  ion-tab-bar {
-    border: 0;
-  }
-  #current{
-    color:#4CBB17;
-  }
-  
-  ion-tab-bar{
-    --background:white;
-  }
-  .welcome{
-    display:flex;
-  }
-  
-  #welcometxt{
+}
+
+ion-icon {
+  font-size: 24px;
+}
+ion-tab-bar {
+  border: 0;
+}
+#current {
+  color: #4cbb17;
+}
+
+ion-tab-bar {
+  --background: white;
+}
+.welcome {
+  display: flex;
+}
+
+#welcometxt {
   align-items: baseline;
-  }
-  #icon0{
-    align-items: baseline;
-    margin-left: 5%!important;
-    // flex-direction: row !important;
-  }
-  .photo{
-    background-image: url('../../../assets/images/6476194.jpg');
+}
+#icon0 {
+  align-items: baseline;
+  margin-left: 5% !important;
+}
+.photo {
+  background-image: url("../../../assets/images/6476194.jpg");
   background-position: 50% 50%;
   background-size: cover;
   height: 100%;
   width: 100%;
-
 }
-#div1{
-    height: 40%;
+#div1 {
+  height: 40%;
 }
- #div2{
- margin-top: 10%;
- height: 20%;
- width: 100%;
- display: flex;
- margin-left:5%;
-//  background-color: blue;
+#div2 {
+  margin-top: 10%;
+  height: 20%;
+  width: 100%;
+  display: flex;
+  margin-left: 5%;
+}
+#div3 {
+  height: 20%;
+  width: 100%;
+  display: flex;
+  margin-left: 5%;
+}
+p {
+  color: black;
 
- }
- #div3{
-    height: 20%;
-    width: 100%;
-    display: flex;
-    margin-left:5%;
-    // background-color: purple;
-
-
- }
- p{
-    color: black;
-
-    font-size: 12px;
- }
- h6{
-
-    color: #4CBB17;
- }
- #text{
-    width: 80%;
-    flex-direction: column;
-    // background-color: yellow;
-
-
- }
- #arrow{
-    color: #4CBB17 !important;
-    margin-top: 20%;
-    flex-direction: column;
-    // background-color: red;
-    width: 20%;
- }
+  font-size: 12px;
+}
+h6 {
+  color: #4cbb17;
+}
+#text {
+  width: 80%;
+  flex-direction: column;
+}
+#arrow {
+  color: #4cbb17 !important;
+  margin-top: 5%;
+  flex-direction: column;
+  width: 20%;
+}

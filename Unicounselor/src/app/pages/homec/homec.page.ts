@@ -13,20 +13,19 @@ export class HomecPage implements OnInit {
   firstname: any;
   name: any;
 
-  constructor(private authService: AuthService) { }
+  constructor(private authService: AuthService) {}
 
   ngOnInit() {
-    this.id =  this.authService.getCurrentUserId();
-  if(this.id){
-   //there is a signed in user
-   this.authService.getUserById(this.id).subscribe(res =>{
-     this.user = res;
-     this.firstname = this.user.firstname;
-     this.name = this.user.firstname + ' ' + this.user.lastname;
-   });
-  }else{
-  console.log('no user signed in');
+    this.id = this.authService.getCurrentUserId();
+    if (this.id) {
+      //there is a signed in user
+      this.authService.getUserById(this.id).subscribe((res) => {
+        this.user = res;
+        this.firstname = this.user.firstname;
+        this.name = this.user.firstname + ' ' + this.user.lastname;
+      });
+    } else {
+      console.log('no user signed in');
+    }
   }
-  }
-
 }
