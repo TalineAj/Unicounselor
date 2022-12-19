@@ -53,10 +53,11 @@ export class AppointmentsPage implements OnInit {
     }
   }
   async openModal(i) {
+    //when clicked it takes the user to the booking modal of the particularly selected counselor
     const modal = await this.modalController.create({
       component: ModalPage,
       componentProps: {
-        fname: this.counselors[i].firstname,
+        fname: this.counselors[i].firstname, //used i, since the i in the array of counselors is the same one for both the html and ts
         lname: this.counselors[i].lastname,
         field: this.counselors[i].field,
         student: this.student,
@@ -67,6 +68,7 @@ export class AppointmentsPage implements OnInit {
     modal.present();
   }
   async openReviewsModal(i) {
+        //when clicked it takes the user to the rating modal of the particularly selected counselor
     const modal = await this.modalController.create({
       component: ReviewsmodalPage,
       componentProps: {

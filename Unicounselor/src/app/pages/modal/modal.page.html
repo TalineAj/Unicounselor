@@ -1,56 +1,46 @@
-<!-- <ion-header class="ion-no-border">
-  <ion-toolbar>
-    <ion-title></ion-title>
-  </ion-toolbar>
-</ion-header> -->
-
 <ion-content>
-
   <div id="fullinfo">
     <div id="img">
-        <img [src]="imagec" alt="">
+      <img [src]="imagec" alt="" />
     </div>
-    <div id = "info">
-    <ion-card-header>
-      <ion-card-title> {{firstname}} {{lastname}}
-      </ion-card-title>
-  
-    </ion-card-header>
-  
-    <ion-card-content>
-    {{field}}
-    </ion-card-content>
+    <div id="info">
+      <ion-card-header>
+        <ion-card-title> {{firstname}} {{lastname}} </ion-card-title>
+      </ion-card-header>
+
+      <ion-card-content style="margin-left: 5% !important">
+        {{field}}
+      </ion-card-content>
+    </div>
   </div>
-</div>
-<div id="msg" style="color:black ;margin-left: 5%;">
-Book a meeting and await the confirmation from the counselor!
-</div>
+  <div id="msg" style="color: black; margin-left: 5%">
+    Book a meeting and await the confirmation from the counselor!
+  </div>
 
-<form #f="ngForm" (ngSubmit)="onSubmit(f)">
-     
+  <form #f="ngForm" (ngSubmit)="onSubmit(f)">
+    <ion-label>Pick a date and a time:</ion-label>
 
-
-  <ion-label>Pick a date and a time:</ion-label>
-  <!-- <ion-datetime ngModel placeholder="" type="datetime-local"
+    <!--For future improvement-->
+    <!-- <ion-datetime ngModel placeholder="" type="datetime-local"
   name="date" color="primary" minuteValues="0,30" [isDateEnabled]="test"> </ion-datetime>
-  
+ -->
 
-  <ion-textarea ngModel placeholder="Enter a message..." type="textarea"
-  name="message" id="message" required="true"></ion-textarea> -->
+    <ion-input ngModel placeholder="" type="datetime-local" name="date">
+    </ion-input>
 
-  
-  <ion-input ngModel placeholder="" type="datetime-local"
-  name="date"> </ion-input>
-  <ion-textarea ngModel placeholder="Enter a message..." type="textarea"
-  name="message"  required="true"></ion-textarea>
+    
+    <ion-textarea
+      ngModel
+      placeholder="Enter a message..."
+      type="textarea"
+      name="message"
+      required="true"
+    ></ion-textarea>
 
-  <ion-button type="submit" name="submit" id="book">Book</ion-button>
+    <ion-button type="submit" name="submit" id="book">Book</ion-button>
+  </form>
 
-
-
-</form>
-
-
-  <ion-button id="back" expand="full" fill ="clear" (click)="closeModal()">Back</ion-button>
-
+  <ion-button id="back" expand="full" fill="clear" (click)="closeModal()"
+    >Back</ion-button
+  >
 </ion-content>
