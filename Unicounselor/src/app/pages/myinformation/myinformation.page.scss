@@ -1,96 +1,66 @@
 ion-content {
-    --ion-background-color: white;
-  
-  }
-  
-  ion-toolbar{    
-  --background: white;
-  }
-  ion-icon{
-    font-size:24px ;
-  }
-  ion-tab-bar {
-    border: 0;
-  }
-  #current{
-    color:#4CBB17;
-  }
-  
-  ion-tab-bar{
-    --background:white;
-  }
-  ion-tabs{
-    background-color: red !important;
-  }
-  ////////////////
-  /// //content
-
-#profile{
-    margin-left: 85%;
-    margin-top: 5px;
-    color:#4CBB17;
-
+  --ion-background-color: white;
 }
 
-  .options{
-    border-radius: 30px 30px 30px 30px;
-    height: 95%;
-    // background-color: #4CBB17;
-    display: block;
-    margin-top: 20px;
-  }
-  
-ion-input{
+ion-toolbar {
+  --background: white;
+}
+ion-icon {
+  font-size: 24px;
+}
+ion-tab-bar {
+  border: 0;
+}
+#current {
+  color: #4cbb17;
+}
+
+ion-tab-bar {
+  --background: white;
+}
+
+#profile {
+  margin-left: 90%;
+  margin-top: 5px;
+  color: #4cbb17;
+}
+
+.options {
+  border-radius: 30px 30px 30px 30px;
+  height: 95%;
+  display: block;
+  margin-top: 20px;
+}
+
+ion-input {
   height: 10%;
   width: 70%;
   color: black !important;
   margin-left: 8% !important;
-// border-top-left-radius: 40% !important;
-// border-bottom-left-radius: 50% !important;
-// border-radius: 50%;
 }
-form{
+form {
   height: 100%;
   width: 100%;
   margin-left: 5% !important;
-
 }
-ion-label{
-    margin-top: 30% !important; //NOT WORKING
+ion-label {
+  margin-top: 30% !important;
   margin: 10% !important;
   color: black !important;
   font-weight: bold !important;
-
 }
-#add
-{
+#add {
   margin-top: 30%;
-  margin-left: 23%;
-  --background:#4CBB17  !important;
-  
+  margin-left: 30%;
+  --background: #4cbb17 !important;
 }
-ion-select{
-  margin-left: 5% !important;
-  color: black  !important;
-
-}
-#pass{
-  margin-bottom: 20%;
+ion-select {
+  margin-left: 7% !important;
+  color: black !important;
 }
 
-#profile1{
-  margin-left: 85%;
-  margin-top: 5px;
-  color:#4CBB17;
-  
-}
-#profileimg{
-  height: 100%;
-  width: 100%;
-  border-radius: 50%;
-}
-#date{
+#date {
   background-color: rgb(201, 248, 180);
-  width:80%;
-  border-radius: 45%;
+  width: 80%;
+  border-radius: 50%;
 }

@@ -1,32 +1,45 @@
 <ion-header class="ion-no-border">
   <ion-toolbar>
-    <div id = "profile">
-      <ion-icon name="person-outline" [routerLink]="['/profilec']" size="large"> </ion-icon>
+    <div id="profile">
+      <ion-icon name="person-outline" [routerLink]="['/profilec']" size="large">
+      </ion-icon>
     </div>
-      </ion-toolbar>
+  </ion-toolbar>
 </ion-header>
 
 <ion-content>
-
-
   <div class="options">
-   
     <form #f="ngForm" (ngSubmit)="onSubmit(f)">
       <ion-label id="fn">First name</ion-label>
-      <ion-input ngModel placeholder="" type="text" 
-      name="firstname" [value]="firstname" readonly ></ion-input>
-  
+      <ion-input
+        ngModel
+        placeholder=""
+        type="text"
+        name="firstname"
+        [value]="firstname"
+        readonly
+      ></ion-input>
+
       <ion-label>Last name</ion-label>
-      <ion-input ngModel placeholder="" type="text"
-      name="lastname" [value]="lastname" readonly ></ion-input>
-  
-      
+      <ion-input
+        ngModel
+        placeholder=""
+        type="text"
+        name="lastname"
+        [value]="lastname"
+        readonly
+      ></ion-input>
+
       <ion-label>Field</ion-label>
-      <ion-input ngModel placeholder="" type="text"
-      name="field" [value]="field" ></ion-input>
-  
-  
-      <ion-label position="floating" >Gender</ion-label>
+      <ion-input
+        ngModel
+        placeholder=""
+        type="text"
+        name="field"
+        [value]="field"
+      ></ion-input>
+
+      <ion-label position="floating">Gender</ion-label>
       <ion-select name="gender" [value]="gender" ngModel>
         <ion-select-option value="Male">Male</ion-select-option>
         <ion-select-option value="Female">Female</ion-select-option>
@@ -34,71 +47,38 @@
         <ion-select-option value="Genderqueer">Genderqueer</ion-select-option>
         <ion-select-option value="Other">Other</ion-select-option>
       </ion-select>
-  
-      
-      
-      <ion-input ngModel placeholder="" type="hidden"
-      name="imageUrl" [value]="imageUrl" ></ion-input>
 
-  
+      <ion-input
+        ngModel
+        placeholder=""
+        type="hidden"
+        name="imageUrl"
+        [value]="imageUrl"
+      ></ion-input>
 
-  
-  
       <ion-button type="submit" name="submit" id="add">Update info</ion-button>
-      </form> 
-  
-  
-    </div>  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    </form>
+  </div>
 </ion-content>
- 
- 
 
 <ion-toolbar>
-<ion-tabs>
-<ion-tab-bar slot="bottom" class="ion-no-border">
-  <ion-tab-button tab="home" routerLink="/homec" >
-    <ion-icon name="home-outline"  ></ion-icon>
-  </ion-tab-button>
+  <ion-tabs>
+    <ion-tab-bar slot="bottom" class="ion-no-border">
+      <ion-tab-button tab="home" routerLink="/homec">
+        <ion-icon name="home-outline"></ion-icon>
+      </ion-tab-button>
 
-  <ion-tab-button tab="appoinments" routerLink="/appointmentsc">
-    <ion-icon name="calendar-clear-outline" ></ion-icon> 
-  </ion-tab-button>
+      <ion-tab-button tab="appoinments" routerLink="/appointmentsc">
+        <ion-icon name="calendar-clear-outline"></ion-icon>
+      </ion-tab-button>
 
+      <ion-tab-button tab="tips" routerLink="/tipsc">
+        <ion-icon name="bulb-outline"></ion-icon>
+      </ion-tab-button>
 
-  <ion-tab-button tab="tips"  routerLink="/tipsc">
-    <ion-icon name="bulb-outline"></ion-icon>
-  </ion-tab-button>
-
-  <ion-tab-button tab="tips"   routerLink="/profilec">
-    <ion-icon name="person-outline" id="current"> </ion-icon>
-  </ion-tab-button>
-
-</ion-tab-bar> 
-</ion-tabs>
+      <ion-tab-button tab="tips" routerLink="/profilec">
+        <ion-icon name="person-outline" id="current"> </ion-icon>
+      </ion-tab-button>
+    </ion-tab-bar>
+  </ion-tabs>
 </ion-toolbar>

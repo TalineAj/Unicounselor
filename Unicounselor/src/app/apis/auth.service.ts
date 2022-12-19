@@ -73,21 +73,21 @@ console.log('no user signed');
 }
 //letting the user upload their image
 async uploadImage(cameraFile: Photo){
-  console.log('entered');
+  // console.log('entered');
  const user = this.auth.currentUser;
  const path = `uploads/${user.uid}/profile.png`;
  const storageRef = ref(this.storage,path);
- console.log('path '+path);
+ //console.log('path '+path);
  try{
   await uploadString(storageRef,cameraFile.base64String,'base64');
-  console.log('image urlll: ');
+  //console.log('image urlll: ');
   const imageUrl = await getDownloadURL(storageRef);
-  console.log('image urlll: '+ imageUrl);
+ // console.log('image urlll: '+ imageUrl);
   const userRef = doc(this.firestore,`Users/${user.uid}`);
   await updateDoc(userRef,{
     imageUrl,
   });
-  console.log('addedimg');
+  //console.log('addedimg');
   return true;
  }catch(error){
   return false;
