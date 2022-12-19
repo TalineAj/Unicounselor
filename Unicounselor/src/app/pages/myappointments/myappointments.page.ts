@@ -93,7 +93,7 @@ export class MyappointmentsPage implements OnInit {
       message: `Cancelling appointment`,
     });
     await loading.present();
-    const id = this.appointmentsids[appointmentid];
+    const id = this.appointmentsids[appointmentid]; //Getting the selected appointment id
     this.status = {
       message: msg,
       status: 'Cancelled',
