@@ -1,76 +1,68 @@
 <ion-header class="ion-no-border">
   <ion-toolbar>
-    <ion-icon size="large" style="color: #4CBB17;" name="arrow-back-outline" (click)="closeModal()"></ion-icon>
-    <ion-title> Dr. {{firstname}} {{lastname}}</ion-title>
+    <div id="wrapper">
+      <div id="arrow">
+        <ion-icon
+          size="large"
+          style="color: #4cbb17"
+          name="arrow-back-outline"
+          (click)="closeModal()"
+        ></ion-icon>
+      </div>
+      <div id="name">
+        <ion-title> Dr. {{firstname}} {{lastname}}</ion-title>
+      </div>
+    </div>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-
-
-
   <ion-card *ngFor="let review  of fetchedreviews">
+    <ion-card-header>
+      <ion-card-title>
+        <ion-icon name="star-sharp"></ion-icon> {{review.rating}}
+      </ion-card-title>
+    </ion-card-header>
 
-  <ion-card-header>
-    <ion-card-title> <ion-icon name="star-sharp"></ion-icon> {{review.rating}}
-    </ion-card-title>
+    <ion-card-content> {{review.review}} </ion-card-content>
+  </ion-card>
 
-  </ion-card-header>
+  <div class="no-reviews" *ngIf="noreviews===0">
+    <div class="wrap">
+      <ion-icon name="star-half-outline" id="center"></ion-icon>
+      <p id="noreviewstext">No rating or reviews were added yet!</p>
+    </div>
+  </div>
 
-  <ion-card-content >
-  {{review.review}} 
-  </ion-card-content>
-</ion-card>
-
-
-
-
-
-<div class="no-reviews" *ngIf="noreviews===0">
-  <div class ="wrap">
-    <ion-icon name="star-half-outline" id="center"></ion-icon> 
-  <p id = "noreviewstext">No rating or reviews were added yet!</p>
-</div>
-
-
-</div>
-
-
-
-
-
-
-
-
-  <ion-button shape="round" class="button" id="open-modal" >
+  <ion-button shape="round" class="button" id="open-modal">
     <ion-icon size="large" id="plus" name="add-outline"></ion-icon>
-    <!-- <ion-icon size="large" name="add-circle-outline"></ion-icon> -->
   </ion-button>
-   <ion-modal #modal trigger="open-modal" [initialBreakpoint]="0.25" [breakpoints]="[0, 0.25, 0.5, 0.75]">
+  <ion-modal
+    #modal
+    trigger="open-modal"
+    [initialBreakpoint]="0.25"
+    [breakpoints]="[0, 0.25, 0.5, 0.75]"
+  >
     <ng-template>
-      <form class ="form" #f="ngForm" (ngSubmit)="onSubmit(f)">
+      <form class="form" #f="ngForm" (ngSubmit)="onSubmit(f)">
         <ion-item>
-            <ion-label position ="floating"> Rating</ion-label>
-            <ion-input type="text" ngModel  
-            name="rating" required="true"> </ion-input>   
+          <ion-label position="floating"> Rating</ion-label>
+          <ion-input type="number" ngModel name="rating" required="true">
+          </ion-input>
         </ion-item>
-    
+
         <ion-item>
-        <ion-label position ="floating">Review</ion-label>
-        <ion-input type="text" ngModel name="review" required="true"> </ion-input>     
-        </ion-item> 
-        
+          <ion-label position="floating">Review</ion-label>
+          <ion-textarea
+            type="textarea"
+            ngModel
+            name="review"
+            required="true"
+          ></ion-textarea>
+        </ion-item>
+
         <ion-button id="submit" type="submit" name="submit">Submit</ion-button>
-        
       </form>
     </ng-template>
   </ion-modal>
-
-
-
-
-
-
-
-
 </ion-content>
