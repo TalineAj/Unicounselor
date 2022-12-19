@@ -2,18 +2,6 @@
   <ion-toolbar>
     <div id="wrapper">
       <h5 id="title">Our counselors</h5>
-      <div [routerLink]="['/profile']" id="profile1" *ngIf="user?.imageUrl">
-        <img
-          style="
-            border-radius: 50%;
-            width: 40px;
-            height: 37px;
-            object-fit: cover;
-          "
-          id="profileimg"
-          [src]="user.imageUrl"
-        />
-      </div>
     </div>
   </ion-toolbar>
 </ion-header>
@@ -22,11 +10,11 @@
   <ion-card *ngFor="let counselor  of counselors; let i = index">
     <div id="bigdiv">
       <div id="img1container">
-        <div id="img1" *ngIf="time < 0">
+        <div  *ngIf="time < 0"> <!--Image is loaded-->
           <img [src]="counselor.imageUrl" />
         </div>
 
-        <div id="img1" *ngIf="time > 0 ">
+        <div *ngIf="time > 0 "> <!--Skeleton is shoeing-->
           <ion-thumbnail slot="start">
             <ion-skeleton-text
               style="
