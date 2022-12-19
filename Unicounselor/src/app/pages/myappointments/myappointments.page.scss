@@ -1,102 +1,95 @@
 ion-content {
-    --ion-background-color: white;
-  
-  }
-  
-  ion-toolbar{    
+  --ion-background-color: white;
+}
+
+ion-toolbar {
   --background: white;
-  }
-  ion-icon{
-    font-size:24px ;
-  }
-  ion-tab-bar {
-    border: 0;
-  }
-
-  ion-tab-bar{
-    --background:white;
-  }
-  #wrapper{
-    margin-top: 5%;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: space-between;
-  }
-  #profile{
-    // margin-left: 85%;
-    // margin-top: 5px;
-    color:#4CBB17;
-
-   
 }
-#status{
-    color:#4CBB17;
+ion-icon {
+  font-size: 24px;
+}
+ion-tab-bar {
+  border: 0;
+}
+#current {
+  color: #4cbb17;
 }
 
-  
-  #title{
-    margin-top: 5px;
-    color: #4CBB17;
-    margin-left: 5%;
-    font-weight: bold;
-    font-size: large;
-  }
-  ion-card{
-    height: 35%;
-    margin-top: 5% !important;
-    margin-bottom: 5% !important;
-    background-color: white !important;
-  }
-#img1{
-width: 40%;
- // background-image: url('../../../assets/images/Dr2.png');
-  background-position: 50% 10%;
-  background-size: cover;
-  height: 200px;
-}
-#bigdiv{
-display: flex;
-}
-#info
-{
-  // height: 30%;
-  width:70%;
-  flex-direction: column;
-
+#img1container {
+  width: 60%;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
 }
 
+ion-tab-bar {
+  --background: white;
+}
+#wrapper {
+  margin-top: 5%;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+#profile {
+  margin-right: 3%;
+  // margin-top: 5px;
+  color: #4cbb17;
+}
+#status {
+  color: #4cbb17;
+}
 
-ion-card-title{
-  color: #4CBB17;
+#title {
+  margin-top: 5px;
+  color: #4cbb17;
+  margin-left: 5%;
   font-weight: bold;
   font-size: large;
 }
-#content{
-    font-size: 12px;
+ion-card {
+  height: 30%;
+  margin-top: 5% !important;
+  margin-bottom: 5% !important;
+  background-color: white !important;
 }
-.no-appointments{
+#bigdiv {
+  display: flex;
+}
+#info {
+  width: 70%;
+  flex-direction: column;
+}
+
+ion-card-title {
+  color: #4cbb17;
+  font-weight: bold;
+  font-size: large;
+}
+#content {
+  font-size: 12px;
+}
+.no-appointments {
   width: 100%;
   height: 100%;
- display: flex;
- justify-content: center;
- text-align: center;
- color: #4CBB17;
- align-items: center;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  color: #4cbb17;
+  align-items: center;
 }
-.wrap{
-height: 20%;
-width: 50%;
-
+.wrap {
+  height: 20%;
+  width: 50%;
 }
-#center{
+#center {
   width: 35%;
   height: 40%;
 }
-#noappointmentstext{
-  color: #4CBB17;
+#noappointmentstext {
+  color: #4cbb17;
 }
-.cancel{
-  --background: red; 
-
+.cancel {
+  --background: red;
 }

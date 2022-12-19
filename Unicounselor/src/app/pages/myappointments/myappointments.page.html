@@ -1,76 +1,91 @@
-<!-- <a href="https://www.freepik.com/free-photo/happy-african-american-doctor-talking-with-female-patient-during-psychotherapy-session_26644458.htm#query=guidance%20counselor&position=25&from_view=keyword">Image by Drazen Zigic</a> on <a href="https://www.freepik.com/">Freepik</a> -->
 <ion-header class="ion-no-border">
   <ion-toolbar>
-      <div id = "wrapper">
-     <h5 id ="title">My appointments</h5>
-     <!-- <div  [routerLink]="['/profile']"  id = "profile1" *ngIf = "user?.imageUrl">
-      <img style="border-radius:50%; width: 40px; height: 37px; object-fit: cover;" id="profileimg" [src]="user.imageUrl" />
-     
-    </div> -->
-<ion-icon id ="profile" name="person-outline" [routerLink]="['/profile']" size="large"> </ion-icon>
-</div>  
+    <div id="wrapper">
+      <h5 id="title">My appointments</h5>
+      <ion-icon
+        id="profile"
+        name="person-outline"
+        [routerLink]="['/profile']"
+        size="large"
+      >
+      </ion-icon>
+    </div>
   </ion-toolbar>
 </ion-header>
 
-<ion-content> 
-  <ng-container  *ngIf="time < 0">
+<ion-content>
   <ion-card *ngFor="let appointment  of appointments; let i = index">
-   <div  id="bigdiv">
-    <div id="img1">
-     <img [src]= "appointment.profileImagec" alt="">   
+    <div id="bigdiv">
+      <div id="img1container">
+        <div *ngIf="time < 0">
+          <!--Image is loaded-->
+          <img [src]="appointment.profileImagec" />
+        </div>
 
+        <div *ngIf="time > 0 ">
+          <!--Skeleton is shoeing-->
+          <ion-thumbnail slot="start">
+            <ion-skeleton-text
+              style="
+                width: 200px;
+                height: 235px;
+                --background-rgb: 29.8, 73.3, 9;
+              "
+              [animated]="true"
+              >Hello</ion-skeleton-text
+            >
+          </ion-thumbnail>
+        </div>
+      </div>
+      <div id="info">
+        <ion-card-header>
+          <ion-card-title> {{appointment.counselor}} </ion-card-title>
+        </ion-card-header>
+
+        <ion-card-content>
+          <div id="content">
+            {{appointment.date}}
+            <br />
+            Staus: <span id="status">{{appointment.status}}</span>
+            <br />
+            {{appointment.messagec}}
+          </div>
+          <div *ngIf="appointment.status==='Approved'">
+            <ion-button size="small" class="cancel" (click)="presentAlert(i)"
+              >Cancel</ion-button
+            >
+          </div>
+        </ion-card-content>
+      </div>
     </div>
-
-    <div id = "info">
-    <ion-card-header>
-      <ion-card-title> {{appointment.counselor}}
-      </ion-card-title>
-  
-    </ion-card-header>
-  
-    <ion-card-content>
-      <div id = "content">
-      {{appointment.date}}
-      <br>
-      Staus: <span id="status">{{appointment.status}}</span>
-      <br>
-      {{appointment.messagec}}
-
-    </div>
-    <div  *ngIf="appointment.status==='Approved'">
-    <ion-button size= "small" class="cancel"  (click)="presentAlert(i)">Cancel</ion-button>
-    </div>
-    </ion-card-content>
-
-</div>
-
-</div>
-
-
   </ion-card>
-</ng-container>
-
-
-
-
-
-
 
   <div class="no-appointments" *ngIf="noappointments===0">
-    <div class ="wrap">
-      <ion-icon name="calendar-outline" id="center"></ion-icon> 
-          <p id = "noappointmentstext">No appoinments were requested yet!</p>
+    <div class="wrap">
+      <ion-icon name="calendar-outline" id="center"></ion-icon>
+      <p id="noappointmentstext">No appoinments were requested yet!</p>
+    </div>
   </div>
-  
-  
-  </div>
-  
-
-
-
-
-
-
-
-
 </ion-content>
+
+<ion-toolbar>
+  <ion-tabs>
+    <ion-tab-bar slot="bottom" class="ion-no-border">
+      <ion-tab-button tab="home" routerLink="/home">
+        <ion-icon name="home-outline"></ion-icon>
+      </ion-tab-button>
+
+      <ion-tab-button tab="appoinments" routerLink="/appointments">
+        <ion-icon name="calendar-clear-outline"></ion-icon>
+      </ion-tab-button>
+
+      <ion-tab-button tab="tips" routerLink="/tips">
+        <ion-icon name="bulb-outline"></ion-icon>
+      </ion-tab-button>
+
+      <ion-tab-button tab="tips" routerLink="/profile">
+        <ion-icon name="person-outline" id="current"> </ion-icon>
+      </ion-tab-button>
+    </ion-tab-bar>
+  </ion-tabs>
+</ion-toolbar>
