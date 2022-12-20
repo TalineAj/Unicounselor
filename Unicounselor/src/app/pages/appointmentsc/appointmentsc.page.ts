@@ -118,7 +118,6 @@ export class AppointmentscPage implements OnInit {
         {
           text: 'Confirm',
           handler: (res) => {
-            // console.log(i + res.msg);
             this.approve(i, res.msg);
           },
         },

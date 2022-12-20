@@ -60,8 +60,6 @@ export class MyappointmentsPage implements OnInit {
       const obj1 = JSON.parse(JSON.stringify(doc.id));
       this.appointmentsids.push(obj1);
       this.appointments.push(obj);
-
-     // console.log(this.appointments);
     });
   }
   resetAppointments(){

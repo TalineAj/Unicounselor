@@ -13,6 +13,7 @@ import {
   ToastController,
 } from '@ionic/angular';
 import { CalenderAuthService } from 'src/app/apis/calender-auth.service';
+import { timer } from 'rxjs';
 
 @Component({
   selector: 'app-myappointmentsc',
@@ -27,6 +28,8 @@ export class MyappointmentscPage implements OnInit {
   appointments = [];
   appointmentsids = [];
   status: Status;
+    time = 10; //for lazy loading
+
   images = [];
   constructor(
     private alertController: AlertController,
@@ -39,13 +42,13 @@ export class MyappointmentscPage implements OnInit {
   ) {}
 
   ngOnInit() {
+    timer(2000).subscribe(() => (this.time = -1)); //Average waiting time for an image to load on normal internet would be 2 seconds
     this.id = this.authService.getCurrentUserId();
     if (this.id) {
       //there is a signed in user
       this.authService.getUserById(this.id).subscribe((res) => {
         this.user = res;
         this.username = this.user.firstname + ' ' + this.user.lastname;
-        console.log(this.username);
         this.getMeetings();
       });
     } else {
@@ -53,11 +56,10 @@ export class MyappointmentscPage implements OnInit {
     }
   }
 
-
-
   async getMeetings() {
+   this.noappointments = 0;
     const appointmentsRef = collection(this.firestore, 'Appointments');
-    //to only get counselors
+    //to only get the approved meetings of this conselor
     const q = query(
       appointmentsRef,
       where('counselor', '==', this.username),
@@ -67,29 +69,27 @@ export class MyappointmentscPage implements OnInit {
     querySnapshot.forEach((doc) => {
       //if the query does not return anything it doesnt enter here thats why we set it inside to 1
       this.noappointments = 1;
-      // doc.data() is never undefined for query doc snapshots
-      // console.log(doc.id, ' =>' , doc.data());
       const obj = JSON.parse(JSON.stringify(doc.data()));
       const obj1 = JSON.parse(JSON.stringify(doc.id));
-      // obj.id = doc.id;
-      //obj.eventId = doc.id;
       this.appointmentsids.push(obj1);
       this.appointments.push(obj);
-    //  this.images.push(obj.profileImage);
-      console.log(this.appointments);
-     // console.log(this.appointments);
-      //console.log(this.appointmentsids);
     });
   }
-
-
-
-
-
-
-
-
-
+  resetAppointments(){
+    length = this.appointments.length;
+    for(let i =0; i<=length;i++){
+      this.appointments.pop();
+    }
+    this.ngOnInit();
+  }
+  handleRefresh(event) {
+    setTimeout(() => {
+    //After refreshing page, the appointments array is reset
+    //and the updated appointments in database are fetched
+    this.resetAppointments();
+      event.target.complete();
+    }, 2000);
+  };
   //Alert and function when cancelled
   async presentAlert(i: any) {
     const alert = await this.alertController.create({
@@ -136,7 +136,11 @@ export class MyappointmentscPage implements OnInit {
     loading.dismiss();
     await toast.present();
     this.deleteEvent(this.appointmentsids[appointmentid]);
-    // }
+      //After deleting event, the appointments array is reset
+    //and the updated appointments in database are fetched
+    setTimeout(() => {
+    this.resetAppointments();
+  }, 1000);
   }
   async deleteEvent(id: number) {
     //Getting the event we want to delete by looking at the appointmentid of that event if it matches the cancelled appointment id
