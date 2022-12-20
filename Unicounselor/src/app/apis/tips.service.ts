@@ -1,25 +1,33 @@
 import { Injectable } from '@angular/core';
-import {addDoc, collectionData, doc, docData, Firestore, getDoc, getDocs, setDoc} from '@angular/fire/firestore';
-import {collection, limit , query, orderBy} from '@firebase/firestore';
+import {
+  addDoc,
+  collectionData,
+  doc,
+  docData,
+  Firestore,
+  getDoc,
+  getDocs,
+  setDoc,
+} from '@angular/fire/firestore';
+import { collection, limit, query, orderBy } from '@firebase/firestore';
 import { Observable } from 'rxjs';
-export interface Tip{
+export interface Tip {
   author: string;
   title: string;
   tip: string;
 }
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class TipsService {
-
-  constructor(private firestore: Firestore) { }
-  addTip(tip: Tip){
-    const tipsRef = collection(this.firestore,'tips');
-    return addDoc(tipsRef,tip);
+  constructor(private firestore: Firestore) {}
+  addTip(tip: Tip) {
+    const tipsRef = collection(this.firestore, 'tips');
+    return addDoc(tipsRef, tip);
   }
-  getTips(){
-    const tipsRef =collection(this.firestore,'tips');
+  getTips() {
+    const tipsRef = collection(this.firestore, 'tips');
     return collectionData(tipsRef);
   }
   //  async getTwoTips(){
@@ -32,9 +40,8 @@ export class TipsService {
   // });
   // }
 
-
-  getTipById(id){
-    const tipsRef = doc(this.firestore,`tips/${id}`);
-    return docData(tipsRef, {idField : 'id'});
+  getTipById(id) {
+    const tipsRef = doc(this.firestore, `tips/${id}`);
+    return docData(tipsRef, { idField: 'id' });
   }
 }
