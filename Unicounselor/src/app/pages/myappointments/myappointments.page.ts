@@ -48,7 +48,7 @@ export class MyappointmentsPage implements OnInit {
 
     timer(2000).subscribe(() => (this.time = -1)); //Average waiting time for an image to load on normal internet would be 2 seconds
     this.username = this.activatedRoute.snapshot.paramMap.get('myusername');
-
+    this.noappointments = 0;
     const appointmentsRef = collection(this.firestore, 'Appointments');
     //to only get counselors
     const q = query(appointmentsRef, where('student', '==', this.username));

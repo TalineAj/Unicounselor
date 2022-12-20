@@ -67,6 +67,8 @@ export class AppointmentscPage implements OnInit {
   }
 
   async getMeetings() {
+    this.noappointments = 0;
+
     const appointmentsRef = collection(this.firestore, 'Appointments');
     //to only get appointments of that counselor that are pending
     const q = query(
