@@ -1,33 +1,23 @@
 <ion-header class="ion-no-border">
   <ion-toolbar>
-    <!-- <div  [routerLink]="['/profile']"  id = "profile1" *ngIf = "user?.imageUrl">
-      <img style="width: 100px; height: 37px; object-fit: cover;" id="profileimg" [src]="user.imageUrl" />
-     
-    </div> -->
-      </ion-toolbar>
+  </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <div id="div1" *ngIf ="!imagePresent">
-    <ion-icon (click)="changeImage()" name="person-outline" size="large" id="profile"> </ion-icon>
-
+  <div id="div1" *ngIf="!imagePresent">
+    <ion-icon
+      name="person-outline"
+      size="large"
+      id="profile"
+    >
+    </ion-icon>
   </div>
 
-  <div class="preview" *ngIf = "user?.imageUrl">
-  <ion-avatar (click)="changeImage()">
-  <img  [src]="user.imageUrl" />
-  <!-- <ng-template *ngIf ="!user?.imageUrl">
-    <div class = "fallback">
-      <p style="background-color: red;">Select photo</p>
-      </div>
-    </ng-template> -->
+  <div class="preview" *ngIf="user?.imageUrl">
+    <ion-avatar (click)="changeImage()">
+      <img [src]="user.imageUrl" />
     </ion-avatar>
   </div>
-
-
-
-
-
 
   <div class="options">
     <div>
@@ -38,88 +28,49 @@
         size="large"
         [routerLink]="['/myinformation']"
       >
-        <ion-icon name="chevron-forward-circle-outline" style="color:white;
-        "></ion-icon>
+        <ion-icon
+          name="chevron-forward-circle-outline"
+          style="color: white"
+        ></ion-icon>
       </ion-button>
     </div>
-  
 
-
-    <div >
+    <div>
       <p style="margin: 9%">My appointments</p>
-      <ion-button
-        id="back"
-        color="white"
-        size="large"
-       (click)="pushPage()"
-      >
-        <ion-icon name="chevron-forward-circle-outline" style="color:white;
-        "></ion-icon>
+      <ion-button id="back" color="white" size="large" (click)="pushPage()">
+        <ion-icon
+          name="chevron-forward-circle-outline"
+          style="color: white"
+        ></ion-icon>
       </ion-button>
     </div>
-    <div >
+    <div>
       <p style="margin: 9%">Logout</p>
-      <ion-button
-        id="back"
-        color="white"
-        size="large"
-        (click)="logout()"
-      >
-        <ion-icon name="log-out-outline" style="color:white;
-        "></ion-icon>
+      <ion-button id="back" color="white" size="large" (click)="logout()">
+        <ion-icon name="log-out-outline" style="color: white"></ion-icon>
       </ion-button>
     </div>
   </div>
-
-
-  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 </ion-content>
-
 
 <ion-toolbar>
   <ion-tabs>
-<ion-tab-bar slot="bottom" class="ion-no-border">
-  <ion-tab-button tab="home" routerLink="/home" >
-    <ion-icon name="home-outline"  ></ion-icon>
-  </ion-tab-button>
+    <ion-tab-bar slot="bottom" class="ion-no-border">
+      <ion-tab-button tab="home" routerLink="/home">
+        <ion-icon name="home-outline"></ion-icon>
+      </ion-tab-button>
 
-  <ion-tab-button tab="appoinments" routerLink="/appointments">
-    <ion-icon name="calendar-clear-outline" ></ion-icon> 
-  </ion-tab-button>
+      <ion-tab-button tab="appoinments" routerLink="/appointments">
+        <ion-icon name="calendar-clear-outline"></ion-icon>
+      </ion-tab-button>
 
+      <ion-tab-button tab="tips" routerLink="/tips">
+        <ion-icon name="bulb-outline"></ion-icon>
+      </ion-tab-button>
 
-  <ion-tab-button tab="tips"  routerLink="/tips">
-    <ion-icon name="bulb-outline"></ion-icon>
-  </ion-tab-button>
-
-  <ion-tab-button tab="tips"   routerLink="/profile">
-    <ion-icon name="person-outline" id="current"> </ion-icon>
-  </ion-tab-button>
-
-</ion-tab-bar> 
-</ion-tabs>
-
+      <ion-tab-button tab="tips" routerLink="/profile">
+        <ion-icon name="person-outline" id="current"> </ion-icon>
+      </ion-tab-button>
+    </ion-tab-bar>
+  </ion-tabs>
 </ion-toolbar>
-
-
-
- 
- 
-
-

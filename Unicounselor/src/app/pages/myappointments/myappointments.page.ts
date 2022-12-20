@@ -42,8 +42,10 @@ export class MyappointmentsPage implements OnInit {
     private calenderService: CalenderAuthService,
     private loadingController: LoadingController,
     private toastController: ToastController
-  ) {}
+  ) {
+  }
   async ngOnInit() {
+
     timer(2000).subscribe(() => (this.time = -1)); //Average waiting time for an image to load on normal internet would be 2 seconds
     this.username = this.activatedRoute.snapshot.paramMap.get('myusername');
 
@@ -58,8 +60,22 @@ export class MyappointmentsPage implements OnInit {
       const obj1 = JSON.parse(JSON.stringify(doc.id));
       this.appointmentsids.push(obj1);
       this.appointments.push(obj);
+
+     // console.log(this.appointments);
     });
   }
+  handleRefresh(event) {
+    setTimeout(() => {
+    //After refreshing page, the appointments array is reset
+    //and the updated appointments in database are fetched
+      let i;
+      for(i =0; i<=this.appointments.length;i++){
+        this.appointments.pop();
+      }
+      this.ngOnInit();
+      event.target.complete();
+    }, 2000);
+  };
   //Alert and function when cancelled
   async presentAlert(i: any) {
     const alert = await this.alertController.create({
@@ -106,7 +122,14 @@ export class MyappointmentsPage implements OnInit {
     loading.dismiss();
     await toast.present();
     this.deleteEvent(this.appointmentsids[appointmentid]);
-  }
+    //After deleting event, the appointments array is reset
+    //and the updated appointments in database are fetched
+     let i;
+      for(i =0; i<=this.appointments.length;i++){
+        this.appointments.pop();
+      }
+      this.ngOnInit();
+      }
 
   async deleteEvent(id: number) {
     //Getting the event we want to delete by looking at the appointmentid of that event if it matches the cancelled appointment id

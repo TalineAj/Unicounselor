@@ -30,7 +30,13 @@ ion-tab-bar{
   margin-bottom: 10%;
   align-items: center;
   justify-content: center;
-  
+}
+.preview{
+  margin-top: 10px;
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: center;
+  height: 30%;
 }
 #profile{
 margin-top: 5px;
@@ -65,7 +71,6 @@ flex-direction: row;
 align-items: center;
 justify-content: space-between;
 padding-top: 2%;
-// border-bottom: white 0.5px solid;
 box-shadow: 0px 24px 3px -24px white;
 color: white;
 }
@@ -76,20 +81,4 @@ ion-avatar{
   width:  128px;
   height:  128px;
 }
-// .fallback{
-//   width: 128px;
-//   height: 128px;
-//   border-radius: 50%;
-//   background: #bfbfbf;
 
-//   display: flex;
-//   justify-content: center;
-//   align-items: center;
-//   font-weight: 500;
-// }
-.preview{
-  margin-top: 10px;
-  margin-bottom: 10px;
-  display: flex;
-  justify-content: center;
-}
