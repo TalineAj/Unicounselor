@@ -53,6 +53,21 @@ export class ReviewsmodalPage implements OnInit {
       this.fetchedreviews.push(obj);
     });
   }
+  resetReviews(){
+    length = this.fetchedreviews.length;
+    for(let i =0; i<=length;i++){
+      this.fetchedreviews.pop();
+    }
+    this.ngOnInit();
+  }
+  handleRefresh(event) {
+    setTimeout(() => {
+    //After refreshing page, the appointments array is reset
+    //and the updated appointments in database are fetched
+    this.resetReviews();
+      event.target.complete();
+    }, 2000);
+  };
   closeModal() {
     this.modalController.dismiss();
   }
@@ -93,5 +108,8 @@ export class ReviewsmodalPage implements OnInit {
     loading.dismiss();
     form.reset();
     await toast.present();
+    setTimeout(() => {
+      this.resetReviews();
+    }, 1000);
   }
 }

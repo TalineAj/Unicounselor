@@ -64,15 +64,18 @@ export class MyappointmentsPage implements OnInit {
      // console.log(this.appointments);
     });
   }
+  resetAppointments(){
+    length = this.appointments.length;
+    for(let i =0; i<=length;i++){
+      this.appointments.pop();
+    }
+    this.ngOnInit();
+  }
   handleRefresh(event) {
     setTimeout(() => {
     //After refreshing page, the appointments array is reset
     //and the updated appointments in database are fetched
-      let i;
-      for(i =0; i<=this.appointments.length;i++){
-        this.appointments.pop();
-      }
-      this.ngOnInit();
+    this.resetAppointments();
       event.target.complete();
     }, 2000);
   };
@@ -124,11 +127,9 @@ export class MyappointmentsPage implements OnInit {
     this.deleteEvent(this.appointmentsids[appointmentid]);
     //After deleting event, the appointments array is reset
     //and the updated appointments in database are fetched
-     let i;
-      for(i =0; i<=this.appointments.length;i++){
-        this.appointments.pop();
-      }
-      this.ngOnInit();
+    setTimeout(() => {
+    this.resetAppointments();
+  }, 1000);
       }
 
   async deleteEvent(id: number) {
