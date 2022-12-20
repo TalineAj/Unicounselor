@@ -29,6 +29,7 @@ export class CalenderPage implements OnInit {
     private authService: AuthService,
     private calenderService: CalenderAuthService
   ) {}
+
   async addNewEvent(form: NgForm) {
     //Since the selectedDate chooses a random time
     //I let the user choose a date using a form and then created a new date with the selected date from calender and time from form
@@ -84,6 +85,9 @@ export class CalenderPage implements OnInit {
     loading.dismiss();
     form.reset();
     await toast.present();
+    setTimeout(() => {
+      this.resetEvents();
+    }, 1000);
   }
 
   onViewTitleChanged(title) {
@@ -123,7 +127,6 @@ export class CalenderPage implements OnInit {
   }
 
   ngOnInit() {
-
     this.id = this.authService.getCurrentUserId();
     if (this.id) {
       //there is a signed in user
@@ -144,8 +147,6 @@ export class CalenderPage implements OnInit {
     const q = query(counselorRef, where('counselor', '==', this.username));
     const querySnapshot = await getDocs(q);
     querySnapshot.forEach((doc) => {
-      // doc.data() is never undefined for query doc snapshots
-      // console.log(doc.id, ' =>' , doc.data());
       const event = JSON.parse(JSON.stringify(doc.data()));
       event.id = doc.id;
       event.startTime = new Date(event.startTime.seconds * 1000);
@@ -153,10 +154,24 @@ export class CalenderPage implements OnInit {
       events.push(event);
       this.eventSource = events;
     });
-    //   this.calenderService.getEvent().subscribe( res => {
-    //       this.eventSource = res;
-    // });
 
-    // console.log(this.eventSource);
+  }
+
+  handleRefresh(event) {
+    setTimeout(() => {
+    //After refreshing page, the appointments array is reset
+    //and the updated appointments in database are fetched
+    this.resetEvents();
+      event.target.complete();
+    }, 2000);
+  };
+
+
+  resetEvents(){
+    length = this.eventSource.length;
+    for(let i =0; i<=length;i++){
+      this.eventSource.pop();
+    }
+    this.ngOnInit();
   }
 }

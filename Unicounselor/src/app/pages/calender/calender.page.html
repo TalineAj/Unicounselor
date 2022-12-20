@@ -1,42 +1,54 @@
 <ion-header class="ion-no-border">
   <ion-toolbar>
-      <div id = "wrapper">
-     <h5 id ="title"> Calendar </h5>
-<ion-icon id ="profile" name="person-outline" [routerLink]="['/profilec']" size="large"> </ion-icon>
-</div>  
+    <div id="wrapper">
+      <h5 id="title">Calendar</h5>
+      <ion-icon
+        id="profile"
+        name="person-outline"
+        [routerLink]="['/profilec']"
+        size="large"
+      >
+      </ion-icon>
+    </div>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <!-- <script src="https://apis.google.com/js/api.js" type="text/javascript"></script> -->
-  <calendar id= "cal" [eventSource]="eventSource"
-  [calendarMode]="calendar.mode"
-  [currentDate]="calendar.currentDate"
-  (onCurrentDateChanged)="onCurrentDateChanged($event)"
-  (onRangeChanged)="reloadSource(startTime, endTime)"
-  (onEventSelected)="onEventSelected($event)"
-  (onTitleChanged)="onViewTitleChanged($event)"
-  (onTimeSelected)="onTimeSelected($event)"
-  [step]="calendar.step">
-  
-</calendar>    
+  <ion-refresher slot="fixed" (ionRefresh)="handleRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+  <calendar
+    id="cal"
+    [eventSource]="eventSource"
+    [calendarMode]="calendar.mode"
+    [currentDate]="calendar.currentDate"
+    (onCurrentDateChanged)="onCurrentDateChanged($event)"
+    (onRangeChanged)="reloadSource(startTime, endTime)"
+    (onEventSelected)="onEventSelected($event)"
+    (onTitleChanged)="onViewTitleChanged($event)"
+    (onTimeSelected)="onTimeSelected($event)"
+    [step]="calendar.step"
+  >
+  </calendar>
 
-<form #f="ngForm" (ngSubmit)="addNewEvent(f)">
-  <ion-item>
-    <ion-label position ="floating">Event Title</ion-label>
-    <ion-input type="text" ngModel name="title" required="true"> </ion-input>     
-    </ion-item> 
+  <form #f="ngForm" (ngSubmit)="addNewEvent(f)">
+    <ion-item>
+      <ion-label position="floating">Event Title</ion-label>
+      <ion-input type="text" ngModel name="title" required="true"> </ion-input>
+    </ion-item>
 
-<ion-item>
-  <ion-label position ="floating">Start Time</ion-label>
-  <ion-input type="time" ngModel name="starttime" required="true"> </ion-input>     
-  </ion-item> 
+    <ion-item>
+      <ion-label position="floating">Start Time</ion-label>
+      <ion-input type="time" ngModel name="starttime" required="true">
+      </ion-input>
+    </ion-item>
 
-  <ion-item>
-    <ion-label position ="floating">End Time</ion-label>
-    <ion-input type="time" ngModel name="endtime" required="true"> </ion-input>     
-    </ion-item> 
+    <ion-item>
+      <ion-label position="floating">End Time</ion-label>
+      <ion-input type="time" ngModel name="endtime" required="true">
+      </ion-input>
+    </ion-item>
 
-  <ion-button id="add" type="submit" name="submit">Add event</ion-button>
-</form>
+    <ion-button id="add" type="submit" name="submit">Add event</ion-button>
+  </form>
 </ion-content>

@@ -52,7 +52,7 @@ export class ModalPage implements OnInit {
       message: `Requesting appointment`,
     });
     await loading.present();
-    if (form.value.date === '') {
+    if (form.value.date === '' || form.value.date === null) {
       const toast1 = await this.toastController.create({
         message: 'Please select a date ',
         duration: 4000,
