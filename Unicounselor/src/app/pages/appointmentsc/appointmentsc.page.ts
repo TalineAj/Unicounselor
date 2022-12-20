@@ -1,3 +1,5 @@
+//Given the amount of code and work the console.log statement were left commented
+//In case of any future imporvements it would be easier to uncomment the useful logs.
 import { Component, OnInit, ɵɵsetComponentScope } from '@angular/core';
 import { AuthService } from 'src/app/apis/auth.service';
 import {
@@ -77,7 +79,7 @@ export class AppointmentscPage implements OnInit {
       where('status', '==', 'Pending')
     );
     const querySnapshot = await getDocs(q);
-    console.log(this.noappointments);
+    //console.log(this.noappointments);
     querySnapshot.forEach((doc) => {
       //if the query does not return anything it doesnt enter here thats why we set it inside to 1
       this.noappointments = 1;
@@ -133,15 +135,15 @@ export class AppointmentscPage implements OnInit {
   }
   async approve(appointmentid: any, msg: any) {
     if (this.conflict[appointmentid] === true) {
+      //Checking if this appointment has a conflict, if yes then resolve it
       this.resolution(
         this.isAppointment,
         this.conflictingEvent,
         this.conflictingEventid
       );
       //an appointment or event is already booked at that time , so it must be unbooked
-
       //delete event from calender
-      //delete appointment from appointments
+      //delete appointment from appointments and from calender
     }
     const loading = await this.loadingController.create({
       message: `Approving appointment`,
@@ -162,7 +164,9 @@ export class AppointmentscPage implements OnInit {
     //To add the confirmed appointment to the
     //couselor's calender
     this.addNewEvent(appointmentid);
-    // }
+    setTimeout(() => {
+      this.resetAppointments();
+    }, 1000);
   }
   addMinutes(date, minutes) {
     return new Date(date.getTime() + minutes * 60000);
@@ -170,17 +174,17 @@ export class AppointmentscPage implements OnInit {
 
   async addNewEvent(appointmentid: any) {
     const element = this.appointments[appointmentid]; //Getting the appointment
-    console.log(new Date(element.date).toString());
+    // console.log(new Date(element.date).toString());
     //Transorming the datetime local format to new Date format since this is what is stored in calender
     const year = element.date.split('-')[0];
-    const month = element.date.split('-')[1] - 1; //FIX THIS ISSUE THERE SHOULD BE ANOTHER FIX
+    const month = element.date.split('-')[1] - 1;
     const day = element.date.split('-')[2].split('T')[0];
     const hours = element.date.split('-')[2].split('T')[1].split(':')[0];
     const minutes = element.date.split('-')[2].split('T')[1].split(':')[1];
     const date = new Date(year, month, day, hours, minutes);
     // const end = new Date( year,month,day,hours,minutes+30);
     const end = this.addMinutes(date, 30);
-    //Assuming each appointment is 60 minutes
+    //Assuming each appointment is 30 minutes
     const event = {
       title: 'Appointment with' + ' ' + element.student,
       startTime: date,
@@ -238,10 +242,14 @@ export class AppointmentscPage implements OnInit {
     });
     loading.dismiss();
     await toast.present();
+    setTimeout(() => {
+      this.resetAppointments();
+    }, 1000);
   }
 
-  //Getting the calender appointments of the counselor
-
+  //Getting the calender events of the counselor
+  //in this method also we are checking if there is a conflict and storing relevant
+  //information for checking for conflict as well as resolution
   async getEvents() {
     const counselorRef = collection(this.firestore, 'Calender');
     const q = query(counselorRef, where('counselor', '==', this.username));
@@ -250,27 +258,37 @@ export class AppointmentscPage implements OnInit {
       const event = JSON.parse(JSON.stringify(doc.data()));
       event.id = doc.id;
       const eventid = JSON.parse(JSON.stringify(doc.id));
-      event.startTime = new Date(event.startTime.seconds * 1000);
+      event.startTime = new Date(event.startTime.seconds * 1000); //Transforming time to format that can be useful
       event.endTime = new Date(event.endTime.seconds * 1000);
-      this.events.push(event);
-      this.eventsids.push(eventid);
+      this.events.push(event); //Getting the events of the calender
+      this.eventsids.push(eventid); //Getting the ids of the events
     });
-    console.log(this.events);
-    console.log(this.appointments);
 
-    console.log(this.conflict);
+    // console.log(this.events);
+    //console.log(this.appointments);
+
+    //console.log(this.conflict);
     // eslint-disable-next-line @typescript-eslint/prefer-for-of
     for (let i = 0; i < this.appointments.length; i++) {
       // eslint-disable-next-line @typescript-eslint/prefer-for-of
       for (let j = 0; j < this.events.length; j++) {
+        const endofAppointment = this.addMinutes(
+          new Date(this.appointments[i].date),
+          30
+        );
+        //  console.log( this.events[j].startTime.getTime());
         //looping in the requested appointments array and compareing each element with the event array events to determine any conflict
         if (
+          //Cheking if the requested appointment starts the same time as another event/appointment
+          // or if the start or end of appointment requested is between start and end of a certain event/appointment
           this.events[j].startTime.getTime() ===
             new Date(this.appointments[i].date).getTime() ||
           (this.events[j].startTime.getTime() <
             new Date(this.appointments[i].date).getTime() &&
             new Date(this.appointments[i].date).getTime() <
-              this.events[j].endTime.getTime())
+              this.events[j].endTime.getTime()) ||
+          (this.events[j].startTime.getTime() < endofAppointment &&
+            endofAppointment < this.events[j].endTime.getTime())
         ) {
           //storing true in the conflict array at i , the index of the appointments array
           this.conflict[i] = true;
@@ -292,6 +310,7 @@ export class AppointmentscPage implements OnInit {
   }
 
   public resolution(isAppointment: boolean, event: any, eventid: any) {
+    console.log('resolution');
     //could have only used one param but its more tidy this way
     if (isAppointment === true) {
       //Delete event and cancel appointment
@@ -306,7 +325,9 @@ export class AppointmentscPage implements OnInit {
 
   //Delete the conflicting appointment event
   async deleteAppintmentEvent(id: number) {
-    console.log('Deleting conflicting appointment event');
+    //console.log('deleteappointmentEvent');
+
+    //console.log('Deleting conflicting appointment event');
 
     //Getting the event we want to delete by looking at the appointmentid of that event if it matches the cancelled appointment id
     const calenderRef = collection(this.firestore, 'Calender');
@@ -321,6 +342,8 @@ export class AppointmentscPage implements OnInit {
 
   //Cancelling the conflicing appointment
   async cancel(appointmentid: any) {
+    //console.log('cancel appointment');
+
     this.status = {
       messagec: 'Conflicts with an appointment I have',
       status: 'Cancelled',
@@ -330,6 +353,8 @@ export class AppointmentscPage implements OnInit {
 
   //Deleting the conflicting event
   async deleteEvent(event: any, id: any) {
-    this.calenderService.deleteEvent(event, id); //deletes that appointment event
+    //console.log('deleteEvent');
+
+    this.calenderService.deleteEvent(event, id); //deletes that event
   }
 }
