@@ -1,84 +1,54 @@
-<!-- <a href="https://www.freepik.com/free-photo/happy-african-american-doctor-talking-with-female-patient-during-psychotherapy-session_26644458.htm#query=guidance%20counselor&position=25&from_view=keyword">Image by Drazen Zigic</a> on <a href="https://www.freepik.com/">Freepik</a> -->
 <ion-header class="ion-no-border">
   <ion-toolbar>
-      <div id = "wrapper">
-     <h5 id ="title"> My reviews</h5>
-<ion-icon id ="profile" name="person-outline" [routerLink]="['/profilec']" size="large"> </ion-icon>
-</div>  
+    <div id="wrapper">
+      <h5 id="title">My reviews</h5>
+      <ion-icon
+        id="profile"
+        name="person-outline"
+        [routerLink]="['/profilec']"
+        size="large"
+      >
+      </ion-icon>
+    </div>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+  <ion-refresher slot="fixed" (ionRefresh)="handleRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
 
-  
   <ion-card *ngFor="let review  of fetchedreviews; let i = index">
-    <div id = "info">
-    <ion-card-header>
-      <ion-card-title> <ion-icon name="star-sharp"></ion-icon> {{review.rating}}
-      </ion-card-title>
-  
-    </ion-card-header>
-  
-    <ion-card-content>
-    {{review.review}}
-    </ion-card-content>
-  </div>
+    <div id="info">
+      <ion-card-header>
+        <ion-card-title>
+          <ion-icon name="star-sharp"></ion-icon> {{review.rating}}
+        </ion-card-title>
+      </ion-card-header>
 
-
-
+      <ion-card-content> {{review.review}} </ion-card-content>
+    </div>
   </ion-card>
-  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 </ion-content>
- 
- 
+
 <ion-toolbar>
-<ion-tabs>
-  <ion-tab-bar slot="bottom" class="ion-no-border">
-    <ion-tab-button routerLink = "/homec">
-      <ion-icon name="home-outline"  ></ion-icon>
-    </ion-tab-button>
-  
-    <ion-tab-button tab="appoinments" routerLink="/appointmentsc">
-      <ion-icon name="calendar-clear-outline" ></ion-icon> 
-    </ion-tab-button>
-  
-  
-    <ion-tab-button tab="tips"  routerLink="/tipsc">
-      <ion-icon name="bulb-outline"></ion-icon>
-    </ion-tab-button>
-  
-    <ion-tab-button tab="tips"   routerLink="/profilec">
-      <ion-icon name="person-outline" id="current"> </ion-icon>
-    </ion-tab-button>
-  
-  </ion-tab-bar> 
+  <ion-tabs>
+    <ion-tab-bar slot="bottom" class="ion-no-border">
+      <ion-tab-button routerLink="/homec">
+        <ion-icon name="home-outline"></ion-icon>
+      </ion-tab-button>
+
+      <ion-tab-button tab="appoinments" routerLink="/appointmentsc">
+        <ion-icon name="calendar-clear-outline"></ion-icon>
+      </ion-tab-button>
+
+      <ion-tab-button tab="tips" routerLink="/tipsc">
+        <ion-icon name="bulb-outline"></ion-icon>
+      </ion-tab-button>
+
+      <ion-tab-button tab="tips" routerLink="/profilec">
+        <ion-icon name="person-outline" id="current"> </ion-icon>
+      </ion-tab-button>
+    </ion-tab-bar>
   </ion-tabs>
 </ion-toolbar>
